@@ -1,0 +1,82 @@
+.swtching {
+    position: fixed;
+    top: 200px;
+    z-index: 99999;
+    width: 250px;
+    padding: 7px;
+    left: -250px;
+    background: #F2F2F2;
+    border-radius: 0 0 10px 0;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    -webkit-border-radius: 0 0 10px 0;
+    -moz-border-radius: 0 0 10px 0;
+    -ms-border-radius: 0 0 10px 0;
+    -o-border-radius: 0 0 10px 0;
+}
+
+.swtching h4 {
+    font-size: 14px;
+    text-align: center;
+}
+
+.swtching.active-all {
+    left: 0;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.swtching-icon {
+    position: absolute;
+    right: -40px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 0 50% 50% 0;
+    vertical-align: middle;
+    font-size: 12px;
+    -webkit-border-radius: 0 50% 50% 0;
+    -moz-border-radius: 0 50% 50% 0;
+    -ms-border-radius: 0 50% 50% 0;
+    -o-border-radius: 0 50% 50% 0;
+}
+
+.s-la {
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+.dodgerblue {
+    background: #1E90FF;
+}
+
+.chocolate {
+    background: #D2691E;
+}
+
+.darkviolet {
+    background: #9400D3;
+}
+
+.orange {
+    background: #FFA500;
+}
+
+.limegreen {
+    background: #32CD32;
+}
+
+.orangered {
+    background: #FF4500;
+}

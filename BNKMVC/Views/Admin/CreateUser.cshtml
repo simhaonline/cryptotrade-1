@@ -1,0 +1,160 @@
+﻿@using BNKMVC.Entities;
+@model BNKMVC.Models.UserDto
+
+@{
+    ViewBag.Title = "New Customer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var countyList = new mbankEntities().Countries.OrderBy(a => a.Name).ToList();
+    SelectList list1 = new SelectList(countyList, "Alph3Code", "Name");
+}
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+        <div class="card">
+            <form action="@Url.Action("CreateUser", "Admin")" method="post">
+                <div class="card-body">
+                    <h4 class="card-title">Create a new Customer</h4>
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <span class="badge badge-info"><i class="fas fa-info"></i></span>
+                        <strong>  @Html.ValidationSummary()</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+
+                </div>
+                <hr>
+                <div class="card-body">
+                    <h4 class="card-title">Personal Info</h4>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="inputname" class="control-label col-form-label">First Name</label>
+                                @Html.TextBoxFor(a => a.FirstName, new { @class = "form-control", id = "inputname", placeholder = "First Name Here" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+
+                                <label for="inputlname" class="control-label col-form-label">Last Name</label>
+                                @Html.TextBoxFor(a => a.LastName, new { @class = "form-control", id = "inputlname", placeholder = "Last Name Here" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="control-label col-form-label">Email</label>
+                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", type = "email", id = "inputEmail3", placeholder = "Email Name Here" })
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label for="inputcontact" class="control-label col-form-label">Contact No</label>
+                                @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control", type = "tel", placeholder = "Contact Phone number" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">Password</label>
+                                @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "password", placeholder = "Password" })
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">Confirm Password</label>
+                                @Html.TextBoxFor(a => a.PasswordConfirmed, new { @class = "form-control", type = "password", placeholder = "Confirm Password" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">Select Gender</label>
+                                @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>{
+                 new SelectListItem{ Text="Male", Value="Male"},
+                 new SelectListItem{ Text="Female", Value="Female"}}, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">Select Country</label>
+                                @Html.DropDownListFor(m => m.CountryId, list1, htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="control-label col-form-label">Select File</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Upload Customer Photo</span>
+                                    </div>
+                                    <div class="custom-file">
+
+                                        <input type="file" class="item-img file center-block custom-file-input" name="file_photo" />
+                                        @Html.HiddenFor(a => a.PictureUrl, new { id = "fileData" })
+                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-form">
+                            <div class="form-group m-b-0 text-left">
+                                <button type="submit" class="btn btn-info waves-effect waves-light">Save</button>
+                                <button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="cropImagePop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <div id="upload-demo" class="center-block"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="cropImageBtn" class="btn btn-primary">Crop</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section css{
+    <link href="~/css/croppie.css" rel="stylesheet" />
+    <style>
+        #upload-demo {
+            width: 300px;
+            height: 300px;
+            padding-bottom: 25px;
+        }
+    </style>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/croppie.min.js"></script>
+    <script src="~/js/imageUpload.js"></script>
+    
+}

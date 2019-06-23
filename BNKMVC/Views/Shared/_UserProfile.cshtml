@@ -1,0 +1,28 @@
+﻿@model BNKMVC.Entities.AspNetUser
+@{ 
+    var bal = @String.Format("{0:N}", Model.tblAccounts.Where(a => a.userId == Model.Id).Select(a => a.ActiveAmount).SingleOrDefault());
+}
+<div class="card">
+
+    <div class="card-body">
+        <center class="m-t-30">
+            <img src="@Model.ImageUrl" class="rounded-circle" width="150">
+            <h4 class="card-title m-t-10">@Model.FirstName, @Model.LastName</h4>
+            <h6 class="card-subtitle">@Model.Email</h6>
+            <h6 class="card-subtitle">@Model.tblAccounts.Where(a=>a.userId == Model.Id).SingleOrDefault().acctNo</h6>
+            <div class="row text-center justify-content-md-center">
+                <div class="col-4"><a href="javascript:void(0)" class="link"><i class="ti-wallet ti"></i> <font class="font-medium">$ @bal  </font></a></div>
+            </div>
+        </center>
+    </div>
+    <div>
+        <hr>
+    </div>
+    <div class="card-body">
+        <small class="text-muted">Email address </small>
+        <h6>@Model.Email</h6> <small class="text-muted p-t-30 db">Phone</small>
+        <h6>@Model.PhoneNumber</h6> <small class="text-muted p-t-30 db">Address</small>
+        <h6>@Model.Address</h6>
+     
+    </div>
+</div>

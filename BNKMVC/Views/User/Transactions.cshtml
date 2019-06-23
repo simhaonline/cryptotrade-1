@@ -1,0 +1,201 @@
+﻿@using BNKMVC.Services;
+@model IEnumerable<BNKMVC.Entities.ForwardTransfer>
+
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Transactions</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Approved Transaction</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Amount</th>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Bank Name</th>
+                            <th scope="col">Account no</th>
+                            <th scope="col">Swift Code</th>
+                            <th scope="col">IBAN</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+
+                                <td colspan="8">
+                                    <h3>No Transacation Found</h3>
+                                </td>
+
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var i in Model)
+                            {
+                                if (i.Status == TransactionStatus.SUCCESSFUL.ToString())
+                                {
+                                    <tr>
+
+                                        <td>@i.Amount</td>
+                                        <td>@i.BeneficaryName</td>
+                                        <td>@i.DestinationAccountNo</td>
+                                        <td>@i.BeneficaryBank</td>
+                                        <td>@i.BeneficarySwiftCode</td>
+                                        <td>@i.IBAN</td>
+                                        <td>@i.Date</td>
+                                    </tr>
+
+                                }
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Pending Transaction</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Amount</th>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Bank Name</th>
+                            <th scope="col">Account no</th>
+                            <th scope="col">Swift Code</th>
+                            <th scope="col">IBAN</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+
+                                <td colspan="8">
+                                    <h3>No Transacation Found</h3>
+                                </td>
+
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var i in Model)
+                            {
+                                if (i.Status == TransactionStatus.PENDING.ToString())
+                                {
+                                    <tr>
+
+                                        <td>@i.Amount</td>
+                                        <td>@i.BeneficaryName</td>
+                                        <td>@i.DestinationAccountNo</td>
+                                        <td>@i.BeneficaryBank</td>
+                                        <td>@i.BeneficarySwiftCode</td>
+                                        <td>@i.IBAN</td>
+                                        <td>@i.Date</td>
+                                    </tr>
+
+                                }
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All Transactions</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Amount</th>
+                            <th scope="col">Account Name</th>
+                            <th scope="col">Bank Name</th>
+                            <th scope="col">Account no</th>
+                            <th scope="col">Swift Code</th>
+                            <th scope="col">IBAN</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+
+                                <td colspan="8">
+                                    <h3>No Transacation Found</h3>
+                                </td>
+
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var i in Model)
+                            {
+                            
+                                    <tr>
+
+                                        <td>@i.Amount</td>
+                                        <td>@i.BeneficaryName</td>
+                                        <td>@i.DestinationAccountNo</td>
+                                        <td>@i.BeneficaryBank</td>
+                                        <td>@i.BeneficarySwiftCode</td>
+                                        <td>@i.IBAN</td>
+                                        <td>@i.Date</td>
+                                    </tr>
+
+                                
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

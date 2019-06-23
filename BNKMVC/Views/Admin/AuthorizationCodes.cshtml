@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BNKMVC.Entities.TransactionCode>
+
+@{
+    ViewBag.Title = "AuthorizationCodes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AuthorizationCodes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Users")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Email
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateGenerated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           @item.tblAccount.AspNetUser.Email
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TAX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateGenerated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+          
+            <a class="btn btn-circle" href="@Url.Action("DeleteAuthorizationCodes","Admin", new { id =item.Id})"> <i class="mdi-delete mdi"></i> Delete</a>
+          
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,392 @@
+﻿@model BNKMVC.Models.TransferDto
+
+@{
+    ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Start Page Content -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Transfer Money to another Account</h4>
+                @using (Html.BeginForm("Transfer", "User", new { @id = string.Empty }, FormMethod.Post, new { id = "form1" }))
+                {
+                    <div class="m-t-30">
+                        <div class="row">
+
+                            <div class="col-6">
+                                <input type="hidden" runat="server" id="txtAccount" />
+                                <div class="form-group">
+                                    <label class="control-label">Destination Account Number</label>
+                                    @Html.HiddenFor(a => a.accountNo, new { id = "accountNo" })
+                                    @Html.TextBoxFor(a => a.destinationAccountNo, new { @class = "form-control", id="txtDesNo", placeholder = "Account number" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">swift Code</label>
+                                    @Html.TextBoxFor(a => a.swiftCode, new { @class = "form-control", placeholder = "swift code" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">IBAN Number</label>
+                                    @Html.TextBoxFor(a => a.iban, new { @class = "form-control", type = "number", placeholder = "IBAN" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Benefical Address</label>
+                                    @Html.TextAreaFor(a => a.address, new { @class = "form-control", placeholder = "Beneficary Address " })
+
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="control-label">Beneficary Name</label>
+                                    @Html.TextBoxFor(a => a.bName, new { @class = "form-control", placeholder = "Beneficary Name" })
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Beneficary Bank's Name</label>
+                                    @Html.TextBoxFor(a => a.bBankName, new { @class = "form-control", placeholder = "Bank's Name" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Amount</label>
+                                    @Html.TextBoxFor(a => a.amount, new { @class = "form-control", type = "number", placeholder = "Amount" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Reason for transfer</label>
+                                    @Html.TextAreaFor(a => a.purpose, new { @class = "form-control", placeholder = "Short Detail" })
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Please  Provide the fellowing Code </h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div id="progressStatus" class="hideDiv">
+                                            <h5 class="m-t-30">Processing Request <span class="pull-right requestValue"></span></h5>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary wow animated progress-animated" style="width: 0; height:10px;" role="progressbar"> <span class="sr-only">requestValue</span> </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group hideDiv" id="COT">
+                                            <label class="control-label">COT</label>
+                                            @Html.TextBoxFor(a => a.cot, new { @class = "form-control", id = "txtCot" })
+
+                                        </div>
+                                        <div class="form-group hideDiv" id="TAX">
+                                            <label for="message-text" class="control-label">TAX</label>
+                                            @Html.TextBoxFor(a => a.tax, new { @class = "form-control", id = "txtTax" })
+
+
+                                        </div>
+                                        <div class="form-group hideDiv" id="IMF">
+                                            <label for="message-text" class="control-label">IMF</label>
+                                            @Html.TextBoxFor(a => a.imf, new { @class = "form-control", id = "txtImf" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                                    <button type="button" id="btnStartTransfer" class="btn btn-danger waves-effect waves-light">OK  <img class="hideDiv" id="imgLoad" src="~/Images/ajax/LoadingCircle.gif" width="25" height="25" /></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                <div class="form-group">
+
+                    <button type="button" id="btnBeginTransfer" class="btn btn-primary">Begin Transfer <img class="hideDiv" id="imgLoad1" src="~/Images/ajax/LoadingCircle.gif" width="25" height="25" /> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="notifyModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Notification </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <h5 class="m-t-30">Notification <span class="pull-right requestValue"></span></h5>
+                <div>
+                    <p id="msgText"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            function convertToPercent($element) {
+                var width = $element.width();
+                var parentWidth = $element.offsetParent().width();
+                var percent = 100 * width / parentWidth;
+                return parseInt(percent);
+            }
+            function moveProgressbar(width, speed) {
+                var $progress = $('.progress');
+
+                var $progressBar = $('.progress-bar');
+                //     $progressBar.animate({ 'width': ` ${ width}%` }, speed);
+                $progressBar.css('width', `${width}%`);
+
+            }
+            function runProgress(progressValue, miliseconds) {
+                var $progress = $('.progress');
+
+                var $progressBar = $('.progress-bar');
+                var progressWidth = convertToPercent($progressBar);
+
+                let counter = 0;
+                if (progressWidth !== 0) {
+                    //progressValue = progressWidth
+                    counter = progressWidth;
+                }
+                const intervalId = setInterval(() => {
+                    counter += 1;
+                    let value = progressWidth + counter;
+
+                    $(".requestValue").text(value + " %");
+                    // $progressBar.animate({ width: ` ${ value}%` }, 700);
+                    $progressBar.css('width', `${value}%`);
+
+                    //stop progress
+                    if (counter === progressValue) {
+                        clearInterval(intervalId);
+                        return counter;
+                    } else if (progressWidth === 100) {
+                        clearInterval(intervalId);
+                        return counter;
+                    }
+                }, miliseconds);
+            }
+
+            //"'COT', 'TAX', 'IMF'"
+            var divArr = [{
+                name: 'COT',
+                set: false,
+            },
+            {
+                name: 'TAX',
+                set: false,
+            },
+            {
+                name: 'IMF',
+                set: false,
+            },
+            ];
+            var IMFEnter = false, TaxEnter = false, Cotenter = false;
+
+            function showCode(divId) {
+
+                for (var i of divArr) {
+                    if (divId === i.name) {
+                        $("#" + divId).show();
+                        i.set = true;
+                    }
+                    else {
+                        $("#" + i.name).hide();
+                    }
+                }
+            }
+            $("#btnBeginTransfer").click(function (event) {
+                event.preventDefault();
+                var accountNo = $("#txtDesNo").val();
+                $.ajax({
+                    url: "/User/CheckAccount/"+accountNo,
+                                type: "get",
+                    beforeSend: function () {
+                        $("#imgLoad1").removeClass("hideDiv");
+                        $("#btnBeginTransfer").attr("disabled");
+                    },
+
+                    complete: function () {
+                        $("#imgLoad1").addClass("hideDiv");
+                        $("#btnBeginTransfer").removeAttr("disabled");
+                    },
+
+                    success: function (response) {
+
+                        if (response.status === 200) {
+
+
+
+                            $.ajax({
+                                url: $("#form1").attr("action"),
+                                data: $("#form1").serialize(),
+                                type: "post",
+                                beforeSend: function () {
+                                    $("#imgLoad1").removeClass("hideDiv");
+                                    $("#btnBeginTransfer").attr("disabled");
+                                },
+
+                                complete: function () {
+                                    $("#imgLoad1").addClass("hideDiv");
+                                    $("#btnBeginTransfer").removeAttr("disabled");
+                                },
+
+                                success: function (response) {
+
+                                    if (response.status === 200) {
+                                        $("#msgText").text(response.message);
+                                        $("#notifyModel").modal("show");
+                                    }
+                                    else if (response.status === 0) {
+                                        $("#alertText").text(response.message);
+                                        $("#myAlert").removeClass("hideDiv");
+
+                                        $("#msgText").text(response.message);
+                                        $("#notifyModel").modal("show");
+                                    }
+                                },
+                                error: function (response) {
+                                    $("#alertText").text("Error Something went wrong");
+                                    $("#myAlert").removeClass("hide-loader");
+                                    console.log(response);
+                                }
+                            })
+
+                        }
+                        else {
+
+                            $("#myModal").modal();
+                            $("#progressStatus").show();
+                            $("#btnStartTransfer").attr('disabled');
+
+                            moveProgressbar(40, 1000);
+                            showCode('COT');
+                        }
+                    },
+                    error: function (response) {
+                        $("#alertText").text("Error Something went wrong");
+                        $("#myAlert").removeClass("hide-loader");
+                        console.log(response);
+                    }
+                })
+
+
+             
+
+
+
+            });
+            var count = 0;
+            $("#btnStartTransfer").click(function () {
+                Cotenter = true;
+                count++
+                var cotShown = divArr.find(function (a) {
+                    return a.name === 'COT';
+                }).set;
+
+                var TaxShown = divArr.find(function (a) {
+                    return a.name === 'TAX';
+                }).set;
+
+                var imfShown = divArr.find(function (a) {
+                    return a.name === 'IMF';
+                }).set;
+
+                if (cotShown === true && Cotenter === true && count === 1) {
+                    var x = moveProgressbar(50, 1000);
+                    TaxEnter = true;
+                    showCode('TAX')
+
+                    //setTimeout(function () {
+                    //    TaxEnter = true
+                    //    var x = moveProgressbar(50, 1000);
+                    //    showCode('TAX');
+
+                    //}, (30 * 600) + 100)
+
+                }
+                else if (TaxShown === true && TaxEnter === true && count === 2) {
+                    moveProgressbar(70, 1000);
+                    IMFEnter = true;
+                    showCode('IMF');
+
+
+                }
+                else if (imfShown == true && imfShown === true && count === 3) {
+                    var x = moveProgressbar(90, 1000);
+                   
+                        $.ajax({
+                            url: $("#form1").attr("action"),
+                            data: $("#form1").serialize(),
+                            type: "post",
+                            beforeSend: function () {
+                                $("#imgLoad").removeClass("hideDiv");
+                                $("#btnStartTransfer").attr("disabled");
+                            },
+
+                            complete: function () {
+                                $("#imgLoad").addClass("hideDiv");
+                                $("#btnStartTransfer").removeAttr("disabled");
+                            },
+
+                            success: function (response) {
+
+                                if (response.status === 200) {
+                                    $("#msgText").text(response.message);
+                                    $("#notifyModel").modal("show");
+                                }
+                                else if (response.status === 0) {
+                                    $("#alertText").text(response.message);
+                                    $("#myAlert").removeClass("hideDiv");
+
+                                    $("#msgText").text(response.message);
+                                    $("#notifyModel").modal("show");
+                                }
+                            },
+                            error: function (response) {
+                                $("#alertText").text("Error Something went wrong");
+                                $("#myAlert").removeClass("hide-loader");
+                                console.log(response);
+                            }
+                        })
+                    
+
+                }
+
+            });
+
+        });
+    </script>
+}

@@ -1,0 +1,62 @@
+﻿@model BNKMVC.Models.UserBalance
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body border-top">
+                <div class="row mb-0">
+                    <!-- col -->
+                    <div class="col-lg-12 col-md-12">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-2"><span class="text-orange display-5"><i class="ti-user ti"></i></span></div>
+                            <div>
+                                <span>Balance</span>
+                                <h3 class="font-medium mb-0"> $ @Model.Balance</h3>
+                            </div>
+                        </div>
+                    </div>
+               
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+    
+        <div class="card">
+            <form action="@Url.Action("UpdateBalance", "Admin")" method="post">
+
+                <hr>
+                <div class="card-body">
+                    <h4 class="card-title">Update Balance</h4>
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="form-group">
+                                    @Html.HiddenFor(a => a.AccountNo)
+                                    @Html.HiddenFor(a => a.Id)
+                                    <label for="inputname" class="control-label col-form-label">Update Balance</label>
+                                    @Html.TextBoxFor(a => a.Balance, new { @class = "form-control", id = "inputname", placeholder = "Balance" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="action-form">
+                            <div class="form-group m-b-0 text-left">
+                                <button type="submit" class="btn btn-info waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+            </form>
+        </div>
+    </div>
+
+</div>

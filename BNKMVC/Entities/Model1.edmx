@@ -1,0 +1,1458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="mbankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="DateStamp" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="CountryId" Type="varchar" MaxLength="50" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Alph3Code" />
+          </Key>
+          <Property Name="Alph3Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CR_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="AccountTypeId" Type="int" />
+          <Property Name="CurrencyId" Type="int" />
+          <Property Name="CurrentCryptoBalance" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CR_AccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="5000" />
+          <Property Name="Value" Type="int" />
+        </EntityType>
+        <EntityType Name="CR_Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Account" Type="nchar" MaxLength="10" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CR_Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="ShortCode" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentValueToDollar" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="CR_Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="CurrencyDomination" Type="varchar" MaxLength="50" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CR_Verification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CR_AccountId" Type="int" />
+          <Property Name="DocumentUrl" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="VerificationType" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="crypto_payments">
+          <Key>
+            <PropertyRef Name="paymentID" />
+            <PropertyRef Name="boxID" />
+            <PropertyRef Name="boxType" />
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="countryID" />
+            <PropertyRef Name="coinLabel" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="amountUSD" />
+            <PropertyRef Name="unrecognised" />
+            <PropertyRef Name="addr" />
+            <PropertyRef Name="txID" />
+            <PropertyRef Name="txConfirmed" />
+            <PropertyRef Name="processed" />
+          </Key>
+          <Property Name="paymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="boxID" Type="int" Nullable="false" />
+          <Property Name="boxType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="orderID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="countryID" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="coinLabel" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="amount" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="amountUSD" Type="decimal" Precision="20" Scale="8" Nullable="false" />
+          <Property Name="unrecognised" Type="tinyint" Nullable="false" />
+          <Property Name="addr" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="txID" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="txDate" Type="datetime" />
+          <Property Name="txConfirmed" Type="tinyint" Nullable="false" />
+          <Property Name="txCheckDate" Type="datetime" />
+          <Property Name="processed" Type="tinyint" Nullable="false" />
+          <Property Name="processedDate" Type="datetime" />
+          <Property Name="recordCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ForwardTransfers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountID" Type="varchar" MaxLength="50" />
+          <Property Name="BeneficaryBank" Type="varchar" MaxLength="50" />
+          <Property Name="BeneficaryName" Type="varchar" MaxLength="50" />
+          <Property Name="DestinationAccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="BeneficarySwiftCode" Type="int" />
+          <Property Name="BeneficaryAddress" Type="varchar" MaxLength="1000" />
+          <Property Name="IBAN" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Purpose" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAccounts">
+          <Key>
+            <PropertyRef Name="acctNo" />
+          </Key>
+          <Property Name="acctNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActiveAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="currency" Type="varchar" MaxLength="50" />
+          <Property Name="userId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="tblAdminLogins">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminUsername" Type="varchar" MaxLength="50" />
+          <Property Name="AdminPassword" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblfeedbacks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Clientname" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="datesent" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblLogins">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Name="loginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginUsername" Type="varchar(max)" />
+          <Property Name="LoginPassword" Type="varchar" MaxLength="50" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblRegisters">
+          <Key>
+            <PropertyRef Name="tblRegID" />
+          </Key>
+          <Property Name="tblRegID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Othername" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="400" />
+          <Property Name="AccountType" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="varchar" MaxLength="50" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="currencyType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblTransfers">
+          <Key>
+            <PropertyRef Name="transferID" />
+          </Key>
+          <Property Name="transferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcctNo" Type="varchar" MaxLength="50" />
+          <Property Name="RecipientAcctNo" Type="varchar" MaxLength="50" />
+          <Property Name="IBAN" Type="varchar" MaxLength="50" />
+          <Property Name="BIC" Type="varchar" MaxLength="50" />
+          <Property Name="RoutingNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="DateSent" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TransactionCodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="COT" Type="varchar" MaxLength="50" />
+          <Property Name="TAX" Type="varchar" MaxLength="50" />
+          <Property Name="IMF" Type="varchar" MaxLength="50" />
+          <Property Name="DateGenerated" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AspNetUserRoles_AspNetRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserRoles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Alph3Code" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_AccountType">
+          <End Role="CR_AccountType" Type="Self.CR_AccountType" Multiplicity="0..1" />
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_AccountType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_Activity">
+          <End Role="CR_Activity" Type="Self.CR_Activity" Multiplicity="1" />
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_Currency">
+          <End Role="CR_Currency" Type="Self.CR_Currency" Multiplicity="0..1" />
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Transactions_CR_Account">
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="0..1" />
+          <End Role="CR_Transactions" Type="Self.CR_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Transactions">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Verification_CR_Account">
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CR_Verification" Type="Self.CR_Verification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Verification">
+              <PropertyRef Name="CR_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForwardTransfer_tblAccount">
+          <End Role="tblAccounts" Type="Self.tblAccounts" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ForwardTransfers" Type="Self.ForwardTransfers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccounts">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="ForwardTransfers">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccount_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAccounts" Type="Self.tblAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAccounts">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegister_tblAccount">
+          <End Role="tblAccounts" Type="Self.tblAccounts" Multiplicity="1" />
+          <End Role="tblRegisters" Type="Self.tblRegisters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccounts">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="tblRegisters">
+              <PropertyRef Name="AccountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionCode_tblAccount">
+          <End Role="tblAccounts" Type="Self.tblAccounts" Multiplicity="0..1" />
+          <End Role="TransactionCodes" Type="Self.TransactionCodes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccounts">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="TransactionCodes">
+              <PropertyRef Name="AccountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="mbankModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_Account" EntityType="Self.CR_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_AccountType" EntityType="Self.CR_AccountType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_Activity" EntityType="Self.CR_Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_Currency" EntityType="Self.CR_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_Transactions" EntityType="Self.CR_Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CR_Verification" EntityType="Self.CR_Verification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ForwardTransfers" EntityType="Self.ForwardTransfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAccounts" EntityType="Self.tblAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdminLogins" EntityType="Self.tblAdminLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblfeedbacks" EntityType="Self.tblfeedbacks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogins" EntityType="Self.tblLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegisters" EntityType="Self.tblRegisters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTransfers" EntityType="Self.tblTransfers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionCodes" EntityType="Self.TransactionCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="crypto_payments" EntityType="Self.crypto_payments" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [crypto_payments].[paymentID] AS [paymentID], 
+    [crypto_payments].[boxID] AS [boxID], 
+    [crypto_payments].[boxType] AS [boxType], 
+    [crypto_payments].[orderID] AS [orderID], 
+    [crypto_payments].[userID] AS [userID], 
+    [crypto_payments].[countryID] AS [countryID], 
+    [crypto_payments].[coinLabel] AS [coinLabel], 
+    [crypto_payments].[amount] AS [amount], 
+    [crypto_payments].[amountUSD] AS [amountUSD], 
+    [crypto_payments].[unrecognised] AS [unrecognised], 
+    [crypto_payments].[addr] AS [addr], 
+    [crypto_payments].[txID] AS [txID], 
+    [crypto_payments].[txDate] AS [txDate], 
+    [crypto_payments].[txConfirmed] AS [txConfirmed], 
+    [crypto_payments].[txCheckDate] AS [txCheckDate], 
+    [crypto_payments].[processed] AS [processed], 
+    [crypto_payments].[processedDate] AS [processedDate], 
+    [crypto_payments].[recordCreated] AS [recordCreated]
+    FROM [dbo].[crypto_payments] AS [crypto_payments]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="Self.FK_AspNetUserRoles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_Countries" Association="Self.FK_AspNetUsers_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_AspNetUsers" Association="Self.FK_CR_Account_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_AccountType" Association="Self.FK_CR_Account_CR_AccountType">
+            <End Role="CR_AccountType" EntitySet="CR_AccountType" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_Activity" Association="Self.FK_CR_Account_CR_Activity">
+            <End Role="CR_Activity" EntitySet="CR_Activity" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_Currency" Association="Self.FK_CR_Account_CR_Currency">
+            <End Role="CR_Currency" EntitySet="CR_Currency" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Transactions_CR_Account" Association="Self.FK_CR_Transactions_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Transactions" EntitySet="CR_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Verification_CR_Account" Association="Self.FK_CR_Verification_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Verification" EntitySet="CR_Verification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForwardTransfer_tblAccount" Association="Self.FK_ForwardTransfer_tblAccount">
+            <End Role="tblAccounts" EntitySet="tblAccounts" />
+            <End Role="ForwardTransfers" EntitySet="ForwardTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccount_AspNetUsers" Association="Self.FK_tblAccount_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tblAccounts" EntitySet="tblAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegister_tblAccount" Association="Self.FK_tblRegister_tblAccount">
+            <End Role="tblAccounts" EntitySet="tblAccounts" />
+            <End Role="tblRegisters" EntitySet="tblRegisters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionCode_tblAccount" Association="Self.FK_TransactionCode_tblAccount">
+            <End Role="tblAccounts" EntitySet="tblAccounts" />
+            <End Role="TransactionCodes" EntitySet="TransactionCodes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="mbankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="mbankEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="mbankModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="mbankModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="mbankModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="mbankModel.AspNetUser" />
+          <EntitySet Name="C__MigrationHistory" EntityType="mbankModel.C__MigrationHistory" />
+          <EntitySet Name="Countries" EntityType="mbankModel.Country" />
+          <EntitySet Name="CR_Account" EntityType="mbankModel.CR_Account" />
+          <EntitySet Name="CR_AccountType" EntityType="mbankModel.CR_AccountType" />
+          <EntitySet Name="CR_Activity" EntityType="mbankModel.CR_Activity" />
+          <EntitySet Name="CR_Currency" EntityType="mbankModel.CR_Currency" />
+          <EntitySet Name="CR_Transactions" EntityType="mbankModel.CR_Transactions" />
+          <EntitySet Name="CR_Verification" EntityType="mbankModel.CR_Verification" />
+          <EntitySet Name="ForwardTransfers" EntityType="mbankModel.ForwardTransfer" />
+          <EntitySet Name="sysdiagrams" EntityType="mbankModel.sysdiagram" />
+          <EntitySet Name="tblAccounts" EntityType="mbankModel.tblAccount" />
+          <EntitySet Name="tblAdminLogins" EntityType="mbankModel.tblAdminLogin" />
+          <EntitySet Name="tblfeedbacks" EntityType="mbankModel.tblfeedback" />
+          <EntitySet Name="tblLogins" EntityType="mbankModel.tblLogin" />
+          <EntitySet Name="tblRegisters" EntityType="mbankModel.tblRegister" />
+          <EntitySet Name="tblTransfers" EntityType="mbankModel.tblTransfer" />
+          <EntitySet Name="TransactionCodes" EntityType="mbankModel.TransactionCode" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="mbankModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_Countries" Association="mbankModel.FK_AspNetUsers_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_AspNetUsers" Association="mbankModel.FK_CR_Account_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblAccount_AspNetUsers" Association="mbankModel.FK_tblAccount_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_AccountType" Association="mbankModel.FK_CR_Account_CR_AccountType">
+            <End Role="CR_AccountType" EntitySet="CR_AccountType" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_Activity" Association="mbankModel.FK_CR_Account_CR_Activity">
+            <End Role="CR_Activity" EntitySet="CR_Activity" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Account_CR_Currency" Association="mbankModel.FK_CR_Account_CR_Currency">
+            <End Role="CR_Currency" EntitySet="CR_Currency" />
+            <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Transactions_CR_Account" Association="mbankModel.FK_CR_Transactions_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Transactions" EntitySet="CR_Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Verification_CR_Account" Association="mbankModel.FK_CR_Verification_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Verification" EntitySet="CR_Verification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ForwardTransfer_tblAccount" Association="mbankModel.FK_ForwardTransfer_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="ForwardTransfer" EntitySet="ForwardTransfers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRegister_tblAccount" Association="mbankModel.FK_tblRegister_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="tblRegister" EntitySet="tblRegisters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionCode_tblAccount" Association="mbankModel.FK_TransactionCode_tblAccount">
+            <End Role="tblAccount" EntitySet="tblAccounts" />
+            <End Role="TransactionCode" EntitySet="TransactionCodes" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="mbankModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="crypto_payments" EntityType="mbankModel.crypto_payments" />
+        </EntityContainer>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="mbankModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="mbankModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="Country" Relationship="mbankModel.FK_AspNetUsers_Countries" FromRole="AspNetUser" ToRole="Country" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_AspNetUsers" FromRole="AspNetUser" ToRole="CR_Account" />
+          <NavigationProperty Name="tblAccounts" Relationship="mbankModel.FK_tblAccount_AspNetUsers" FromRole="AspNetUser" ToRole="tblAccount" />
+          <NavigationProperty Name="AspNetRoles" Relationship="mbankModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Alph3Code" />
+          </Key>
+          <Property Name="Alph3Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="mbankModel.FK_AspNetUsers_Countries" FromRole="Country" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="CR_Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AccountTypeId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="CurrentCryptoBalance" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_CR_Account_AspNetUsers" FromRole="CR_Account" ToRole="AspNetUser" />
+          <NavigationProperty Name="CR_AccountType" Relationship="mbankModel.FK_CR_Account_CR_AccountType" FromRole="CR_Account" ToRole="CR_AccountType" />
+          <NavigationProperty Name="CR_Activity" Relationship="mbankModel.FK_CR_Account_CR_Activity" FromRole="CR_Account" ToRole="CR_Activity" />
+          <NavigationProperty Name="CR_Currency" Relationship="mbankModel.FK_CR_Account_CR_Currency" FromRole="CR_Account" ToRole="CR_Currency" />
+          <NavigationProperty Name="CR_Transactions" Relationship="mbankModel.FK_CR_Transactions_CR_Account" FromRole="CR_Account" ToRole="CR_Transactions" />
+          <NavigationProperty Name="CR_Verification" Relationship="mbankModel.FK_CR_Verification_CR_Account" FromRole="CR_Account" ToRole="CR_Verification" />
+        </EntityType>
+        <EntityType Name="CR_AccountType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Int32" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_AccountType" FromRole="CR_AccountType" ToRole="CR_Account" />
+        </EntityType>
+        <EntityType Name="CR_Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_Activity" FromRole="CR_Activity" ToRole="CR_Account" />
+        </EntityType>
+        <EntityType Name="CR_Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentValueToDollar" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_Currency" FromRole="CR_Currency" ToRole="CR_Account" />
+        </EntityType>
+        <EntityType Name="CR_Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="CurrencyDomination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Transactions_CR_Account" FromRole="CR_Transactions" ToRole="CR_Account" />
+        </EntityType>
+        <EntityType Name="CR_Verification">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CR_AccountId" Type="Int32" />
+          <Property Name="DocumentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Verification_CR_Account" FromRole="CR_Verification" ToRole="CR_Account" />
+          <Property Name="VerificationType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ForwardTransfer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BeneficaryBank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BeneficaryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BeneficarySwiftCode" Type="Int32" />
+          <Property Name="BeneficaryAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_ForwardTransfer_tblAccount" FromRole="ForwardTransfer" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAccount">
+          <Key>
+            <PropertyRef Name="acctNo" />
+          </Key>
+          <Property Name="acctNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_tblAccount_AspNetUsers" FromRole="tblAccount" ToRole="AspNetUser" />
+          <NavigationProperty Name="ForwardTransfers" Relationship="mbankModel.FK_ForwardTransfer_tblAccount" FromRole="tblAccount" ToRole="ForwardTransfer" />
+          <NavigationProperty Name="tblRegisters" Relationship="mbankModel.FK_tblRegister_tblAccount" FromRole="tblAccount" ToRole="tblRegister" />
+          <NavigationProperty Name="TransactionCodes" Relationship="mbankModel.FK_TransactionCode_tblAccount" FromRole="tblAccount" ToRole="TransactionCode" />
+        </EntityType>
+        <EntityType Name="tblAdminLogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblfeedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Clientname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="datesent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="loginId" />
+          </Key>
+          <Property Name="loginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUsername" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblRegister">
+          <Key>
+            <PropertyRef Name="tblRegID" />
+          </Key>
+          <Property Name="tblRegID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Othername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="currencyType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_tblRegister_tblAccount" FromRole="tblRegister" ToRole="tblAccount" />
+        </EntityType>
+        <EntityType Name="tblTransfer">
+          <Key>
+            <PropertyRef Name="transferID" />
+          </Key>
+          <Property Name="transferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcctNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RecipientAcctNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RoutingNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateSent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TransactionCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TAX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IMF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateGenerated" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_TransactionCode_tblAccount" FromRole="TransactionCode" ToRole="tblAccount" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_Countries">
+          <End Type="mbankModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Alph3Code" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_AspNetUsers">
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblAccount_AspNetUsers">
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.tblAccount" Role="tblAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="tblAccount">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_AccountType">
+          <End Type="mbankModel.CR_AccountType" Role="CR_AccountType" Multiplicity="0..1" />
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_AccountType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="AccountTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_Activity">
+          <End Type="mbankModel.CR_Activity" Role="CR_Activity" Multiplicity="1" />
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Activity">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Account_CR_Currency">
+          <End Type="mbankModel.CR_Currency" Role="CR_Currency" Multiplicity="0..1" />
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Account">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Transactions_CR_Account">
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1" />
+          <End Type="mbankModel.CR_Transactions" Role="CR_Transactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Transactions">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Verification_CR_Account">
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.CR_Verification" Role="CR_Verification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Verification">
+              <PropertyRef Name="CR_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ForwardTransfer_tblAccount">
+          <End Type="mbankModel.tblAccount" Role="tblAccount" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.ForwardTransfer" Role="ForwardTransfer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="ForwardTransfer">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRegister_tblAccount">
+          <End Type="mbankModel.tblAccount" Role="tblAccount" Multiplicity="1" />
+          <End Type="mbankModel.tblRegister" Role="tblRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="tblRegister">
+              <PropertyRef Name="AccountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionCode_tblAccount">
+          <End Type="mbankModel.tblAccount" Role="tblAccount" Multiplicity="0..1" />
+          <End Type="mbankModel.TransactionCode" Role="TransactionCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAccount">
+              <PropertyRef Name="acctNo" />
+            </Principal>
+            <Dependent Role="TransactionCode">
+              <PropertyRef Name="AccountNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="mbankModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityType Name="crypto_payments">
+          <Key>
+            <PropertyRef Name="paymentID" />
+            <PropertyRef Name="boxID" />
+            <PropertyRef Name="boxType" />
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="countryID" />
+            <PropertyRef Name="coinLabel" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="amountUSD" />
+            <PropertyRef Name="unrecognised" />
+            <PropertyRef Name="addr" />
+            <PropertyRef Name="txID" />
+            <PropertyRef Name="txConfirmed" />
+            <PropertyRef Name="processed" />
+          </Key>
+          <Property Name="paymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="boxID" Type="Int32" Nullable="false" />
+          <Property Name="boxType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="orderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countryID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="coinLabel" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
+          <Property Name="amountUSD" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
+          <Property Name="unrecognised" Type="Byte" Nullable="false" />
+          <Property Name="addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="txID" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
+          <Property Name="txDate" Type="DateTime" Precision="3" />
+          <Property Name="txConfirmed" Type="Byte" Nullable="false" />
+          <Property Name="txCheckDate" Type="DateTime" Precision="3" />
+          <Property Name="processed" Type="Byte" Nullable="false" />
+          <Property Name="processedDate" Type="DateTime" Precision="3" />
+          <Property Name="recordCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="mbankModelStoreContainer" CdmEntityContainer="mbankEntities">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="mbankModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="mbankModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="mbankModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="mbankModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DateStamp" ColumnName="DateStamp" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="mbankModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="C__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="mbankModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alph3Code" ColumnName="Alph3Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_Account">
+            <EntityTypeMapping TypeName="mbankModel.CR_Account">
+              <MappingFragment StoreEntitySet="CR_Account">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CurrentCryptoBalance" ColumnName="CurrentCryptoBalance" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="AccountTypeId" ColumnName="AccountTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_AccountType">
+            <EntityTypeMapping TypeName="mbankModel.CR_AccountType">
+              <MappingFragment StoreEntitySet="CR_AccountType">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_Activity">
+            <EntityTypeMapping TypeName="mbankModel.CR_Activity">
+              <MappingFragment StoreEntitySet="CR_Activity">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_Currency">
+            <EntityTypeMapping TypeName="mbankModel.CR_Currency">
+              <MappingFragment StoreEntitySet="CR_Currency">
+                <ScalarProperty Name="CurrentValueToDollar" ColumnName="CurrentValueToDollar" />
+                <ScalarProperty Name="ShortCode" ColumnName="ShortCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_Transactions">
+            <EntityTypeMapping TypeName="mbankModel.CR_Transactions">
+              <MappingFragment StoreEntitySet="CR_Transactions">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="CurrencyDomination" ColumnName="CurrencyDomination" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CR_Verification">
+            <EntityTypeMapping TypeName="mbankModel.CR_Verification">
+              <MappingFragment StoreEntitySet="CR_Verification">
+                <ScalarProperty Name="VerificationType" ColumnName="VerificationType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
+                <ScalarProperty Name="CR_AccountId" ColumnName="CR_AccountId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ForwardTransfers">
+            <EntityTypeMapping TypeName="mbankModel.ForwardTransfer">
+              <MappingFragment StoreEntitySet="ForwardTransfers">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="BeneficaryAddress" ColumnName="BeneficaryAddress" />
+                <ScalarProperty Name="BeneficarySwiftCode" ColumnName="BeneficarySwiftCode" />
+                <ScalarProperty Name="DestinationAccountNo" ColumnName="DestinationAccountNo" />
+                <ScalarProperty Name="BeneficaryName" ColumnName="BeneficaryName" />
+                <ScalarProperty Name="BeneficaryBank" ColumnName="BeneficaryBank" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="mbankModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAccounts">
+            <EntityTypeMapping TypeName="mbankModel.tblAccount">
+              <MappingFragment StoreEntitySet="tblAccounts">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="ActiveAmount" ColumnName="ActiveAmount" />
+                <ScalarProperty Name="acctNo" ColumnName="acctNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdminLogins">
+            <EntityTypeMapping TypeName="mbankModel.tblAdminLogin">
+              <MappingFragment StoreEntitySet="tblAdminLogins">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="AdminUsername" ColumnName="AdminUsername" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblfeedbacks">
+            <EntityTypeMapping TypeName="mbankModel.tblfeedback">
+              <MappingFragment StoreEntitySet="tblfeedbacks">
+                <ScalarProperty Name="datesent" ColumnName="datesent" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Clientname" ColumnName="Clientname" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogins">
+            <EntityTypeMapping TypeName="mbankModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogins">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="LoginUsername" ColumnName="LoginUsername" />
+                <ScalarProperty Name="loginId" ColumnName="loginId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegisters">
+            <EntityTypeMapping TypeName="mbankModel.tblRegister">
+              <MappingFragment StoreEntitySet="tblRegisters">
+                <ScalarProperty Name="currencyType" ColumnName="currencyType" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Othername" ColumnName="Othername" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="tblRegID" ColumnName="tblRegID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTransfers">
+            <EntityTypeMapping TypeName="mbankModel.tblTransfer">
+              <MappingFragment StoreEntitySet="tblTransfers">
+                <ScalarProperty Name="DateSent" ColumnName="DateSent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="RoutingNumber" ColumnName="RoutingNumber" />
+                <ScalarProperty Name="BIC" ColumnName="BIC" />
+                <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+                <ScalarProperty Name="RecipientAcctNo" ColumnName="RecipientAcctNo" />
+                <ScalarProperty Name="AcctNo" ColumnName="AcctNo" />
+                <ScalarProperty Name="transferID" ColumnName="transferID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionCodes">
+            <EntityTypeMapping TypeName="mbankModel.TransactionCode">
+              <MappingFragment StoreEntitySet="TransactionCodes">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateGenerated" ColumnName="DateGenerated" />
+                <ScalarProperty Name="IMF" ColumnName="IMF" />
+                <ScalarProperty Name="TAX" ColumnName="TAX" />
+                <ScalarProperty Name="COT" ColumnName="COT" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="mbankModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="crypto_payments">
+            <EntityTypeMapping TypeName="mbankModel.crypto_payments">
+              <MappingFragment StoreEntitySet="crypto_payments">
+                <ScalarProperty Name="recordCreated" ColumnName="recordCreated" />
+                <ScalarProperty Name="processedDate" ColumnName="processedDate" />
+                <ScalarProperty Name="processed" ColumnName="processed" />
+                <ScalarProperty Name="txCheckDate" ColumnName="txCheckDate" />
+                <ScalarProperty Name="txConfirmed" ColumnName="txConfirmed" />
+                <ScalarProperty Name="txDate" ColumnName="txDate" />
+                <ScalarProperty Name="txID" ColumnName="txID" />
+                <ScalarProperty Name="addr" ColumnName="addr" />
+                <ScalarProperty Name="unrecognised" ColumnName="unrecognised" />
+                <ScalarProperty Name="amountUSD" ColumnName="amountUSD" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="coinLabel" ColumnName="coinLabel" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="boxType" ColumnName="boxType" />
+                <ScalarProperty Name="boxID" ColumnName="boxID" />
+                <ScalarProperty Name="paymentID" ColumnName="paymentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

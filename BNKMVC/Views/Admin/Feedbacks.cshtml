@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BNKMVC.Entities.tblfeedback>
+
+@{
+    ViewBag.Title = "Feedbacks";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Feedbacks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clientname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datesent)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clientname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datesent)
+        </td>
+        <td>
+        <a href="@Url.Action("DeleteFeed","Admin", new {id = item.id })"> Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

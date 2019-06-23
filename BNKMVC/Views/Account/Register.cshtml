@@ -1,0 +1,156 @@
+﻿@using BNKMVC.Services
+@model BNKMVC.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    var accounts = new CryptoAccountType().AccountTypes().OrderBy(a=>a.Name);
+    var currencies = new Crpto_Currency().GetCurrencies().OrderBy(a => a.Name);
+    var countries = new BNKMVC.Entities.mbankEntities().Countries.ToList().OrderBy(a => a.Name);
+}
+ 
+<div id="about">
+    <section class="section-gap section-dark-bg">
+        <div class="container">
+            <!--section title-->
+            <div class="row account-form">
+                <div class="col-12">
+                    <h2 class="wow fadeInUp" data-wow-delay=".1s"></h2>
+                    <div class="section-title">
+                        <div class="row no-gutters">
+                           
+                            <div class="col-md-12 bg-white">
+                                <!--register form-->
+                                <div class="login-form p-5">
+                                    <h4 class="text-uppercase mt-0 text-center mb-5">Register</h4>
+                                    
+                                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+                                { 
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary("", new { @class = "text-danger" }) 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(a=>a.FirstName, new{@class="form-control", placeholder="First Name"})
+                                        
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(a=>a.LastName, new{@class="form-control", placeholder="Last Name"})
+                                        
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", placeholder = "Email Address" })
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                @Html.TextBoxFor(a=>a.Password, new{@class="form-control", type="password" ,placeholder="Password"})
+
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                @Html.TextBoxFor(a=>a.ConfirmPassword, new{@class="form-control", type = "password", placeholder ="Confirm Password"})
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <Select name="@Html.NameFor(a => a.AccountType)" class="form-control">
+                                                    <option>Select Account Type</option>
+                                                    @foreach (var i in accounts)
+                                                    {
+                                                        <option value="@i.Id">@i.Name - (@i.Value) - @i.Description</option>
+
+                                                    }
+                                                </Select>
+                                            </div>
+                                            <div class="form-group">
+                                                <Select name="@Html.NameFor(a => a.CountryId)" class="form-control">
+                                                    <option>Select Country</option>
+                                                    @foreach (var i in countries)
+                                                    {
+                                                        <option value="@i.Alph3Code">@i.Name </option>
+
+                                                    }
+                                                </Select>
+                                            </div>
+                                            <div class="form-group">
+                                                <Select name="@Html.NameFor(a => a.Currency)" class="form-control">
+                                                    <option>Select Currency</option>
+                                                    @foreach (var i in currencies)
+                                                    {
+                                                        <option value="@i.Id"> @i.ShortCode - @i.Name </option>
+
+                                                    }
+                                                </Select>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control", placeholder = "Phone Number" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary ">Register</button>
+                                    </div>
+
+                                    <div class="text-center mt-5">
+                                        Already have an account? <a href="#" class="text-capitalize f12">Login</a>
+                                    </div>
+                                }
+                                      
+                               
+                                </div>
+                                <!--/register form-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+  </div>
+        </section>
+
+</div>
+
+
+<!-- .page-title -->
+@*<section class="contact-form ptb-100">
+    <div class="container text-center">
+        <div class="col-md-8">
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create an account.</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Register" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>*@
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
