@@ -1,0 +1,43 @@
+﻿@model System.Collections.Generic.IList<BNKMVC.Entities.CR_Verification>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Document submited for verification</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Picture</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Reason</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (!Model.Any())
+                {
+                    <tr>
+                        <td colspan="4"> <h3>No Verification Submitted</h3></td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var i in Model)
+                     {
+                         <tr>
+                             <th scope="row"> @i.VerificationType</th>
+                             <td> <img src="@i.DocumentUrl" class="img-fluid" width="150"/></td>
+                             <td>@i.Status</td>
+                             <td></td>
+                         </tr>
+                     }
+                
+                }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

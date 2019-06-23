@@ -31,7 +31,8 @@ namespace BNKMVC.Services
                 var save = context.CR_Verification.Add(new CR_Verification()
                 {
                     DocumentUrl = m.DocumentUrl,
-                    CR_AccountId = m.CryptoAccountId,
+                    CR_AccountId = m.CryptoAccountId, 
+                    VerificationType =  m.VerificationType,
                     Status = VerificationStatus.PENDING.ToString()
                 });
 
@@ -92,6 +93,10 @@ namespace BNKMVC.Services
             }
         }
 
+        public IList<CR_Verification> GetAccountVerifications(int id)
+        {
+            return context.CR_Verification.Where(a => a.CR_AccountId == id).ToList();
+        }
 
     }
 

@@ -9,7 +9,8 @@ using Microsoft.AspNet.Identity;
 
 namespace BNKMVC.Controllers
 {
-    [Authorize]
+    [Authorize] 
+    [MustBeVerifiedFilter]
     public class InvestorController : Controller
     {
         // GET: Investor 
@@ -47,6 +48,7 @@ namespace BNKMVC.Controllers
             return View();
         }
 
+        [MustNotBeVerifiedFilter]
         public ActionResult Verify()
         {
 
@@ -58,6 +60,7 @@ namespace BNKMVC.Controllers
             return View(m);
         }
 
+        [MustNotBeVerifiedFilter]
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Verifv(VerificationVm m)
         {

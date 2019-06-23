@@ -207,6 +207,7 @@
     <Compile Include="Areas\CR\CRAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CryptoAdminController.cs" />
     <Compile Include="Controllers\CR_AccountTypeController.cs" />
     <Compile Include="Controllers\CR_CurrencyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1611,10 +1612,11 @@
     <Content Include="Views\CR_Currency\Details.cshtml" />
     <Content Include="Views\CR_Currency\Edit.cshtml" />
     <Content Include="Views\CR_Currency\Index.cshtml" />
-    <Content Include="Views\Investor\Verifiy.cshtml" />
     <Content Include="Views\Investor\Dashboard.cshtml" />
     <Content Include="Views\Investor\Invest.cshtml" />
     <Content Include="Views\Investor\Verify.cshtml" />
+    <Content Include="Views\Home\Verify.cshtml" />
+    <Content Include="Views\Home\Verifications.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1627,6 +1629,7 @@
     <Folder Include="Areas\CR\Controllers\" />
     <Folder Include="Areas\CR\Models\" />
     <Folder Include="Areas\CR\Views\Shared\" />
+    <Folder Include="Views\CryptoAdmin\" />
     <Folder Include="www.gym05082018.distinctcoder.com\" />
   </ItemGroup>
   <ItemGroup>

@@ -107,7 +107,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Account" Type="nchar" MaxLength="10" />
+          <Property Name="AccountId" Type="int" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="8" />
           <Property Name="DateCreated" Type="datetime" />
         </EntityType>
@@ -323,10 +323,8 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_CR_Account_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
           <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -337,7 +335,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_CR_AccountType">
+        <Association Name="FK_CR_Account_CR_AccountType1">
           <End Role="CR_AccountType" Type="Self.CR_AccountType" Multiplicity="0..1" />
           <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -349,19 +347,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_CR_Activity">
-          <End Role="CR_Activity" Type="Self.CR_Activity" Multiplicity="1" />
-          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="CR_Activity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CR_Account">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CR_Account_CR_Currency">
+        <Association Name="FK_CR_Account_CR_Currency1">
           <End Role="CR_Currency" Type="Self.CR_Currency" Multiplicity="0..1" />
           <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -370,6 +356,20 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Principal>
             <Dependent Role="CR_Account">
               <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Activity_CR_Account">
+          <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CR_Activity" Type="Self.CR_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Activity">
+              <PropertyRef Name="AccountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -536,21 +536,21 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             <End Role="Countries" EntitySet="Countries" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_AspNetUsers" Association="Self.FK_CR_Account_AspNetUsers">
+          <AssociationSet Name="FK_CR_Account_AspNetUsers1" Association="Self.FK_CR_Account_AspNetUsers1">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="CR_Account" EntitySet="CR_Account" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_AccountType" Association="Self.FK_CR_Account_CR_AccountType">
+          <AssociationSet Name="FK_CR_Account_CR_AccountType1" Association="Self.FK_CR_Account_CR_AccountType1">
             <End Role="CR_AccountType" EntitySet="CR_AccountType" />
             <End Role="CR_Account" EntitySet="CR_Account" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_Activity" Association="Self.FK_CR_Account_CR_Activity">
-            <End Role="CR_Activity" EntitySet="CR_Activity" />
-            <End Role="CR_Account" EntitySet="CR_Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_Currency" Association="Self.FK_CR_Account_CR_Currency">
+          <AssociationSet Name="FK_CR_Account_CR_Currency1" Association="Self.FK_CR_Account_CR_Currency1">
             <End Role="CR_Currency" EntitySet="CR_Currency" />
             <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Activity_CR_Account" Association="Self.FK_CR_Activity_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Activity" EntitySet="CR_Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_CR_Transactions_CR_Account" Association="Self.FK_CR_Transactions_CR_Account">
             <End Role="CR_Account" EntitySet="CR_Account" />
@@ -611,6 +611,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <EntitySet Name="tblRegisters" EntityType="mbankModel.tblRegister" />
           <EntitySet Name="tblTransfers" EntityType="mbankModel.tblTransfer" />
           <EntitySet Name="TransactionCodes" EntityType="mbankModel.TransactionCode" />
+          <EntitySet Name="crypto_payments" EntityType="mbankModel.crypto_payments" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -623,7 +624,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             <End Role="Country" EntitySet="Countries" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_AspNetUsers" Association="mbankModel.FK_CR_Account_AspNetUsers">
+          <AssociationSet Name="FK_CR_Account_AspNetUsers1" Association="mbankModel.FK_CR_Account_AspNetUsers1">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="CR_Account" EntitySet="CR_Account" />
           </AssociationSet>
@@ -631,17 +632,17 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="tblAccount" EntitySet="tblAccounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_AccountType" Association="mbankModel.FK_CR_Account_CR_AccountType">
+          <AssociationSet Name="FK_CR_Account_CR_AccountType1" Association="mbankModel.FK_CR_Account_CR_AccountType1">
             <End Role="CR_AccountType" EntitySet="CR_AccountType" />
             <End Role="CR_Account" EntitySet="CR_Account" />
           </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_Activity" Association="mbankModel.FK_CR_Account_CR_Activity">
-            <End Role="CR_Activity" EntitySet="CR_Activity" />
-            <End Role="CR_Account" EntitySet="CR_Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CR_Account_CR_Currency" Association="mbankModel.FK_CR_Account_CR_Currency">
+          <AssociationSet Name="FK_CR_Account_CR_Currency1" Association="mbankModel.FK_CR_Account_CR_Currency1">
             <End Role="CR_Currency" EntitySet="CR_Currency" />
             <End Role="CR_Account" EntitySet="CR_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CR_Activity_CR_Account" Association="mbankModel.FK_CR_Activity_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="CR_Activity" EntitySet="CR_Activity" />
           </AssociationSet>
           <AssociationSet Name="FK_CR_Transactions_CR_Account" Association="mbankModel.FK_CR_Transactions_CR_Account">
             <End Role="CR_Account" EntitySet="CR_Account" />
@@ -667,7 +668,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="crypto_payments" EntityType="mbankModel.crypto_payments" />
         </EntityContainer>
         <EntityType Name="AspNetRole">
           <Key>
@@ -724,7 +724,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <NavigationProperty Name="AspNetUserClaims" Relationship="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="mbankModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="Country" Relationship="mbankModel.FK_AspNetUsers_Countries" FromRole="AspNetUser" ToRole="Country" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_AspNetUsers" FromRole="AspNetUser" ToRole="CR_Account" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_AspNetUsers1" FromRole="AspNetUser" ToRole="CR_Account" />
           <NavigationProperty Name="tblAccounts" Relationship="mbankModel.FK_tblAccount_AspNetUsers" FromRole="AspNetUser" ToRole="tblAccount" />
           <NavigationProperty Name="AspNetRoles" Relationship="mbankModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
@@ -757,10 +757,10 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="CurrentCryptoBalance" Type="Decimal" Precision="18" Scale="8" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_CR_Account_AspNetUsers" FromRole="CR_Account" ToRole="AspNetUser" />
-          <NavigationProperty Name="CR_AccountType" Relationship="mbankModel.FK_CR_Account_CR_AccountType" FromRole="CR_Account" ToRole="CR_AccountType" />
-          <NavigationProperty Name="CR_Activity" Relationship="mbankModel.FK_CR_Account_CR_Activity" FromRole="CR_Account" ToRole="CR_Activity" />
-          <NavigationProperty Name="CR_Currency" Relationship="mbankModel.FK_CR_Account_CR_Currency" FromRole="CR_Account" ToRole="CR_Currency" />
+          <NavigationProperty Name="AspNetUser" Relationship="mbankModel.FK_CR_Account_AspNetUsers1" FromRole="CR_Account" ToRole="AspNetUser" />
+          <NavigationProperty Name="CR_AccountType" Relationship="mbankModel.FK_CR_Account_CR_AccountType1" FromRole="CR_Account" ToRole="CR_AccountType" />
+          <NavigationProperty Name="CR_Currency" Relationship="mbankModel.FK_CR_Account_CR_Currency1" FromRole="CR_Account" ToRole="CR_Currency" />
+          <NavigationProperty Name="CR_Activity" Relationship="mbankModel.FK_CR_Activity_CR_Account" FromRole="CR_Account" ToRole="CR_Activity" />
           <NavigationProperty Name="CR_Transactions" Relationship="mbankModel.FK_CR_Transactions_CR_Account" FromRole="CR_Account" ToRole="CR_Transactions" />
           <NavigationProperty Name="CR_Verification" Relationship="mbankModel.FK_CR_Verification_CR_Account" FromRole="CR_Account" ToRole="CR_Verification" />
         </EntityType>
@@ -773,17 +773,17 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="Value" Type="Int32" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_AccountType" FromRole="CR_AccountType" ToRole="CR_Account" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_AccountType1" FromRole="CR_AccountType" ToRole="CR_Account" />
         </EntityType>
         <EntityType Name="CR_Activity">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Account" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_Activity" FromRole="CR_Activity" ToRole="CR_Account" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Activity_CR_Account" FromRole="CR_Activity" ToRole="CR_Account" />
         </EntityType>
         <EntityType Name="CR_Currency">
           <Key>
@@ -793,7 +793,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ShortCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CurrentValueToDollar" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_Currency" FromRole="CR_Currency" ToRole="CR_Account" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Account_CR_Currency1" FromRole="CR_Currency" ToRole="CR_Account" />
         </EntityType>
         <EntityType Name="CR_Transactions">
           <Key>
@@ -816,8 +816,8 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="CR_AccountId" Type="Int32" />
           <Property Name="DocumentUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Verification_CR_Account" FromRole="CR_Verification" ToRole="CR_Account" />
           <Property Name="VerificationType" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_CR_Verification_CR_Account" FromRole="CR_Verification" ToRole="CR_Account" />
         </EntityType>
         <EntityType Name="ForwardTransfer">
           <Key>
@@ -933,6 +933,42 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_TransactionCode_tblAccount" FromRole="TransactionCode" ToRole="tblAccount" />
         </EntityType>
+        <EntityType Name="crypto_payments">
+          <Key>
+            <PropertyRef Name="paymentID" />
+            <PropertyRef Name="boxID" />
+            <PropertyRef Name="boxType" />
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="userID" />
+            <PropertyRef Name="countryID" />
+            <PropertyRef Name="coinLabel" />
+            <PropertyRef Name="amount" />
+            <PropertyRef Name="amountUSD" />
+            <PropertyRef Name="unrecognised" />
+            <PropertyRef Name="addr" />
+            <PropertyRef Name="txID" />
+            <PropertyRef Name="txConfirmed" />
+            <PropertyRef Name="processed" />
+          </Key>
+          <Property Name="paymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="boxID" Type="Int32" Nullable="false" />
+          <Property Name="boxType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="orderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="countryID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="coinLabel" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
+          <Property Name="amountUSD" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
+          <Property Name="unrecognised" Type="Byte" Nullable="false" />
+          <Property Name="addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="txID" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
+          <Property Name="txDate" Type="DateTime" Precision="3" />
+          <Property Name="txConfirmed" Type="Byte" Nullable="false" />
+          <Property Name="txCheckDate" Type="DateTime" Precision="3" />
+          <Property Name="processed" Type="Byte" Nullable="false" />
+          <Property Name="processedDate" Type="DateTime" Precision="3" />
+          <Property Name="recordCreated" Type="DateTime" Precision="3" />
+        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -973,10 +1009,8 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_AspNetUsers">
-          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_CR_Account_AspNetUsers1">
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
           <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUser">
@@ -1001,7 +1035,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_CR_AccountType">
+        <Association Name="FK_CR_Account_CR_AccountType1">
           <End Type="mbankModel.CR_AccountType" Role="CR_AccountType" Multiplicity="0..1" />
           <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1013,19 +1047,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CR_Account_CR_Activity">
-          <End Type="mbankModel.CR_Activity" Role="CR_Activity" Multiplicity="1" />
-          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="CR_Activity">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="CR_Account">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CR_Account_CR_Currency">
+        <Association Name="FK_CR_Account_CR_Currency1">
           <End Type="mbankModel.CR_Currency" Role="CR_Currency" Multiplicity="0..1" />
           <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1034,6 +1056,20 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Principal>
             <Dependent Role="CR_Account">
               <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CR_Activity_CR_Account">
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.CR_Activity" Role="CR_Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CR_Activity">
+              <PropertyRef Name="AccountId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1105,42 +1141,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <End Type="mbankModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityType Name="crypto_payments">
-          <Key>
-            <PropertyRef Name="paymentID" />
-            <PropertyRef Name="boxID" />
-            <PropertyRef Name="boxType" />
-            <PropertyRef Name="orderID" />
-            <PropertyRef Name="userID" />
-            <PropertyRef Name="countryID" />
-            <PropertyRef Name="coinLabel" />
-            <PropertyRef Name="amount" />
-            <PropertyRef Name="amountUSD" />
-            <PropertyRef Name="unrecognised" />
-            <PropertyRef Name="addr" />
-            <PropertyRef Name="txID" />
-            <PropertyRef Name="txConfirmed" />
-            <PropertyRef Name="processed" />
-          </Key>
-          <Property Name="paymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="boxID" Type="Int32" Nullable="false" />
-          <Property Name="boxType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="orderID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="userID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="countryID" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="coinLabel" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="amount" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
-          <Property Name="amountUSD" Type="Decimal" Nullable="false" Precision="20" Scale="8" />
-          <Property Name="unrecognised" Type="Byte" Nullable="false" />
-          <Property Name="addr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="txID" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
-          <Property Name="txDate" Type="DateTime" Precision="3" />
-          <Property Name="txConfirmed" Type="Byte" Nullable="false" />
-          <Property Name="txCheckDate" Type="DateTime" Precision="3" />
-          <Property Name="processed" Type="Byte" Nullable="false" />
-          <Property Name="processedDate" Type="DateTime" Precision="3" />
-          <Property Name="recordCreated" Type="DateTime" Precision="3" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1246,7 +1246,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               <MappingFragment StoreEntitySet="CR_Activity">
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1401,14 +1401,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="mbankModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="crypto_payments">
             <EntityTypeMapping TypeName="mbankModel.crypto_payments">
               <MappingFragment StoreEntitySet="crypto_payments">
@@ -1433,6 +1425,14 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="mbankModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -17,6 +17,7 @@ namespace BNKMVC.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CR_Account()
         {
+            this.CR_Activity = new HashSet<CR_Activity>();
             this.CR_Transactions = new HashSet<CR_Transactions>();
             this.CR_Verification = new HashSet<CR_Verification>();
         }
@@ -31,8 +32,9 @@ namespace BNKMVC.Entities
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual CR_AccountType CR_AccountType { get; set; }
-        public virtual CR_Activity CR_Activity { get; set; }
         public virtual CR_Currency CR_Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CR_Activity> CR_Activity { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CR_Transactions> CR_Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

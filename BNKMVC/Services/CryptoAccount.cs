@@ -31,7 +31,7 @@ namespace BNKMVC.Services
                     AccountTypeId = m.AccountTypeId,
                     UserId = m.UserId,
                     CurrencyId = m.CurrencyId,
-                    CurrentCryptoBalance = (decimal?) 0.00000000, 
+                    CurrentCryptoBalance = (decimal?) 0.000000, 
                     Status = AccountStatus.PENDING.ToString(),
                     DateCreated = DateTime.UtcNow
                 });

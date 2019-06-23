@@ -28,14 +28,46 @@ namespace BNKMVC.Services
                         var values = new RouteValueDictionary(new
                         {
                             action = "Verify",
-                            controller = "Investor",
+                            controller = "Home",
                             code = "0"
                         });
                         filterContext.Result = new RedirectToRouteResult(values);
                         base.OnActionExecuting(filterContext);
                     }
+                  
                 }
                   
+            }
+        }
+
+    }
+
+
+    public class MustNotBeVerifiedFilter : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                var userId = HttpContext.Current.User.Identity.GetUserId();
+              
+                    //  
+                    string controllerName = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName.ToString();
+                    string actionName = filterContext.ActionDescriptor.ActionName.ToString();
+                   
+                        var values = new RouteValueDictionary(new
+                        {
+                            action = actionName,
+                            controller = controllerName,
+                            code = "0"
+                        });
+                        filterContext.Result = new RedirectToRouteResult(values);
+                        base.OnActionExecuting(filterContext);
+                    
+
+                
+
             }
         }
 

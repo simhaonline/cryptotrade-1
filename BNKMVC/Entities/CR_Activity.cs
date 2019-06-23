@@ -15,7 +15,7 @@ namespace BNKMVC.Entities
     public partial class CR_Activity
     {
         public int Id { get; set; }
-        public string Account { get; set; }
+        public Nullable<int> AccountId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
     
