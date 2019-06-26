@@ -353,7 +353,7 @@ namespace BNKMVC.Controllers
 
         [MustNotBeVerifiedFilter]
         [HttpPost, ValidateAntiForgeryToken]
-        public ActionResult Verifv(VerificationVm m)
+        public ActionResult Verify(VerificationVm m)
         {
             if (ModelState.IsValid)
             {

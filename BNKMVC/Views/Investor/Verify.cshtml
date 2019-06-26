@@ -11,7 +11,7 @@
             <div class="card-body">
                 <h4 class="card-title">Verification Required</h4>
                 <h6 class="card-subtitle"> Verify by uploading a document </h6>
-                <form class="m-t-30">
+                <form class="m-t-30" action="@Url.Action("Verify")" method="post">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Document Type</label>
                         <select name="@Html.NameFor(a=>a.VerificationType)" class="form-control">
