@@ -61,7 +61,28 @@ namespace BNKMVC.Services
             }
         }
 
-        
+        public bool Delete(int verificationId)
+        {
+            try
+            {
+                var find = context.CR_Verification.Find(verificationId);
+                if (find != null)
+                {
+                    context.CR_Verification.Remove(find);
+
+                    context.SaveChanges();
+
+                }
+
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
 
     }
 }

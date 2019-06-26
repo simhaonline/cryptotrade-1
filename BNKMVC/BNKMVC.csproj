@@ -60,6 +60,12 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -210,8 +216,10 @@
     <Compile Include="Controllers\CryptoAdminController.cs" />
     <Compile Include="Controllers\CR_AccountTypeController.cs" />
     <Compile Include="Controllers\CR_CurrencyController.cs" />
+    <Compile Include="Controllers\GoUrl\GoUrlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InvestorController.cs" />
+    <Compile Include="Controllers\MaintainanceFeesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuperController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -257,6 +265,9 @@
     <Compile Include="Entities\ForwardTransfer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\MaintainanceFee.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,9 +307,18 @@
     <Compile Include="Entities\TransactionCode.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WithdrawRequest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GoUrlCore\Calculator.cs" />
+    <Compile Include="GoUrlCore\Controls.cs" />
+    <Compile Include="GoUrlCore\ControlsLanguages.cs" />
+    <Compile Include="GoUrlCore\Cryptobox.cs" />
+    <Compile Include="GoUrlCore\GoUrlKeys.cs" />
+    <Compile Include="GoUrlCore\NewPayment.cs" />
     <Compile Include="Migrations\201902131620430_initial.cs" />
     <Compile Include="Migrations\201902131620430_initial.Designer.cs">
       <DependentUpon>201902131620430_initial.cs</DependentUpon>
@@ -328,6 +348,10 @@
     <Compile Include="Models\CodesDto.cs" />
     <Compile Include="Models\CryptoAccountVm.cs" />
     <Compile Include="Models\FeedBackDto.cs" />
+    <Compile Include="Models\GoUrl\DisplayCryptoboxModel.cs" />
+    <Compile Include="Models\GoUrl\IPNModel.cs" />
+    <Compile Include="Models\GoUrl\LocalisationModel.cs" />
+    <Compile Include="Models\GoUrl\OptionsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TransferDto.cs" />
@@ -344,11 +368,13 @@
     <Compile Include="Services\Account.cs" />
     <Compile Include="Services\AccountVerifications.cs" />
     <Compile Include="Services\Countries.cs" />
-    <Compile Include="Services\CrptoTransacation.cs" />
+    <Compile Include="Services\CryptoActivities.cs" />
+    <Compile Include="Services\CryptoTransacation.cs" />
     <Compile Include="Services\Crpto_Currency.cs" />
     <Compile Include="Services\CryptoAccount.cs" />
     <Compile Include="Services\CryptoAccountType.cs" />
     <Compile Include="Services\CrptoVerification.cs" />
+    <Compile Include="Services\CryptoWithDrawRequest.cs" />
     <Compile Include="Services\FileUpload.cs" />
     <Compile Include="Services\Generator.cs" />
     <Compile Include="Services\RoleCreator.cs" />
@@ -1153,6 +1179,8 @@
     <Content Include="admin\widgets-apps.html" />
     <Content Include="admin\widgets-charts.html" />
     <Content Include="admin\widgets-data.html" />
+    <Content Include="App_Data\GourlDb.mdf" />
+    <Content Include="App_Data\GourlDb_log.ldf" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\BNKMVC.dll" />
@@ -1396,18 +1424,41 @@
     <Content Include="HTML\services.html" />
     <Content Include="Images\ajax\loader2.gif" />
     <Content Include="Images\ajax\LoadingCircle.gif" />
+    <Content Include="Images\bitcoin.png" />
+    <Content Include="Images\bitcoin2.png" />
+    <Content Include="Images\bitcoincash.png" />
+    <Content Include="Images\bitcoincash2.png" />
+    <Content Include="Images\dash.png" />
+    <Content Include="Images\dash2.png" />
+    <Content Include="Images\dogecoin.png" />
+    <Content Include="Images\dogecoin2.png" />
+    <Content Include="Images\feathercoin.png" />
+    <Content Include="Images\feathercoin2.png" />
+    <Content Include="Images\index.html" />
+    <Content Include="Images\litecoin.png" />
+    <Content Include="Images\litecoin2.png" />
+    <Content Include="Images\monetaryunit.png" />
+    <Content Include="Images\monetaryunit2.png" />
+    <Content Include="Images\peercoin.png" />
+    <Content Include="Images\peercoin2.png" />
+    <Content Include="Images\potcoin.png" />
+    <Content Include="Images\potcoin2.png" />
+    <Content Include="Images\reddcoin.png" />
+    <Content Include="Images\reddcoin2.png" />
+    <Content Include="Images\speedcoin.png" />
+    <Content Include="Images\speedcoin2.png" />
+    <Content Include="Images\vertcoin.png" />
+    <Content Include="Images\vertcoin2.png" />
     <Content Include="js\croppie.min.js" />
     <Content Include="js\imageUpload.js" />
     <Content Include="js\site.js" />
     <Content Include="js\user.js" />
-    <Content Include="mbankscript.sql" />
     <Content Include="obj\Debug\BNKMVC.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\BNKMVC.dll" />
     <Content Include="obj\Debug\BNKMVC.pdb" />
     <Content Include="obj\Debug\TempPE\Entities.Model1.Context.cs.dll" />
     <Content Include="obj\Debug\TempPE\Entities.Model1.cs.dll" />
     <Content Include="obj\Debug\TempPE\Entities.Model1.Designer.cs.dll" />
-    <Content Include="script.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Entities\Model1.edmx">
@@ -1418,7 +1469,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="ApplicationInsights.config" />
-    <Content Include="mbank.bak" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1432,9 +1482,11 @@
     <Content Include="Conbe\assets\vendor\font-awesome\fonts\fontawesome-webfont3e6e.woff" />
     <Content Include="Conbe\assets\vendor\font-awesome\fonts\fontawesome-webfont3e6e.woff2" />
     <Content Include="Conbe\assets\vendor\font-awesome\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="cryptoDb.bak" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\cryptobox.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -1617,6 +1669,26 @@
     <Content Include="Views\Investor\Verify.cshtml" />
     <Content Include="Views\Home\Verify.cshtml" />
     <Content Include="Views\Home\Verifications.cshtml" />
+    <Content Include="Views\CryptoAdmin\Verifications.cshtml" />
+    <Content Include="Views\CryptoAdmin\Index.cshtml" />
+    <Content Include="Views\Shared\Partial\_Cryptobox.cshtml" />
+    <Content Include="Views\Investor\MakePayment.cshtml" />
+    <Content Include="Views\Investor\SecuredPayment.cshtml" />
+    <Content Include="Views\CryptoAdmin\_SuccessTransaction.cshtml" />
+    <Content Include="Views\CryptoAdmin\Transactions.cshtml" />
+    <Content Include="Views\CryptoAdmin\ViewUser.cshtml" />
+    <Content Include="Views\MaintainanceFees\Create.cshtml" />
+    <Content Include="Views\MaintainanceFees\Delete.cshtml" />
+    <Content Include="Views\MaintainanceFees\Details.cshtml" />
+    <Content Include="Views\MaintainanceFees\Edit.cshtml" />
+    <Content Include="Views\MaintainanceFees\Index.cshtml" />
+    <Content Include="Views\Investor\WithDraw.cshtml" />
+    <Content Include="Views\Investor\MaintainceSecuredPayment.cshtml" />
+    <Content Include="Views\CryptoAdmin\WithDrawRequest.cshtml" />
+    <Content Include="Views\Investor\Earning.cshtml" />
+    <Content Include="Views\Investor\Transactions.cshtml" />
+    <Content Include="Views\Investor\WithDraws.cshtml" />
+    <Content Include="Views\Investor\MyAccount.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1625,11 +1697,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\CR\Controllers\" />
     <Folder Include="Areas\CR\Models\" />
     <Folder Include="Areas\CR\Views\Shared\" />
-    <Folder Include="Views\CryptoAdmin\" />
     <Folder Include="www.gym05082018.distinctcoder.com\" />
   </ItemGroup>
   <ItemGroup>
@@ -1694,6 +1764,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

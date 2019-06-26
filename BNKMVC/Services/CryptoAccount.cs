@@ -90,18 +90,58 @@ namespace BNKMVC.Services
 
         public CR_Account Get(int accountId)
         {
-            return context.CR_Account.Find(accountId);
+            return context.CR_Account.Where(a => a.Id == accountId).
+                Include(a => a.CR_Transactions)
+                .Include(a => a.CR_Activity)
+                .Include(a => a.CR_Verification)
+                .Include(a => a.AspNetUser.Country)
+                .Include(a=>a.CR_AccountType)
+                .Include(a => a.AspNetUser).SingleOrDefault();
         }
 
         public CR_Account GetUser(int accountId)
         {
-            var user = context.CR_Account.Where(a => a.Id == accountId).Include(a=>a.AspNetUser).SingleOrDefault();
+            var user = context.CR_Account.Where(a => a.Id == accountId)
+                .Include(a=>a.CR_Transactions)
+                .Include(a=>a.CR_Activity)
+                .Include(a=>a.CR_Verification)
+                .Include(a=>a.AspNetUser.Country)
+                .Include(a => a.CR_AccountType)
+                .Include(a=>a.AspNetUser).SingleOrDefault();
             return user;
         }
         public CR_Account GetUser(string userId)
         {
             var user = context.CR_Account.Where(a => a.UserId == userId).Include(a=>a.AspNetUser).SingleOrDefault();
             return user;
+        }
+
+        public bool SetAccountStatus(int accountId, AccountStatus status)
+        {
+            try
+            {
+                var acc = context.CR_Account.Find(accountId);
+                if (acc != null)
+                {
+                    acc.Status = status.ToString();
+                    context.Entry(acc).State = EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+        }
+
+        public IList<MaintainanceFee> GetMaintainanceFees()
+        {
+            var l = context.MaintainanceFees.ToList();
+            return l;
         }
     }
 }

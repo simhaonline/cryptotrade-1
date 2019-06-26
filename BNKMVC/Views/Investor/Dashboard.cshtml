@@ -1,8 +1,151 @@
-﻿@model dynamic
+﻿@model BNKMVC.Entities.CR_Account
 
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>title</h2>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body border-top">
+                <div class="row mb-0">
+                    <!-- col -->
+                    <div class="col-lg-6 col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-2"><span class="text-orange display-5"><i class="mdi mdi-wallet"></i></span></div>
+                            <div>
+                                <span>Balance</span>
+                                <h3 class="font-medium mb-0"> @Model.CR_Currency.ShortCode @Model.CurrentCryptoBalance.Value.ToString("N")</h3>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-2"><span class="text-orange display-5"><i class="mdi mdi-account"></i></span></div>
+                            <div>
+                                @{
+                                    var earning = 0.0;
+                                    foreach (var i in Model.CR_Activity)
+                                    {
+                                        earning += Convert.ToDouble(i.Amount);
+                                    }
+                                }
+                                <span>Total Earning</span>
+                                <h3 class="font-medium mb-0"> @earning </h3>
+                                <h5> </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- col -->
+                    <!-- col -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 col-md-6">
+        <div class="card bg-info">
+            <a href="@Url.Action("Invest","Investor")">
+            <div class="card-body">
+                <div class="d-flex no-block align-items-center">
+                    <div class="text-white">
+                        <h6>Invest</h6>
+                    </div>
+                    <div class="ml-auto">
+                        <span class="text-white display-6"><i class="mdi-volume-high mdi"></i></span>
+                    </div>
+                </div>
+            </div> 
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <a href="@Url.Action("Earning","Investor")">
+            <div class="card bg-cyan">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div class="text-white">
+                            <h2>@earning</h2>
+                            <h6>Earnings/Activity</h6>
+                        </div>
+                        <div class="ml-auto">
+                            <span class="text-white display-6"><i class="ti-view-list"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+    <div class="col-lg-4 col-md-12">
+        <a href="@Url.Action("WithDraw","Investor")">
+            <div class="card bg-success">
+                <div class="card-body">
+                    <div class="d-flex no-block align-items-center">
+                        <div class="text-white">
+                            <h2>WithDraw</h2>
+                            <h6></h6>
+                        </div>
+                        <div class="ml-auto">
+                            <span class="text-white display-6"><i class="mdi-volume-low mdi"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+
+    </div>
+ 
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All Earings</h4>
+
+            </div>
+            <div class="table-responsive">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Account Activities</h3>
+                            <table class="table table-responsive-sm">
+                                <thead>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td>Date Created</td>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var i in Model.CR_Activity)
+                                {
+                                    <tr>
+                                        <td>
+                                            @i.Amount
+                                        </td>
+                                        <td>
+                                            @i.DateCreated
+                                        </td>
+
+                                    </tr>
+                                }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

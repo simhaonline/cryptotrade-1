@@ -6,7 +6,7 @@ using BNKMVC.Entities;
 namespace BNKMVC.Services
 {
     public enum TransactionStatus{
-        PENDING, SUCCESSFUL, BLOCKED, DENYED, APPROVED
+        PENDING, SUCCESSFUL, BLOCKED, DENYED, APPROVED, INPROGESS, FAILED
     }
     public class Account
     {
@@ -138,6 +138,8 @@ namespace BNKMVC.Services
 
             }
         }
+
+       
 
     }
 }

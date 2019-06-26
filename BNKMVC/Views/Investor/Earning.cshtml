@@ -1,0 +1,54 @@
+﻿@model System.Collections.Generic.List<BNKMVC.Entities.CR_Activity>
+
+@{
+    ViewBag.Title = "Earning";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All Earings</h4>
+
+            </div>
+            <div class="table-responsive">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Account Activities</h3>
+                            <table class="table table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <td>Amount</td>
+                                        <td>Date Created</td>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var i in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @i.Amount
+                                            </td>
+                                            <td>
+                                                @i.DateCreated
+                                            </td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

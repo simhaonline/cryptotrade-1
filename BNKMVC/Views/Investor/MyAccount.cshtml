@@ -1,0 +1,212 @@
+﻿@model BNKMVC.Entities.CR_Account
+
+@{
+    ViewBag.Title = "My Account";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+}
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1> @Model.CurrentCryptoBalance</h1>
+                    <h2>@Model.AspNetUser.FirstName, @Model.AspNetUser.LastName</h2>
+                    <h3>@Model.AspNetUser.Email</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @* User Detail *@
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <strong> First Name </strong> <br />
+                        @Model.AspNetUser.FirstName <br />
+                        <strong> Last Name </strong> <br />
+                        @Model.AspNetUser.LastName <br />
+                        <strong> Sex </strong> <br />
+                        @Model.AspNetUser.Sex <br />
+                        <strong> Phone Number </strong> <br />
+                        @Model.AspNetUser.PhoneNumber <br />
+                    </div>
+                    <div class="col-sm-6">
+                        <strong> Country </strong> <br />
+                        @Model.AspNetUser.Country.Name <br />
+                        <strong> Date Registered </strong> <br />
+                        @Model.AspNetUser.DateStamp.ToString("f") <br />
+                        <strong> Account Status </strong> <br />
+                        @Model.Status <br />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    @* Account Detail *@
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <strong> Account Id: </strong> @Model.Id <br />
+                <strong> PackageId: </strong> @Model.CR_AccountType.Id<br />
+                <strong> Package Detail </strong> <br />
+                @Model.CR_AccountType.Name  <br />
+                @Model.CR_AccountType.Title  <br />
+                @Model.CR_AccountType.Value  <br />
+                @Model.CR_AccountType.Description  <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h3>Verifications</h3>
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <td>Document Type</td>
+                            <td>Picture</td>
+                            <td>Status</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model.CR_Verification)
+                        {
+                            <tr>
+                                <td>
+                                    @i.VerificationType
+                                </td>
+                                <td>
+                                    <a data-fancybox="gallery" href="@i.DocumentUrl"><img src="@i.DocumentUrl" class="img-fluid" width="100"></a>
+
+                                </td>
+                                <td>
+                                    @i.Status
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Account Activities</h3>
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <td>Amount</td>
+                            <td>Date Created</td>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model.CR_Activity)
+                        {
+                            <tr>
+                                <td>
+                                    @i.Amount
+                                </td>
+                                <td>
+                                    @i.DateCreated
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                Transactions
+                <table class="table table-sm table-light m-b-0">
+                    <tr>
+
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Currency Domination
+                        </th>
+                        <th>
+                            Transaction Type
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date created
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.CR_Transactions.OrderByDescending(a=>a.DateCreated).ThenBy(a => a.Status).Take(20).ToList())
+                    {
+
+                        <tr id="row_@item.Id">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurrencyDomination)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+
+                            <td>
+                          
+                            </td>
+                        </tr>
+
+
+                    }
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+

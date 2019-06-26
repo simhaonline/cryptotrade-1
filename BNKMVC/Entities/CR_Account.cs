@@ -20,6 +20,7 @@ namespace BNKMVC.Entities
             this.CR_Activity = new HashSet<CR_Activity>();
             this.CR_Transactions = new HashSet<CR_Transactions>();
             this.CR_Verification = new HashSet<CR_Verification>();
+            this.WithdrawRequests = new HashSet<WithdrawRequest>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,7 @@ namespace BNKMVC.Entities
         public virtual ICollection<CR_Transactions> CR_Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CR_Verification> CR_Verification { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WithdrawRequest> WithdrawRequests { get; set; }
     }
 }

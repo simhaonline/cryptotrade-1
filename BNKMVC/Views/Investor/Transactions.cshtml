@@ -1,0 +1,68 @@
+﻿@using BNKMVC.Services
+@model System.Collections.Generic.List<BNKMVC.Entities.CR_Transactions>
+
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Successful Transactions</h4>
+            </div>
+            <table class="table table-responsive table-sm table-light m-b-0">
+                <tr>
+                   
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Currency
+                    </th>
+                    <th>
+                      Transaction
+                    </th>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Date
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.Status != TransactionStatus.APPROVED.ToString())
+                    {
+                        <tr id="row_@item.Id">
+                         
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurrencyDomination)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+
+                        </tr>
+                    }
+
+                }
+            </table>
+
+        </div>
+    </div>
+
+</div>

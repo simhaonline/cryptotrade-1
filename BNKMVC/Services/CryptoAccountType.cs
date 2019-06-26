@@ -22,7 +22,8 @@ namespace BNKMVC.Services
 
         public List<CR_AccountType> AccountTypes()
         {
-            return context.CR_AccountType.ToList();
+            var list = context.CR_AccountType.ToList();
+            return list;
         }
     }
 }

@@ -1,8 +1,41 @@
-﻿@model dynamic
-
+﻿@model IEnumerable<BNKMVC.Entities.CR_AccountType>
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Investment";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+<div class="col-md-12">
+    <div class="card border-top border-info">
+        <div class="card-body">
+            <h3>Choose an Investment Plan </h3>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var i in Model)
+    {
+        <div class="col-lg-3">
+            <div class="card bg-cyan text-white">
+                <div class="card-body"> <a href="@Url.Action("SecuredPayment", new {cryptoamount = i.Value})" class="text-white">
+                        <div class="d-flex no-block align-items-center">
+                           
+                                <i class="display-6 pr-5 ti-bar-chart-alt text-white"></i>
+                           
+                            <div class="m-l-15 m-t-10">
+                                <h4 class="font-medium ">@i.Name</h4> 
+                                <h3 class="font-light m-b-0">@i.Title</h3>
+                                <h5>@i.Value</h5> 
+                                <p>@i.Description</p>
+                            </div>
+                        </div>
+                    </a>
+                  
+                </div>
+            </div>
+        </div>
 
-<h2>title</h2>
+    }
+  
+</div>
+
+              
+     

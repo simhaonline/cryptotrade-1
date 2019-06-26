@@ -47,5 +47,7 @@ namespace BNKMVC.Entities
         public virtual DbSet<tblTransfer> tblTransfers { get; set; }
         public virtual DbSet<TransactionCode> TransactionCodes { get; set; }
         public virtual DbSet<crypto_payments> crypto_payments { get; set; }
+        public virtual DbSet<MaintainanceFee> MaintainanceFees { get; set; }
+        public virtual DbSet<WithdrawRequest> WithdrawRequests { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿function sendPost(returnUrl = "") {
-  
+﻿
         $("form").submit(function (event) {
             event.preventDefault();
             $form = $(this);
@@ -15,24 +14,33 @@
                 beforeSend: function () {
                     $button.removeAttr("disabled");
                 },
-                success: function (response) {
-                    Swal.fire({
-                        title: "Success",
-                        type: "success",
-                        text: response.message,
-                        confirmButtonText: 'Cool'
-                    });
-                    setTimeout(function () {
-                        if (returnUrl != "") {
-                            location.href = returnUrl;
-                        } else {
-                            location.reload();
-                        }
+                success: function (response) { 
+                    if (response.status == 200) {
+                        Swal.fire({
+                            title: "Success",
+                            type: "success",
+                            text: response.message,
+                            confirmButtonText: 'Cool'
+                        });
+                        setTimeout(function() {
+                                //if (returnUrl != "") {
+                                //    location.href = returnUrl;
+                                //} else {
+                                location.reload();
+                                //}
 
-                    }, 5000);
+                            },
+                            5000);
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            type: "error",
+                            text: response.message,
+                            confirmButtonText: 'Try Again'
+                        });
+                    }
+                  
                 }
             })
         });
   
-
-}

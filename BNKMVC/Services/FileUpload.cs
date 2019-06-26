@@ -12,6 +12,9 @@ namespace App.Services
 {
     public class FileUpload
     {
+        public static string ApiKey = "849621861927721";
+        public static string ApiSecret = "0ofuuFUGk_6zt4lmaXTsXayy07k";
+        public static string Cloud = "votel";
         public static string ReturnMessage;
         public static string filePath;
         public bool UploadAvatar(string UserID, string Base64String)

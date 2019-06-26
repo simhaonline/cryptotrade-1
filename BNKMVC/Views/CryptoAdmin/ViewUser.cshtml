@@ -1,0 +1,314 @@
+﻿@using BNKMVC.Services
+@model BNKMVC.Entities.CR_Account
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h1> @Model.CurrentCryptoBalance</h1>
+                    <h2>@Model.AspNetUser.FirstName, @Model.AspNetUser.LastName</h2>
+                    <h3>@Model.AspNetUser.Email</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    @* User Detail *@
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <strong> First Name </strong> <br />
+                        @Model.AspNetUser.FirstName <br />
+                        <strong> Last Name </strong> <br />
+                        @Model.AspNetUser.LastName <br />
+                        <strong> Sex </strong> <br />
+                        @Model.AspNetUser.Sex <br />
+                        <strong> Phone Number </strong> <br />
+                        @Model.AspNetUser.PhoneNumber <br />
+                    </div>
+                    <div class="col-sm-6">
+                        <strong> Country </strong> <br />
+                        @Model.AspNetUser.Country.Name <br />
+                        <strong> Date Registered </strong> <br />
+                        @Model.AspNetUser.DateStamp.ToString("f") <br />
+                        <strong> Account Status </strong> <br />
+                        @Model.Status <br />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    @* Account Detail *@
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-body">
+                <strong> Account Id: </strong> @Model.Id <br />
+                <strong> PackageId: </strong> @Model.CR_AccountType.Id<br />
+                <strong> Package Detail </strong> <br />
+                @Model.CR_AccountType.Name  <br />
+                @Model.CR_AccountType.Title  <br />
+                @Model.CR_AccountType.Value  <br />
+                @Model.CR_AccountType.Description  <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3> Credit Account</h3>
+                <form action="@Url.Action("CreditAccount")" method="get">
+                <input type="hidden" name="Id" value="@Model.Id"/>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Enter the value you want to credit" name="Amount" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3> Debit Account</h3>
+                <form action="@Url.Action("DeductAccount")" method="get">
+                    <input type="hidden" name="Id" value="@Model.Id"/>
+
+                    <div class="form-group">
+                      
+                        <input type="number" class="form-control" placeholder="Enter the value you want to Remove" name="Amount" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Remove</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h3>Verifications</h3>
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <td>Document Type</td>
+                            <td>Picture</td>
+                            <td>Status</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model.CR_Verification)
+                        {
+                            <tr>
+                                <td>
+                                    @i.VerificationType
+                                </td>
+                                <td>
+                                    <a data-fancybox="gallery" href="@i.DocumentUrl"><img src="@i.DocumentUrl" class="img-fluid" width="100"></a>
+
+                                </td>
+                                <td>
+                                    @i.Status
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Approve", "ApproveVerification", new { id = i.Id }) |
+                                    @Html.ActionLink("Decline", "DeclineVerification", new { id = i.Id }) |
+                                    @Html.ActionLink("Delete", "DeleteVerification", new { id = i.Id })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>Account Activities</h3>
+                <table class="table table-responsive-sm">
+                    <thead>
+                        <tr>
+                            <td>Amount</td>
+                            <td>Date Created</td>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model.CR_Activity)
+                        {
+                            <tr>
+                                <td>
+                                    @i.Amount
+                                </td>
+                                <td>
+                                    @i.DateCreated
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                Transactions
+                <table class="table table-sm table-light m-b-0">
+                    <tr>
+
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Currency Domination
+                        </th>
+                        <th>
+                            Transaction Type
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date created
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.CR_Transactions.OrderBy(a => a.Status).ToList())
+                    {
+
+                        <tr id="row_@item.Id">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurrencyDomination)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+
+                            <td>
+                                <button class="btn btn-xs del" data-id="@item.Id" data-href="@Url.Action("DeleteTransaction", new{id= item.Id})"><i class="fa fa-trash"></i> Delete</button>
+                                @Html.ActionLink("View User", "ApproveTransaction", new { id = item.Id })
+
+
+                            </td>
+                        </tr>
+
+
+                    }
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section css{
+
+    <link href="~/admin/assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+}
+@section Scripts
+{
+
+    <script src="~/admin/assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+
+        $(".del").click(
+            function() {
+                var $ctrl = $(this);
+                var id = $(this).attr("data-id");
+                var url = $(this).attr('data-href');
+                $.ajax(url,
+                    {
+                        type: "get",
+                        beforeSend: function() {
+                            $ctrl.attr("disabled");
+                        },
+                        complete: function() {
+                            $ctrl.removeAttr("disabled");
+
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                swal(response.message);
+                                $("#row_" + id).remove();
+                            } else {
+                                swal(response.message);
+                            }
+                        },
+
+                    });
+            });
+    </script>
+
+    <script>
+        $("form").submit(function(event) {
+            event.preventDefault();
+            $form = $(this);
+            var id = $form.find("input[name=Id]").val();
+            var amount = $form.find("input[name=Amount]").val();
+
+         
+            $.ajax({
+                type: "get",
+                url: $(this).attr("action") + `/?id=${id}&amount=${amount}`,
+                beforeSend: function() {
+                    $form.find("button[type=submit]").attr("disabled");
+                },
+                complete: function() {
+                    $form.find("button[type=submit]").removeAttr("disabled");
+                },
+                success: function(response) {
+                    swal(response.message);
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+        });
+    </script>
+}

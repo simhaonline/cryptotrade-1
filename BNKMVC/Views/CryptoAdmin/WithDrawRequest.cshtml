@@ -1,0 +1,151 @@
+﻿@using BNKMVC.Services
+@model System.Collections.Generic.List<BNKMVC.Entities.WithdrawRequest>
+
+
+@{
+    ViewBag.Title = "Withdraw request";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Withdraw request</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Newly Paid Withdraws Request</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Email</th>
+                            <th scope="col">Amount Requested</th>
+                            <th> Wallet Id</th>
+                            <th scope="col">Withdraw status</th>
+                            <th scope="col"> Fee </th> 
+                            <th scope="col">Paid Fee Status</th>
+                            
+                            <th scope="col">Date Request</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+                                <td colspan="8">
+                                    <h3>No Transacation Found</h3>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var i in Model)
+                            {
+                                if (i.MaintainceFeeStatus == WithDrawRequestStatus.HasPaidMaintainceFee.ToString())
+                                {
+                            <tr>
+                                <td>@i.CR_Account.AspNetUser.Email</td>
+                                <td>@i.Amount</td>
+                                <td>@i.WalletId</td>
+                                <td>@i.Status</td>
+                                <td>@i.MaintainceFee</td>
+                                <td>@i.MaintainceFeeStatus</td>
+
+                                <td>@i.DateCreated.Value.ToString("F")</td>
+                             
+                                <td>
+                                    <a href="@Url.Action("SetWithDrawRequestStatus", new{id=i.Id, status = WithDrawRequestStatus.Paid})" class="btn btn-xs" title="Set this status when user has been paid"> Set Status to paid</a>
+                                    <a href="@Url.Action("SetWithDrawRequestStatus", new{id=i.Id, status = WithDrawRequestStatus.Canceled})" class="btn btn-xs" title="Cancel"> Set Status to Cancel </a>
+
+                                    <a href="@Url.Action("DeleteWithDrawRequest", new {id=i.Id})">Delete</a>
+
+                                </td>
+
+                            </tr>
+
+                                }
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All Withdraws Request</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+
+                            <th scope="col">Email</th>
+                            <th scope="col">Amount Requested</th>
+                            <th> Wallet Id</th>
+                            <th scope="col">Withdraw status</th>
+                            <th scope="col"> Fee </th>
+                            <th scope="col">Paid Fee Status</th>
+
+                            <th scope="col">Date Request</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Count() == 0)
+                        {
+                            <tr>
+                                <td colspan="8">
+                                    <h3>No Transacation Found</h3>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var i in Model)
+                            {
+                               
+                                    <tr>
+                                        <td>@i.CR_Account.AspNetUser.Email</td>
+                                        <td>@i.Amount</td>
+                                        <td>@i.WalletId</td>
+                                        <td>@i.Status</td>
+                                        <td>@i.MaintainceFee</td>
+                                        <td>@i.MaintainceFeeStatus</td>
+
+                                        <td>@i.DateCreated.Value.ToString("F")</td>
+
+                                        <td>
+                                            <a href="@Url.Action("SetWithDrawRequestStatus", new{id=i.Id, status = WithDrawRequestStatus.Paid})" class="btn btn-xs" title="Set this status when user has been paid"> Set Status to paid</a>
+                                            <a href="@Url.Action("SetWithDrawRequestStatus", new{id=i.Id, status = WithDrawRequestStatus.Canceled})" class="btn btn-xs" title="Cancel"> Set Status to Cancel </a>
+
+                                            <a href="@Url.Action("DeleteWithDrawRequest", new {id=i.Id})">Delete</a>
+
+                                        </td>
+
+                                    </tr>
+
+                                
+                            }
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -27,7 +27,9 @@
     <link href="~/css/site.css" rel="stylesheet" />
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <![endif]--> 
+   
+    @RenderSection("topScript", required: false)
 </head>
 
 
@@ -426,7 +428,8 @@
     </div>
     <div class="chat-windows"></div>*@
     <!-- ============================================================== -->
-    <!-- All Jquery -->
+<!-- All Jquery -->
+   
     <!-- ============================================================== -->
     <script src="~/admin/assets/libs/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -449,15 +452,16 @@
     <!--This page JavaScript -->
     <!--Morris JavaScript -->
     <script src="~/admin/assets/libs/raphael/raphael.min.js"></script>
-    <script src="~/admin/assets/libs/morris.js/morris.min.js"></script>
+    @*<script src="~/admin/assets/libs/morris.js/morris.min.js"></script>*@
     <script src="~/admin/assets/libs/DataTables/datatables.min.js"></script>
     <script src="~/admin/assets/js/pages/dashboards/dashboard3.js"></script>
-    <script src="../js/site.js"></script>
-    <script>
-        $(function () {
-            $('#cc-table').DataTable({});
-        });
-    </script>
+    @*<script src="../js/site.js"></script>*@
+<script>
+    $(function () {
+        $('#cc-table').DataTable({});
+    });
+</script>
+
     @RenderSection("Scripts", required: false)
 
 </body>

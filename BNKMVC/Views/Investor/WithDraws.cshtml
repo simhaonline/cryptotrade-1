@@ -1,0 +1,105 @@
+﻿@using BNKMVC.Services
+@model System.Collections.Generic.List<BNKMVC.Entities.WithdrawRequest>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">All Withdraws Request</h4>
+
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    @if (Model.Any())
+                    {
+                        <thead>
+                        <tr>
+
+
+
+                            <th scope="col">Amount Requested</th>
+                            <th> Wallet Id</th>
+                            <th scope="col">Withdraw status</th>
+                            <th scope="col"> Fee </th>
+                            <th scope="col">Paid Fee Status</th>
+
+                            <th scope="col">Date Request</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                    }
+                  
+                    <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="8">
+                                <h3>No Transacation Found</h3>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var i in Model.OrderByDescending(a => a.DateCreated).ToList())
+                        {
+
+                            <tr>
+
+                                <td>@i.Amount</td>
+                                <td>@i.WalletId</td>
+                                <td>@i.Status</td>
+                                <td>@i.MaintainceFee</td>
+                                <td>@i.MaintainceFeeStatus</td>
+
+                                <td>@i.DateCreated.Value.ToString("F")</td>
+
+                                <td>
+
+                                    @if (i.MaintainceFeeStatus == WithDrawRequestStatus.HasNotPaidMaintainceFee.ToString())
+                                    {
+                                        <a href="@Url.Action("MaintainceSecuredPayment", new {amount = i.MaintainceFee, withdrawrequestId = i.Id})">Pay</a>
+                                    }
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    }
+
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

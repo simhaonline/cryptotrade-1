@@ -1,0 +1,70 @@
+﻿@model IEnumerable<BNKMVC.Entities.CR_Verification>
+
+@{
+    ViewBag.Title = "Verifications";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Verifications Required</h4>
+            </div>
+            <table class="table table-sm table-light m-b-0">
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Document Type
+                    </th>
+                    <th>
+                        Picture
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CR_Account.AspNetUser.Email)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.VerificationType)
+                        </td>
+                        <td>
+                            <a data-fancybox="gallery" href="@item.DocumentUrl"><img src="@item.DocumentUrl" class="img-fluid" width="100"></a>
+
+                        </td>
+                        <td>
+                           @item.Status
+                        </td>
+                        <td>
+                            @Html.ActionLink("Approve", "ApproveVerification", new { id = item.Id }) |
+                            @Html.ActionLink("Decline", "DeclineVerification", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "DeleteVerification", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+@section css
+{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+}
+@section Scripts
+{
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+}

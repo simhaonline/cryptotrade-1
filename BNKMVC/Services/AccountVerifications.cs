@@ -95,9 +95,17 @@ namespace BNKMVC.Services
 
         public IList<CR_Verification> GetAccountVerifications(int id)
         {
-            return context.CR_Verification.Where(a => a.CR_AccountId == id).ToList();
+            return context.CR_Verification.Where(a => a.CR_AccountId == id).OrderBy(a => a.Status).ToList();
         }
 
+        public IList<CR_Verification> GetVerifications()
+        {
+            return context.CR_Verification.OrderBy(a => a.Status).ToList();
+        }
+        public CR_Verification GetVerification(int verificationId)
+        {
+            return context.CR_Verification.Where(a=>a.Id == verificationId).Include(a=>a.CR_Account).Include(a=>a.CR_Account.AspNetUser).SingleOrDefault();
+        }
     }
 
 }

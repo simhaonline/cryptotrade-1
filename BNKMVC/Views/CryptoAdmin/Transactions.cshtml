@@ -1,0 +1,123 @@
+﻿@using BNKMVC.Services
+@model IEnumerable<BNKMVC.Entities.CR_Transactions>
+
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@Html.Action("SuccessTransactions")
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Successful Transactions</h4>
+            </div>
+            <table class="table table-responsive table-sm table-light m-b-0">
+                <tr>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CurrencyDomination)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TransactionType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateCreated)
+                    </th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.Status != TransactionStatus.APPROVED.ToString())
+                    {
+                        <tr id="row_@item.Id">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CR_Account.AspNetUser.Email) | @item.CR_Account.AspNetUser.FirstName |  @item.CR_Account.AspNetUser.LastName
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CurrencyDomination)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+
+                            <td>
+                               
+                                <button class="btn btn-xs del" data-id="@item.Id" data-href="@Url.Action("DeleteTransaction", new{id= item.Id})"><i class="fa fa-trash"></i> Delete</button>
+                          
+                                <a class="btn btn-xs" href="@Url.Action("ViewUser", new{ id = item.CR_Account.UserId })"> <i class="fa fa-eye"> View</i></a>
+                                |
+
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </table>
+
+        </div>
+    </div>
+
+</div>
+@section css{
+
+    <link href="~/admin/assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+}
+@section Scripts
+{
+
+    <script src="~/admin/assets/libs/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    
+    <script>
+
+        $(".del").click(
+            function () {
+                var $ctrl = $(this);
+                var id = $(this).attr("data-id");
+                var url = $(this).attr('data-href');
+                $.ajax(url,
+                    {
+                        type: "get",
+                        beforeSend: function() {
+                            $ctrl.attr("disabled");
+                        },
+                        complete: function() {
+                            $ctrl.removeAttr("disabled");
+
+                        },
+                        success: function(response) {
+                            if (response.status == 200) {
+                                swal(response.message);
+                                $("#row_" + id).remove();
+                            } else {
+                                swal(response.message);
+                            }
+                        },
+
+                    });
+            });
+    </script>
+}

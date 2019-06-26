@@ -93,11 +93,11 @@ namespace BNKMVC.Controllers
                         var roles = UserManager.GetRoles(userId);
                         if (roles.Contains("Admin") || roles.Contains("SuperAdmin"))
                         {
-                            return RedirectToAction("Index1", "Admin");
+                            return RedirectToAction("Index", "CryptoAdmin");
                         }
                         
                        
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Index", "Investor");
                     }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
@@ -171,7 +171,7 @@ namespace BNKMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CountryId = model.CountryId, PhoneNumber = model.PhoneNumber, DateStamp = DateTime.UtcNow };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, CountryId = model.CountryId, PhoneNumber = model.PhoneNumber, DateStamp = DateTime.UtcNow };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -238,7 +238,6 @@ namespace BNKMVC.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
-
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
@@ -284,6 +283,7 @@ namespace BNKMVC.Controllers
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+           
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {

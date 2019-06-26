@@ -12,7 +12,8 @@
                 <h4 class="card-title">Verification Required</h4>
                 <h6 class="card-subtitle"> Verify by uploading a document </h6>
                 @using (Html.BeginForm())
-                {
+                { 
+
                     <div class="form-group">
                         @Html.AntiForgeryToken()
                         <label for="exampleInputEmail1">Document Type</label>
@@ -76,7 +77,5 @@
         });
     </script>  
     <script src="~/js/site.js"></script>
-    <script>
-        sendPost();
-    </script>
+  
 }
