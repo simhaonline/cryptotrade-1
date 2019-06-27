@@ -1689,6 +1689,7 @@
     <Content Include="Views\Investor\Transactions.cshtml" />
     <Content Include="Views\Investor\WithDraws.cshtml" />
     <Content Include="Views\Investor\MyAccount.cshtml" />
+    <Content Include="Views\CryptoAdmin\ViewUsers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

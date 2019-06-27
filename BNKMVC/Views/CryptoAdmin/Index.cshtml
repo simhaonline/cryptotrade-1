@@ -1,7 +1,58 @@
 ﻿@model dynamic
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<div class="row">
+    <div class="col-12">
+     
+        <div class="card">
+            <div class="card-body border-top">
+                <div class="row mb-0">
+                    <!-- col -->
+                    <a href="@Url.Action("Verifications","CryptoAdmin")">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-2"><span class="text-orange display-5"><i class="ti-user ti"></i></span></div>
+                                <div>
+                                    <span>Verification</span>
+                                    <h3 class="font-medium mb-0"> @ViewBag.Verifications</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- col -->
+                    <!-- col -->
+                    <a href="@Url.Action("Transactions","CryptoAdmin")">
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-2"><span class="text-cyan display-5"><i class="mdi mdi-star-circle"></i></span></div>
+                                <div>
+                                    <span>Transactions</span>
+                                    <h3 class="font-medium mb-0">@ViewBag.Payments</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a> 
+                    <a href="@Url.Action("WithDrawRequest","CryptoAdmin")">
+
+                        <div class="col-lg-4 col-md-4">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-2"><span class="text-cyan display-5"><i class="mdi mdi-star-circle"></i></span></div>
+                                <div>
+                                    <span>Withdraw Request</span>
+                                    <h3 class="font-medium mb-0">@ViewBag.witdraw</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>

@@ -279,6 +279,7 @@ namespace BNKMVC.Controllers
             }
         }
 
+        
         public ActionResult SecuredPayment(double cryptoamount)
         {
             var transaction = new CryptoTransaction();

@@ -112,8 +112,47 @@ namespace BNKMVC.Services
         }
         public CR_Account GetUser(string userId)
         {
-            var user = context.CR_Account.Where(a => a.UserId == userId).Include(a=>a.AspNetUser).SingleOrDefault();
+            var user = context.CR_Account.Where(a => a.UserId == userId)
+                .Include(a => a.CR_Transactions)
+                .Include(a => a.CR_Activity)
+                .Include(a => a.CR_Verification)
+                .Include(a => a.AspNetUser.Country)
+                .Include(a => a.CR_AccountType)
+                .Include(a=>a.AspNetUser).SingleOrDefault();
             return user;
+        }
+
+        public List<CR_Account> GetUsers()
+        {
+            var user = context.CR_Account
+                .Include(a => a.CR_Transactions)
+                .Include(a => a.CR_Activity)
+                .Include(a => a.CR_Verification)
+                .Include(a => a.AspNetUser.Country)
+                .Include(a => a.CR_AccountType)
+                .Include(a => a.AspNetUser).ToList();
+            return user;
+        }
+
+        public bool DeleteUser(string userId)
+        {
+            try
+            {
+                var acc = context.AspNetUsers.Find(userId);
+                if (acc != null)
+                {
+                    context.AspNetUsers.Remove(acc);
+                    context.SaveChanges();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
         }
 
         public bool SetAccountStatus(int accountId, AccountStatus status)

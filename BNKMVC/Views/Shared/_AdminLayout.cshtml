@@ -55,7 +55,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="@Url.Action("Index1", "Admin")">
+                    <a class="navbar-brand" href="@Url.Action("Index", "CryptoAdmin")">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -291,10 +291,11 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index1","Admin")" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        @*<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Transactions","Admin")" aria-expanded="false"><i class="mdi mdi-view-array"></i><span class="hide-menu">Transactions</span></a></li>*@
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Users","Admin")" aria-expanded="false"><i class="mdi mdi-arrange-bring-forward"></i><span class="hide-menu">Users/customer</span></a></li>
-                        @*<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("CreateUser","Admin")" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Create User/customer</span></a></li>*@
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Index","CryptoAdmin")" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Verifications","CryptoAdmin")" aria-expanded="false"><i class="mdi mdi-lock"></i><span class="hide-menu">Verifications</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("ViewUsers","CryptoAdmin")" aria-expanded="false"><i class="mdi mdi-arrange-bring-forward"></i><span class="hide-menu">Users/customer</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Transactions","CryptoAdmin")" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">Transactions</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("WithDrawRequest","CryptoAdmin")" aria-expanded="false"><i class="mdi mdi-view-list"></i><span class="hide-menu">WithDraws</span></a></li>
 
                         @*<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("AuthorizationCodes","Admin")" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Transaction Codes</span></a></li>*@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="@Url.Action("Feedbacks","Admin")" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Feed backs</span></a></li>

@@ -1,0 +1,45 @@
+﻿@model System.Collections.Generic.List<BNKMVC.Entities.CR_Account>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                   
+                        <th>Current Balance</th>
+                        <th>Account Status</th>
+                      
+                        <th>
+
+                        </th>
+                    </tr>
+                   
+                    </thead>
+                    <tbody>
+                    @foreach (var i in Model)
+                    {
+                        <tr>
+                            <td>@i.AspNetUser.Email</td>
+                            <td>@i.AspNetUser.FirstName, @i.AspNetUser.LastName</td>
+                            <td>@i.CurrentCryptoBalance.Value.ToString("N")</td> 
+                            <td>@i.Status</td>
+                            <td> <a class="btn btn-xs btn-primary" href="@Url.Action("ViewUser", new{id=i.UserId})"> <i class="fa fa-eye"></i> View</a></td>
+                            <td> <a class="btn btn-xs btn-danger" href="@Url.Action("DeleteUser", new{id=i.UserId})"> <i class="fa fa-trash"></i> Delete</a></td>
+
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

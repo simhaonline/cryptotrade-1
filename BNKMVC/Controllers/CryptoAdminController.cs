@@ -15,6 +15,16 @@ namespace BNKMVC.Controllers
         // GET: CryptoAdmin
         public ActionResult Index()
         {
+            //Total new Verification 
+            ViewBag.Verifications = new AccountVerifications().GetVerifications().Where(a=>a.Status == VerificationStatus.PENDING.ToString()).Count();
+            //total new recieved payments
+            ViewBag.Payments = new CryptoTransaction().Transactions().Where(a =>
+                a.TransactionType == TransactionTypeStatus.Credit.ToString() &&
+                (a.Status == TransactionStatus.SUCCESSFUL.ToString())).Count();
+            //total new withdraw request 
+            ViewBag.witdraw = new CryptoWithDrawRequest().GetWithdeWithdrawRequests().Where(a =>
+                a.MaintainceFeeStatus == WithDrawRequestStatus.HasPaidMaintainceFee.ToString() &&
+                a.Status != WithDrawRequestStatus.Paid.ToString()).Count();
             return View();
         }
 
@@ -74,14 +84,15 @@ namespace BNKMVC.Controllers
         }
         public ActionResult ViewUsers()
         {
-            //var account = new CryptoAccount();
-            //var details = account.;
-            return View(/*details*/);
+            var account = new CryptoAccount();
+            var details = account.GetUsers();
+            return View(details);
         }
 
         public ActionResult DeleteUser(string Id)
         {
-
+            new CryptoAccount().DeleteUser(Id);
+            return RedirectToAction(nameof(ViewUsers));
         }
         public ActionResult DeleteTransaction(int id)
         {
