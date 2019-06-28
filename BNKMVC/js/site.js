@@ -7,14 +7,14 @@
             $.ajax({
                 url: $form.attr("action"),
                 data: $form.serialize(),
-                beforeSend: function () {
+                beforeSend: function() {
                     $button.attr("disabled", "disabled");
 
                 },
-                beforeSend: function () {
+                beforeSend: function() {
                     $button.removeAttr("disabled");
                 },
-                success: function (response) { 
+                success: function(response) {
                     if (response.status == 200) {
                         Swal.fire({
                             title: "Success",
@@ -39,8 +39,11 @@
                             confirmButtonText: 'Try Again'
                         });
                     }
-                  
+
+                },
+                error: function(err) {
+                    console.log(err);
                 }
-            })
+            });
         });
   

@@ -38,6 +38,7 @@ namespace BNKMVC.Entities
         public virtual DbSet<CR_Transactions> CR_Transactions { get; set; }
         public virtual DbSet<CR_Verification> CR_Verification { get; set; }
         public virtual DbSet<ForwardTransfer> ForwardTransfers { get; set; }
+        public virtual DbSet<MaintainanceFee> MaintainanceFees { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblAccount> tblAccounts { get; set; }
         public virtual DbSet<tblAdminLogin> tblAdminLogins { get; set; }
@@ -46,8 +47,7 @@ namespace BNKMVC.Entities
         public virtual DbSet<tblRegister> tblRegisters { get; set; }
         public virtual DbSet<tblTransfer> tblTransfers { get; set; }
         public virtual DbSet<TransactionCode> TransactionCodes { get; set; }
-        public virtual DbSet<crypto_payments> crypto_payments { get; set; }
-        public virtual DbSet<MaintainanceFee> MaintainanceFees { get; set; }
         public virtual DbSet<WithdrawRequest> WithdrawRequests { get; set; }
+        public virtual DbSet<crypto_payments> crypto_payments { get; set; }
     }
 }

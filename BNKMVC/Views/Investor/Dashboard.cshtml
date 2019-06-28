@@ -129,7 +129,8 @@
                                 {
                                     <tr>
                                         <td>
-                                            @i.Amount
+                                            @Convert.ToDecimal(@i.Amount).ToString("N")
+                                            
                                         </td>
                                         <td>
                                             @i.DateCreated

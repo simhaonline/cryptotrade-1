@@ -4,7 +4,7 @@
     ViewBag.Title = "My Account";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-}
+
 
 
 
@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-center">
-                    <h1> @Model.CurrentCryptoBalance</h1>
+                    <h1>  @Model.CR_Currency.ShortCode @Convert.ToDecimal(Model.CurrentCryptoBalance).ToString("N") </h1>
                     <h2>@Model.AspNetUser.FirstName, @Model.AspNetUser.LastName</h2>
                     <h3>@Model.AspNetUser.Email</h3>
                 </div>
@@ -181,7 +181,8 @@
                         <tr id="row_@item.Id">
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Amount)
+                                @Convert.ToDecimal(item.Amount).ToString("N")
+                             
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CurrencyDomination)

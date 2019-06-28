@@ -1,5 +1,319 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
+
+<!--
+  -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="~/frontend/assets/img/ion.ico" />
+    <title>DynoInvest - Most Profitable trading platform</title>
+    <!-- Bootstrap core CSS -->
+    <link href="~/frontend/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font  -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,600,600i,700,700i|Roboto:400,400i,500,500i,700,700i" rel="stylesheet">
+    <!-- icofont icon -->
+    <link rel="stylesheet" href="~/frontend/assets/css/icofont.css">
+    <!-- font awesome icon -->
+    <link rel="stylesheet" href="~/frontend/assets/css/fontawesome-all.min.css">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/frontend/assets/css/animate.css">
+    <!--- meanmenu Css-->
+    <link rel="stylesheet" href="~/frontend/assets/css/meanmenu.min.css" media="all" />
+    <!--- owl carousel Css-->
+    <link rel="stylesheet" href="~/frontend/assets/owlcarousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/frontend/assets/owlcarousel/css/owl.theme.default.min.css">
+    <!-- venobox -->
+    <link rel="stylesheet" href="~/frontend/assets/venobox/css/venobox.css" />
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/frontend/assets/css/style.css">
+
+    <link rel="stylesheet" href="~/frontend/assets/css/Site.css">
+
+    <!-- Responsive  CSS -->
+    <link rel="stylesheet" href="~/frontend/assets/css/responsive.css">
+
+    @RenderSection("css", required: false)
+
+
+</head>
+
+<body>
+
+    <!-- START PRELOADER -->
+    <div id="page-preloader">
+        <div class="theme-loader">DynoInvest</div>
+    </div>
+    <!-- END PRELOADER -->
+    <!-- START HEADER SECTION -->
+    <header class="main-header header-1">
+        <!-- START TOP AREA -->
+        <div class="top-area">
+            <div class="auto-container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 col-sm-12 col-12">
+                        <div class="info-menu">
+                            <ul>
+                                <li><a href="#"><i class="icofont icofont-time"></i> Opening Hours - Mon to Sat: 9AM to 5PM</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+                        <div class="info-menu">
+                            <ul>
+                                <li><a href="@Url.Action("Login","Account")"><i class="icofont icofont-login"></i> Login </a></li>
+                                <li><a href="@Url.Action("Register","Account")"><i class="icofont icofont-user-alt-5"></i> Register </a></li>
+                            
+                                @*<li class="dropdown">
+                                    <a href="#">
+                                        <i class="icofont icofont-live-support"></i> Language
+                                        <span class="icofont icofont-caret-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="google.com">English</a></li>
+                                        <li><a href="#">Arabic</a></li>
+                                        <li><a href="#">Chinese</a></li>
+                                        <li><a href="#">German</a></li>
+                                        <li><a href="#">Portuguese</a></li>
+                                        <li><a href="#">Spanish</a></li>
+                                    </ul>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+            </div>
+        </div>
+        <!-- END TOP AREA -->
+        <!-- START LOGO AREA -->
+        <div class="logo-area">
+            <div class="auto-container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 col-sm-6 col-7 mx-auto pl-0 mb-lg-0 mb-5">
+                        <div class="logo">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img class="img-fluid" src="~/HTML/img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+                        <div class="header-info-box">
+                            <div class="header-info-icon">
+                                <i class="fa fa-envelope-open"></i>
+                            </div>
+                            <p>Email Us</p>
+                            <h6>support@dynoinvest.ml</h6>
+                        </div>
+                        <div class="header-info-box">
+                            <div class="header-info-icon">
+                                <i class="icofont icofont-phone"></i>
+                            </div>
+                            <p>Call Us</p>
+                            @*<h6>+1 (650) 334-4622</h6>*@ 
+                            <h6> <a href="tel:+441173255142">+441173255142</a></h6>
+                            <h6> <a href="tel:+33757935634">+33757935634</a></h6>
+                        </div>
+                        <div class="header-info-box">
+                            <a href="@Url.Action("Register","Account")" class="quote-btn">Start Now <i class="icofont icofont-caret-right"></i></a>
+                        </div>
+                    </div> 
+                  
+                    <!-- end col -->
+                </div>
+            </div>
+        </div>
+        <!-- END LOGO AREA -->
+        <!-- START NAVIGATION AREA -->
+        <div class="sticky-menu">
+            <div class="mainmenu-area">
+                <div class="auto-container">
+                    <div class="row">
+                        <div class="col-lg-8 d-none d-lg-block d-md-none">
+                            <nav class="navbar navbar-expand-lg justify-content-left">
+                                <ul class="navbar-nav">
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")" class="active nav-link">Home</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("About","Home")" class="nav-link">About Us</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Index","Home")#Service" class="nav-link">Service Plan</a>
+
+                                    </li>
+                                  
+
+                                    <li><a href="@Url.Action("Contact","Home")" class="nav-link">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="col-lg-3 d-none d-lg-block d-md-none text-right pr-0">
+                        @Html.Partial("_LoginPartial")
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- END NAVIGATION AREA -->
+    </header>
+    <!-- END HEADER SECTION -->
+  @RenderBody()
+    <!-- END CALLTOACTION SECTION -->
+    <!-- START FOOTER -->
+    <footer>
+        <!--Footer top -->
+        <div class="footer-top overlay section-back-image-2" data-background="assets/img/bg/traders.jpg">
+            <div class="auto-container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-lg-0 mb-md-5 mb-5 footer-widget">
+                        <div class="footer-logo col-12 p-0">
+                            <a href="index.html">
+                                <div class="footer-logo-text">
+                                    <h3>DynoInvest</h3>
+                                    <p>Forex Trading Platform</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="about mb-2">
+                            <p>
+                                For more than a 5 years, DynoInvest has been a leader in
+                                the global Forex revolution. It is one of the upcoming and
+                                world’s leading social trading network, with thousands of registered
+                                users and an array of innovative trading and investment tools, ranging from the series of bitcoin and others.
+                            </p>
+                        </div>
+                        <div class="footer-news">
+                            <form action="#">
+                                <div class="row">
+                                    <div class="form-group col-lg-9 col-md-9 col-8 pr-lg-0 pr-md-0 pr-2">
+                                        <input name="semail" class="form-control" placeholder="Email Address" type="email">
+                                    </div>
+                                    <button type="submit" class="col-lg-3 col-md-2 col-2 p-0 fnews-btn"><i class="fa fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End Widget -->
+
+                    <!-- End Widget -->
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-0 footer-widget">
+                        <div class="footer-section-title col-12 no-padding">
+                            <h3>Engage Us</h3>
+                        </div>
+                        <!-- END SECTION TITLE -->
+                        <div class="col-12 footer-widget-inner">
+                            <div class="single-fcontact mb-2">
+                                <div class="single-fcontact-icon">
+                                    <i class="icofont icofont-pin"></i>
+                                </div>
+                                <div class="single-fcontact-des">
+                                    <h6>DynoInvest</h6>
+                                    <p>200 West Michigan Avenue, Battle Creek, USA </p>
+                                </div>
+                            </div>
+                            <div class="single-fcontact mb-2">
+                                <div class="single-fcontact-icon">
+                                    <i class="icofont icofont-mobile-phone"></i>
+                                </div>
+                                <div class="single-fcontact-des">
+                                    <h6>Phone Number:</h6>
+                                    @*<p>+ 1 (650)-334-4622</p>*@
+                                    <p> <a href="tel:+441173255142">+441173255142</a></p>
+                                    <p> <a href="tel:+33757935634">+33757935634</a></p>
+
+                                </div>
+                            </div>
+                            <div class="single-fcontact">
+                                <div class="single-fcontact-icon">
+                                    <i class="icofont icofont-eye-alt"></i>
+                                </div>
+                                <div class="single-fcontact-des">
+                                    <h6>Door Open:</h6>
+                                    <p>Mon - Sun : 09:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Widget -->
+                </div>
+            </div>
+        </div>
+
+        <!--Footer Bottom -->
+        <div class="copyright">
+            <div class="auto-container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-lg-0 mb-md-0 mb-4 footer-menu text-center text-lg-left text-md-left">
+                        <p>
+                            Risk Disclosure: before starting to trade on currency exchange markets, please make sure that you understand the risks connected with trading using leverage and that you have sufficient level of training.
+
+                            Privacy Policy describes in which way the company collects, keeps and protects clients' personal data.
+                        </p>
+                        <ul>
+                            <li><a href="#">DynoInvest</a> </li>
+                            <li><a href="#">Terms & Condition</a> </li>
+                            <li><a href="#">Refund Policy</a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 copyright-text text-center text-lg-right text-md-right">
+                        <p><a href="#" target="_blank">DynoInvest</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- END FOOTER -->
+    <!-- Latest jQuery -->
+    <script src="~/frontend/assets/js/jquery-2.2.4.min.js"></script>
+    <!-- popper js -->
+    <script src="~/frontend/assets/bootstrap/js/popper.min.js"></script>
+    <!-- Latest compiled and minified Bootstrap -->
+    <script src="~/frontend/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- meanmenu min js  -->
+    <script src="~/frontend/assets/js/jquery.meanmenu.min.js"></script>
+    <!-- Sticky JS -->
+    <script src="~/frontend/assets/js/jquery.sticky.js"></script>
+    <!-- owl-carousel min js  -->
+    <script src="~/frontend/assets/owlcarousel/js/owl.carousel.min.js"></script>
+    <!-- jquery appear js  -->
+    <script src="~/frontend/assets/js/jquery.appear.js"></script>
+    <!-- countTo js -->
+    <script src="~/frontend/assets/js/jquery.inview.min.js"></script>
+    <!-- venobox js -->
+    <script src="~/frontend/assets/venobox/js/venobox.min.js"></script>
+    <script src="~/frontend/assets/js/masonry.pkgd.min.js"></script>
+    <!-- scroll to top js -->
+    <script src="~/frontend/assets/js/scrolltopcontrol.js"></script>
+    <!-- WOW - Reveal Animations When You Scroll -->
+    <script src="~/frontend/assets/js/wow.min.js"></script>
+    <!-- scripts js -->
+    <script src="~/frontend/assets/js/scripts.js"></script>
+    <!-- chart js -->
+    <script src="~/frontend/assets/js/canvasjs.min.js"></script>
+<script src="~/frontend/assets/js/canvasjs.activeone.js"></script>
+
+@RenderSection("scripts", required: false)
+
+</body>
+
+
+
+</html>
+
+
+@*<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -23,7 +337,7 @@
     <link href="~/Conbe/assets/css/main.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Conbe/assets/css/site.css">
     @RenderSection("css", required: false)
-    
+
 
 </head>
 <body class="dark-theme">
@@ -35,7 +349,7 @@
                     <nav class="navbar navbar-expand-md" id="mainNav">
                         <!--logo-->
                         <a class="navbar-brand mr-5" href="#">
-                            <img class="" src="~/Conbe/assets/img/crypyoLogo2.png" alt="" />
+                            <img class="" src="~/frontend/~/HTML/img/logo.png" alt="" />
                         </a>
                         <!--logo-->
                         <!--responsive toggle icon-->
@@ -81,523 +395,522 @@
         </div>
     </header>
     <!--header end-->
-<!--banner start--> 
+    <!--banner start-->
 
-@RenderBody()
-<!--
-    @*<div class="hero-banner" id="home">
-                <!-- <div class="banner-img">
-                    <img src="~/Conbe/assets/img/banner-bg.png" alt=""/>
-                </div> -->
-                <div class="banner-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <h1 class="title wow fadeInUp" data-wow-delay=".2s">Combe. High Chance of success</h1>
-                                <p class="here-sub-title wow fadeInUp" data-wow-delay=".3s">
-                                    Most Profitable Trading Platform
-                                </p>
-                                <a href="#" class="btn btn-gradient btn-pill text-uppercase wow fadeInUp" data-wow-delay=".4s">Get Notified</a>
-                                <div class="mt-md-5 mt-3 sm-txtwow fadeInUp" data-wow-delay=".5s">
-                                    Need help? <a href="javascript:;">Register Now</a>
+    @RenderBody()
+    <!--
+        @*<div class="hero-banner" id="home">
+                    <!-- <div class="banner-img">
+                        <img src="~/frontend/~/Conbe/assets/img/banner-bg.png" alt=""/>
+                    </div> -->
+                    <div class="banner-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <h1 class="title wow fadeInUp" data-wow-delay=".2s">Combe. High Chance of success</h1>
+                                    <p class="here-sub-title wow fadeInUp" data-wow-delay=".3s">
+                                        Most Profitable Trading Platform
+                                    </p>
+                                    <a href="#" class="btn btn-gradient btn-pill text-uppercase wow fadeInUp" data-wow-delay=".4s">Get Notified</a>
+                                    <div class="mt-md-5 mt-3 sm-txtwow fadeInUp" data-wow-delay=".5s">
+                                        Need help? <a href="javascript:;">Register Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--banner end-->
-            <!--partner section start-->
-            <!--partner section end-->
-            <!--section start-->
-            <div id="about">
-                <section class="section-gap section-dark-bg">
-                    <div class="container">
-                        <!--section title-->
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <h2 class="wow fadeInUp" data-wow-delay=".1s">Cryto Forex Brokers</h2>
-                                <div class="section-title">
-                                    <p class=" wow fadeInUp" data-wow-delay=".2s">
-                                        Explore an ever-expanding variety of cryptocurrencies, and buy and sell the underlying asset on eToro’s Cryptocurrency Trading Platform. Build your crypto-based portfolio and enjoy benefits not offered by most exchanges, such as near-immediate execution of market orders.
-                                    </p>
-                                </div>
-                                <a href="javascript:;" class="btn btn-white btn-pill text-uppercase wow fadeInUp" data-wow-delay=".25s">Learn More</a>
-                            </div>
-                        </div><!--section title-->
-                        <div class="row mt-lg-5 mt-3 pt-lg-5 mt-md-5">
-                            <div class="col-md-6 col-gap mb-md-0 mb-3">
-                                <div class="card text-center py-md-3 px-md-4 wow fadeInUp" data-wow-delay=".2s">
-                                    <div class="card-body">
-                                        <img src="~/Conbe/assets/img/icon1.svg" width="110" alt="" />
-                                        <h4 class="my-4 text-purple-color">Reputation, Decentralized</h4>
-                                        <p>
-                                            Combe Preferred by most traders and investors
-                                            Easy-to-use yet powerful platform. Fast, reliable and available across multiple devices. All instruments and asset classes at your fingertips.
-                                            Combe is a web-based application and works on any PC or MAC with dedicated apps for Android, iPhone and iPad.
+                <!--banner end-->
+                <!--partner section start-->
+                <!--partner section end-->
+                <!--section start-->
+                <div id="about">
+                    <section class="section-gap section-dark-bg">
+                        <div class="container">
+                            <!--section title-->
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <h2 class="wow fadeInUp" data-wow-delay=".1s">Cryto Forex Brokers</h2>
+                                    <div class="section-title">
+                                        <p class=" wow fadeInUp" data-wow-delay=".2s">
+                                            Explore an ever-expanding variety of cryptocurrencies, and buy and sell the underlying asset on eToro’s Cryptocurrency Trading Platform. Build your crypto-based portfolio and enjoy benefits not offered by most exchanges, such as near-immediate execution of market orders.
                                         </p>
                                     </div>
+                                    <a href="javascript:;" class="btn btn-white btn-pill text-uppercase wow fadeInUp" data-wow-delay=".25s">Learn More</a>
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-gap">
-                                <div class="card text-center py-md-3 px-md-4 wow fadeInUp" data-wow-delay=".3s">
-                                    <div class="card-body">
-                                        <img src="~/Conbe/assets/img/icon2.svg" width="110" alt="" />
-                                        <h4 class="my-4 text-paste-color">Start Using Real Expertise</h4>
-                                        <p>
-                                            <b>Cryptocurrency Preferred by professional traders</b>
-                                            Our downloadable, fully customisable platform for advanced traders. SaxoTraderPRO brings an intuitive, multi-screen platform to Windows and Mac.
-
-                                            When you’re on the move you can still trade from the same account using the SaxoTraderGO mobile and tablet apps.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <!--section end-->
-            <div id="tools">
-                <!--section start-->
-                <section class="section-gap pb-0">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-6 col-gap mb-md-0 mb-3">
-                                <div class="wow fadeInUp" data-wow-delay=".2s">
-                                    <img src="~/Conbe/assets/img/art1.png" alt="" />
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-gap">
-                                <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".3s"> Furtue</h2>
-                                <p class="wow fadeInUp" data-wow-delay=".35s">
-                                    Since 2007, Combe has consistently taken measures to ensure its platform makes online trading and investing accessible to anyone. By keeping a balance between giving easy access to beginners and improving upon important elements for more experienced traders, eToro has solidified itself as the world’s leading social trading platform. eToro offers both short-term options for day traders and long-term options for investors, such as our innovative CopyFunds™ – a fully managed thematic portfolio. We also acknowledge that different traders have different risk-appetites, and offer instruments varying from low to high risk. Our tools are easy to use, and we make all of the information on the platform accessible on both our web interface and in our mobile app. It is no wonder that more than 6 million people worldwide choose eToro as their preferred trading platform.
-
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end-->
-                <!--section start-->
-                <section class="section-gap">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-5 col-gap mb-md-0 mb-3">
-                                <div class="wow fadeInUp" data-wow-delay=".35s">
-                                    <img src="~/Conbe/assets/img/art2.png" alt="" />
-                                </div>
-                            </div>
-                            <div class="col-md-7 col-gap order-md-first">
-                                <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".2s">Are you an Forex Trading Expert?</h2>
-                                <div class="row">
-                                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".25s">
-                                        <h4>Story</h4>
-                                        <p>
-                                            For more than a decade, Combe has been a leader in the global Fintech revolution. It is the world’s leading social trading network, with millions of registered users and an array of innovative trading and investment tools.
-
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                        <h4>Transparent</h4>
-                                        <p>
-
-                                            The only way to make sure our clients get the full benefits of our social features and have all the information they need to use them, is by operating in full transparency. On eToro, each client who can be copied has their profile available for all other users to see, including valuable information such as past performance, gain, risk score
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end-->
-            </div>
-
-            <div id="whyhow">
-                <!--section start-->
-                <section class="section-gap">
-                    <div class="container">
-                        <!--section title-->
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <div class="section-title wow fadeInUp" data-wow-delay=".2s">
-                                    <h3>What we Offer</h3>
-                                </div>
-                            </div>
-                        </div><!--section title-->
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
-                                <i class="bi  bi-user-ID f-icon"></i>
-                                <h4 class="my-4">Personal relationship managers</h4>
-                                <p>An individual point of contact for platform, trading and account queries.</p>
-                            </div>
-                            <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
-                                <i class="bi  bi-scale f-icon"></i>
-                                <h4 class="my-4">Dedicated sales traders</h4>
-                                <p>Live market commentary, risk management and post-trade support from our senior sales traders.</p>
-                            </div>
-                            <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
-                                <i class="bi bi-chat-bubble-single f-icon"></i>
-                                <h4 class="my-4">In-house analysts</h4>
-                                <p>
-                                    News and commentary on all major asset classes from our global team of market analysts – #SaxoStrats.
-                                </p>
-                            </div>
-                            <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
-                                <i class="bi bi-support f-icon"></i>
-                                <h4 class="my-4">24/7 Support</h4>
-                                <p>
-                                    With offices in 16 countries, a team of experts is on call 24/5 to assist with technical and account questions.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end-->
-                <!--section start-->
-                <section class="section-gap">
-                    <div class="container">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-7 col-gap">
-                                <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".2s">Why use Combe as your trading platform?</h2>
-                                <p class=" wow fadeInUp" data-wow-delay=".3s">We Offer a CopyTrader feature which is a brilliant way to automate some of your trading habits. By allocating some of your funds to copy the trading actions of experienced traders, you can benefit from their experience, and even expand your knowledge. Our CopyTrader feature and Popular Investor program are so effective, we’ve moulded them into a new financial instrument called CopyFunds™. These investment products use a sophisticated algorithm to aggregate the collective knowledge of our most successful traders into one fully managed portfolio you can invest in.</p>
-                                <a href="javascript:;" class="btn btn-purple btn-pill text-uppercase wow fadeInUp" data-wow-delay=".4s">get notified</a>
-                            </div>
-                            <div class="col-md-5 col-gap wow fadeInUp" data-wow-delay=".5s">
-                                <img class="py-4" src="~/Conbe/assets/img/art3.png" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--section end-->
-                <!--section start-->
-                <section class="section-gap section-dark-bg">
-                    <div class="container">
-                        <!--section title-->
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h2 class=" wow fadeInUp" data-wow-delay=".2s">How to get started</h2>
-                                    <p class=" wow fadeInUp" data-wow-delay=".3s"> to find the ones who get it right. We trust our future with experts everyday</p>
-                                </div>
-                            </div>
-                        </div><!--section title-->
-                        <div class="row d-flex align-items-center wow fadeInUp" data-wow-delay=".4s">
-                            <div class="col-md-12 col-gap">
-                                <div class="owl-carousel owl-theme js_steps_carousel">
-                                    <div class="row">
-                                        <div class="col-md-12" data-dot="<i class='bi bi-bond'></i> ">
-                                            <div class="steps-content">
-                                                <h3 class="mb-md-3">Register </h3>
-                                                <p>Click on Sign Up, Create an Account and Verify your account</p>
-                                                <a href="javascript:showRegisterModal();">Sign Up now</a>
-                                            </div>
+                            </div><!--section title-->
+                            <div class="row mt-lg-5 mt-3 pt-lg-5 mt-md-5">
+                                <div class="col-md-6 col-gap mb-md-0 mb-3">
+                                    <div class="card text-center py-md-3 px-md-4 wow fadeInUp" data-wow-delay=".2s">
+                                        <div class="card-body">
+                                            <img src="~/frontend/~/Conbe/assets/img/icon1.svg" width="110" alt="" />
+                                            <h4 class="my-4 text-purple-color">Reputation, Decentralized</h4>
+                                            <p>
+                                                Combe Preferred by most traders and investors
+                                                Easy-to-use yet powerful platform. Fast, reliable and available across multiple devices. All instruments and asset classes at your fingertips.
+                                                Combe is a web-based application and works on any PC or MAC with dedicated apps for Android, iPhone and iPad.
+                                            </p>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12" data-dot="<i class='bi bi-server'></i>">
-                                            <div class="steps-content">
-                                                <h3 class="mb-md-3">Login to your account</h3>
-                                                <p>After Confiming your account login</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12" data-dot=" <i class='bi bi-battery'></i> ">
-                                            <div class="steps-content">
-                                                <h3 class="mb-md-3">Pratice Demo Account</h3>
-                                                <p>Pratice with demo account, to get a feel on how trading works</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12" data-dot="<i class='bi bi-terminal'></i> ">
-                                            <div class="steps-content">
-                                                <h3 class="mb-md-3">Real Account</h3>
-                                                <p>After Pratice Fund your Account</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12" data-dot="<i class='bi bi-money-bag'></i>">
-                                            <div class="steps-content">
-                                                <h3 class="mb-md-3">Re-cyclye</h3>
-                                                <p>
-                                                    No matter how your success play, always Re-cyclye, trade more and Earn More
-                                                </p>
-                                            </div>
+                                </div>
+                                <div class="col-md-6 col-gap">
+                                    <div class="card text-center py-md-3 px-md-4 wow fadeInUp" data-wow-delay=".3s">
+                                        <div class="card-body">
+                                            <img src="~/frontend/~/Conbe/assets/img/icon2.svg" width="110" alt="" />
+                                            <h4 class="my-4 text-paste-color">Start Using Real Expertise</h4>
+                                            <p>
+                                                <b>Cryptocurrency Preferred by professional traders</b>
+                                                Our downloadable, fully customisable platform for advanced traders. SaxoTraderPRO brings an intuitive, multi-screen platform to Windows and Mac.
+
+                                                When you’re on the move you can still trade from the same account using the SaxoTraderGO mobile and tablet apps.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-                <!--section end-->
-            </div>
-
-            <div id="team">
-                <!--team section start-->
-                <section class="section-gap pb-0">
-                    <div class="container">
-                        <!--section title-->
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h2 class="wow fadeInUp" data-wow-delay=".2s">Tesimony of Old and New Client</h2>
-                                    <p class=" wow fadeInUp" data-wow-delay=".3s">Our Client are happy to share their testimony with you</p>
-                                </div>
-                            </div>
-                        </div><!--section title-->
-                        <div class="row text-md-left text-center">
-                            <div class="col-md-3 wow fadeInUp" data-wow-delay=".4s">
-                                <img class="rounded mb-md-0 mb-3" src="~/Conbe/assets/img/team2.jpg" alt="" />
-                                <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
-                                <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
-                            </div>
-                            <div class="col-md-3 wow fadeInUp" data-wow-delay=".5s">
-                                <img class="rounded mb-md-0 mb-3" src="~/Conbe/assets/img/team3.jpg" alt="" />
-                                <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
-                                <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
-
-                            </div>
-                            <div class="col-md-3 wow fadeInUp" data-wow-delay=".6s">
-                                <img class="rounded mb-md-0 mb-3" src="~/Conbe/assets/img/team4.jpg" alt="" />
-                                <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
-                                <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
-
-                            </div>
-                            <div class="col-md-3 wow fadeInUp" data-wow-delay=".6s">
-                                <img class="rounded mb-md-0 mb-3" src="~/Conbe/assets/img/team4.jpg" alt="" />
-                                <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
-                                <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--team section end-->
-            </div>
-            <div id="faq">
-                <!--faq section start-->
-                <section class="section-gap">
-                    <div class="container">
-                        <!--section title-->
-                        <div class="row text-center">
-                            <div class="col-12">
-                                <div class="section-title">
-                                    <h2 class="wow fadeInUp" data-wow-delay=".2s">Frequently Asked Question</h2>
-                                    <p class=" wow fadeInUp" data-wow-delay=".3s">
-                                        When looking at its layout. The point of using Lorem Ipsum <br />
-                                        is that it has a more-or-less normal distribution
-                                    </p>
-                                </div>
-                            </div>
-                        </div><!--section title-->
-                        <div class="row">
-                            <div class="col-md-6 col-gap">
-                                <div class="accordion wow fadeInUp" data-wow-delay=".4s" id="accordion-1">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-1">
-                                                    What is Forex Trade?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-1-1" class="collapse" data-parent="#accordion-1">
-                                            <div class="card-body pt-0">
-                                                <p>
-                                                    Forex, also known as foreign exchange, FX or currency trading, is a decentralized global market where all the world's currencies trade. The forex market is the largest, most liquid market in the world with an average daily trading volume exceeding $5 trillion.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-2">
-                                                    What are token holder benifits?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-1-2" class="collapse" data-parent="#accordion-1">
-                                            <div class="card-body pt-0">
-                                                <p>
-                                                    Content 1
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-3">
-                                                    What is Leverage?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-1-3" class="collapse" data-parent="#accordion-1">
-                                            <div class="card-body pt-0">
-                                                <p>
-                                                    Leverage Content
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-4">
-                                                    What is cryptocurrency?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-1-4" class="collapse" data-parent="#accordion-1">
-                                            <div class="card-body pt-0">
-                                                <p>
-                                                    cryptocurrency Content
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-gap">
-                                <div class="accordion wow fadeInUp" data-wow-delay=".5s" id="accordion-2">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-1">
-                                                    How can i Contribute to the trade?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-2-1" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body pt-0">
-                                                <p>#</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-2">
-                                                    How can i deposite currency?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-2-2" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body pt-0">
-                                                <p>#</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-3">
-                                                    How can I withdraw currency?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-2-3" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body pt-0">
-                                                <p>#</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>
-                                                <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-4">
-                                                    Is there any learning curve for begginers?
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapse-2-4" class="collapse" data-parent="#accordion-2">
-                                            <div class="card-body pt-0">
-                                                <p>#</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 text-center mt-lg-5 mt-3 pt-lg-3 pt-0 sm-txt wow fadeInUp" data-wow-delay=".6s">
-                                <a href="javascript:;" class="view-link">View all Questions</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--faq section end-->
-            </div>
-            <div id="login" class=" wow fadeInUp" data-wow-delay=".2s">
-                <!--registration section start-->
-                <section class="signin-row">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="javascript:;" class="registration-bg" data-toggle="modal" data-target="#registerModal">
-                                    <span class="title">Register</span>
-                                    <p>Join the new era of cryptocurrency exchange</p>
-                                </a>
-                                <!-- register modal -->
-
-                                <a href="javascript:;" class="login-bg" data-toggle="modal" data-target="#loginModal">
-                                    <span class="title">Sign In</span>
-                                    <p>Access the cryptocurrency experience you deserve</p>
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!--registration section end-->
-            </div>
-            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="row no-gutters">
-                            <div class="col-md-5">
-                                <img class="login-banner-img" src="~/Conbe/assets/img/login-img.png" alt="" />
-                            </div>
-                            <div class="col-md-7">
-                                <!--register form-->
-                                <div class="login-form p-5">
-                                    <h4 class="text-uppercase mt-0 text-center mb-5">Register</h4>
-                                    <form>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="inputUser10" placeholder="Username / email / phone">
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input type="password" class="form-control" id="InputPassword10" placeholder="Password">
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input type="password" class="form-control" id="confirmPassword10" placeholder="Confirm Password">
-                                        </div>
-                                        <div class="form-group clearfix">
-                                            <button type="submit" class="btn btn-primary float-right">Register</button>
-                                        </div>
-                                        <div class="text-center mt-5">
-                                            Already have an account? <a href="#" class="text-capitalize f12">Login</a>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!--/register form-->
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-            </div>*@
-    -->
-    
+                <!--section end-->
+                <div id="tools">
+                    <!--section start-->
+                    <section class="section-gap pb-0">
+                        <div class="container">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-6 col-gap mb-md-0 mb-3">
+                                    <div class="wow fadeInUp" data-wow-delay=".2s">
+                                        <img src="~/frontend/~/Conbe/assets/img/art1.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-gap">
+                                    <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".3s"> Furtue</h2>
+                                    <p class="wow fadeInUp" data-wow-delay=".35s">
+                                        Since 2007, Combe has consistently taken measures to ensure its platform makes online trading and investing accessible to anyone. By keeping a balance between giving easy access to beginners and improving upon important elements for more experienced traders, eToro has solidified itself as the world’s leading social trading platform. eToro offers both short-term options for day traders and long-term options for investors, such as our innovative CopyFunds™ – a fully managed thematic portfolio. We also acknowledge that different traders have different risk-appetites, and offer instruments varying from low to high risk. Our tools are easy to use, and we make all of the information on the platform accessible on both our web interface and in our mobile app. It is no wonder that more than 6 million people worldwide choose eToro as their preferred trading platform.
+
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <!--section start-->
+                    <section class="section-gap">
+                        <div class="container">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-5 col-gap mb-md-0 mb-3">
+                                    <div class="wow fadeInUp" data-wow-delay=".35s">
+                                        <img src="~/frontend/~/Conbe/assets/img/art2.png" alt="" />
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-gap order-md-first">
+                                    <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".2s">Are you an Forex Trading Expert?</h2>
+                                    <div class="row">
+                                        <div class="col-md-6 wow fadeInUp" data-wow-delay=".25s">
+                                            <h4>Story</h4>
+                                            <p>
+                                                For more than a decade, Combe has been a leader in the global Fintech revolution. It is the world’s leading social trading network, with millions of registered users and an array of innovative trading and investment tools.
+
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 wow fadeInUp" data-wow-delay=".3s">
+                                            <h4>Transparent</h4>
+                                            <p>
+
+                                                The only way to make sure our clients get the full benefits of our social features and have all the information they need to use them, is by operating in full transparency. On eToro, each client who can be copied has their profile available for all other users to see, including valuable information such as past performance, gain, risk score
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                </div>
+
+                <div id="whyhow">
+                    <!--section start-->
+                    <section class="section-gap">
+                        <div class="container">
+                            <!--section title-->
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div class="section-title wow fadeInUp" data-wow-delay=".2s">
+                                        <h3>What we Offer</h3>
+                                    </div>
+                                </div>
+                            </div><!--section title-->
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".3s">
+                                    <i class="bi  bi-user-ID f-icon"></i>
+                                    <h4 class="my-4">Personal relationship managers</h4>
+                                    <p>An individual point of contact for platform, trading and account queries.</p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
+                                    <i class="bi  bi-scale f-icon"></i>
+                                    <h4 class="my-4">Dedicated sales traders</h4>
+                                    <p>Live market commentary, risk management and post-trade support from our senior sales traders.</p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".5s">
+                                    <i class="bi bi-chat-bubble-single f-icon"></i>
+                                    <h4 class="my-4">In-house analysts</h4>
+                                    <p>
+                                        News and commentary on all major asset classes from our global team of market analysts – #SaxoStrats.
+                                    </p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
+                                    <i class="bi bi-support f-icon"></i>
+                                    <h4 class="my-4">24/7 Support</h4>
+                                    <p>
+                                        With offices in 16 countries, a team of experts is on call 24/5 to assist with technical and account questions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <!--section start-->
+                    <section class="section-gap">
+                        <div class="container">
+                            <div class="row d-flex align-items-center">
+                                <div class="col-md-7 col-gap">
+                                    <h2 class="mb-md-5 wow fadeInUp" data-wow-delay=".2s">Why use Combe as your trading platform?</h2>
+                                    <p class=" wow fadeInUp" data-wow-delay=".3s">We Offer a CopyTrader feature which is a brilliant way to automate some of your trading habits. By allocating some of your funds to copy the trading actions of experienced traders, you can benefit from their experience, and even expand your knowledge. Our CopyTrader feature and Popular Investor program are so effective, we’ve moulded them into a new financial instrument called CopyFunds™. These investment products use a sophisticated algorithm to aggregate the collective knowledge of our most successful traders into one fully managed portfolio you can invest in.</p>
+                                    <a href="javascript:;" class="btn btn-purple btn-pill text-uppercase wow fadeInUp" data-wow-delay=".4s">get notified</a>
+                                </div>
+                                <div class="col-md-5 col-gap wow fadeInUp" data-wow-delay=".5s">
+                                    <img class="py-4" src="~/frontend/~/Conbe/assets/img/art3.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                    <!--section start-->
+                    <section class="section-gap section-dark-bg">
+                        <div class="container">
+                            <!--section title-->
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div class="section-title">
+                                        <h2 class=" wow fadeInUp" data-wow-delay=".2s">How to get started</h2>
+                                        <p class=" wow fadeInUp" data-wow-delay=".3s"> to find the ones who get it right. We trust our future with experts everyday</p>
+                                    </div>
+                                </div>
+                            </div><!--section title-->
+                            <div class="row d-flex align-items-center wow fadeInUp" data-wow-delay=".4s">
+                                <div class="col-md-12 col-gap">
+                                    <div class="owl-carousel owl-theme js_steps_carousel">
+                                        <div class="row">
+                                            <div class="col-md-12" data-dot="<i class='bi bi-bond'></i> ">
+                                                <div class="steps-content">
+                                                    <h3 class="mb-md-3">Register </h3>
+                                                    <p>Click on Sign Up, Create an Account and Verify your account</p>
+                                                    <a href="javascript:showRegisterModal();">Sign Up now</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12" data-dot="<i class='bi bi-server'></i>">
+                                                <div class="steps-content">
+                                                    <h3 class="mb-md-3">Login to your account</h3>
+                                                    <p>After Confiming your account login</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12" data-dot=" <i class='bi bi-battery'></i> ">
+                                                <div class="steps-content">
+                                                    <h3 class="mb-md-3">Pratice Demo Account</h3>
+                                                    <p>Pratice with demo account, to get a feel on how trading works</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12" data-dot="<i class='bi bi-terminal'></i> ">
+                                                <div class="steps-content">
+                                                    <h3 class="mb-md-3">Real Account</h3>
+                                                    <p>After Pratice Fund your Account</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12" data-dot="<i class='bi bi-money-bag'></i>">
+                                                <div class="steps-content">
+                                                    <h3 class="mb-md-3">Re-cyclye</h3>
+                                                    <p>
+                                                        No matter how your success play, always Re-cyclye, trade more and Earn More
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--section end-->
+                </div>
+
+                <div id="team">
+                    <!--team section start-->
+                    <section class="section-gap pb-0">
+                        <div class="container">
+                            <!--section title-->
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div class="section-title">
+                                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Tesimony of Old and New Client</h2>
+                                        <p class=" wow fadeInUp" data-wow-delay=".3s">Our Client are happy to share their testimony with you</p>
+                                    </div>
+                                </div>
+                            </div><!--section title-->
+                            <div class="row text-md-left text-center">
+                                <div class="col-md-3 wow fadeInUp" data-wow-delay=".4s">
+                                    <img class="rounded mb-md-0 mb-3" src="~/frontend/~/Conbe/assets/img/team2.jpg" alt="" />
+                                    <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
+                                    <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
+                                </div>
+                                <div class="col-md-3 wow fadeInUp" data-wow-delay=".5s">
+                                    <img class="rounded mb-md-0 mb-3" src="~/frontend/~/Conbe/assets/img/team3.jpg" alt="" />
+                                    <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
+                                    <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
+
+                                </div>
+                                <div class="col-md-3 wow fadeInUp" data-wow-delay=".6s">
+                                    <img class="rounded mb-md-0 mb-3" src="~/frontend/~/Conbe/assets/img/team4.jpg" alt="" />
+                                    <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
+                                    <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
+
+                                </div>
+                                <div class="col-md-3 wow fadeInUp" data-wow-delay=".6s">
+                                    <img class="rounded mb-md-0 mb-3" src="~/frontend/~/Conbe/assets/img/team4.jpg" alt="" />
+                                    <h6 class="mt-md-4 mb-0">Jonathan Smith</h6>
+                                    <p class="sm-txt">I made full lost on my first trial, but after Pratice with demo i earn more than my Lost</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--team section end-->
+                </div>
+                <div id="faq">
+                    <!--faq section start-->
+                    <section class="section-gap">
+                        <div class="container">
+                            <!--section title-->
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div class="section-title">
+                                        <h2 class="wow fadeInUp" data-wow-delay=".2s">Frequently Asked Question</h2>
+                                        <p class=" wow fadeInUp" data-wow-delay=".3s">
+                                            When looking at its layout. The point of using Lorem Ipsum <br />
+                                            is that it has a more-or-less normal distribution
+                                        </p>
+                                    </div>
+                                </div>
+                            </div><!--section title-->
+                            <div class="row">
+                                <div class="col-md-6 col-gap">
+                                    <div class="accordion wow fadeInUp" data-wow-delay=".4s" id="accordion-1">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-1">
+                                                        What is Forex Trade?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-1-1" class="collapse" data-parent="#accordion-1">
+                                                <div class="card-body pt-0">
+                                                    <p>
+                                                        Forex, also known as foreign exchange, FX or currency trading, is a decentralized global market where all the world's currencies trade. The forex market is the largest, most liquid market in the world with an average daily trading volume exceeding $5 trillion.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-2">
+                                                        What are token holder benifits?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-1-2" class="collapse" data-parent="#accordion-1">
+                                                <div class="card-body pt-0">
+                                                    <p>
+                                                        Content 1
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-3">
+                                                        What is Leverage?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-1-3" class="collapse" data-parent="#accordion-1">
+                                                <div class="card-body pt-0">
+                                                    <p>
+                                                        Leverage Content
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-1-4">
+                                                        What is cryptocurrency?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-1-4" class="collapse" data-parent="#accordion-1">
+                                                <div class="card-body pt-0">
+                                                    <p>
+                                                        cryptocurrency Content
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-gap">
+                                    <div class="accordion wow fadeInUp" data-wow-delay=".5s" id="accordion-2">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-1">
+                                                        How can i Contribute to the trade?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-2-1" class="collapse" data-parent="#accordion-2">
+                                                <div class="card-body pt-0">
+                                                    <p>#</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-2">
+                                                        How can i deposite currency?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-2-2" class="collapse" data-parent="#accordion-2">
+                                                <div class="card-body pt-0">
+                                                    <p>#</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-3">
+                                                        How can I withdraw currency?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-2-3" class="collapse" data-parent="#accordion-2">
+                                                <div class="card-body pt-0">
+                                                    <p>#</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>
+                                                    <a class="collapsed" data-toggle="collapse" data-target="#collapse-2-4">
+                                                        Is there any learning curve for begginers?
+                                                    </a>
+                                                </h5>
+                                            </div>
+                                            <div id="collapse-2-4" class="collapse" data-parent="#accordion-2">
+                                                <div class="card-body pt-0">
+                                                    <p>#</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center mt-lg-5 mt-3 pt-lg-3 pt-0 sm-txt wow fadeInUp" data-wow-delay=".6s">
+                                    <a href="javascript:;" class="view-link">View all Questions</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--faq section end-->
+                </div>
+                <div id="login" class=" wow fadeInUp" data-wow-delay=".2s">
+                    <!--registration section start-->
+                    <section class="signin-row">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="javascript:;" class="registration-bg" data-toggle="modal" data-target="#registerModal">
+                                        <span class="title">Register</span>
+                                        <p>Join the new era of cryptocurrency exchange</p>
+                                    </a>
+                                    <!-- register modal -->
+
+                                    <a href="javascript:;" class="login-bg" data-toggle="modal" data-target="#loginModal">
+                                        <span class="title">Sign In</span>
+                                        <p>Access the cryptocurrency experience you deserve</p>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!--registration section end-->
+                </div>
+                <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img class="login-banner-img" src="~/frontend/~/Conbe/assets/img/login-img.png" alt="" />
+                                </div>
+                                <div class="col-md-7">
+                                    <!--register form-->
+                                    <div class="login-form p-5">
+                                        <h4 class="text-uppercase mt-0 text-center mb-5">Register</h4>
+                                        <form>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="inputUser10" placeholder="Username / email / phone">
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <input type="password" class="form-control" id="InputPassword10" placeholder="Password">
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <input type="password" class="form-control" id="confirmPassword10" placeholder="Confirm Password">
+                                            </div>
+                                            <div class="form-group clearfix">
+                                                <button type="submit" class="btn btn-primary float-right">Register</button>
+                                            </div>
+                                            <div class="text-center mt-5">
+                                                Already have an account? <a href="#" class="text-capitalize f12">Login</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--/register form-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        -->
     <!-- login modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    @*<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="row">
                     <div class="col-md-5">
-                        <img class="login-banner-img" src="~/Conbe/assets/img/login-img.png" alt="" />
+                        <img class="login-banner-img" src="~/frontend/~/Conbe/assets/img/login-img.png" alt="" />
                     </div>
                     <div class="col-md-7">
                         <!--login form-->
@@ -661,10 +974,10 @@
                 <div class="row">
                     <div class="col-md-6 mb-md-0 mb-3">
                         <div class="payment-cards wow fadeInUp" data-wow-delay=".45s">
-                            <img src="~/Conbe/assets/img/fc1.png" alt="" />
-                            <img src="~/Conbe/assets/img/fc2.png" alt="" />
-                            <img src="~/Conbe/assets/img/fc3.png" alt="" />
-                            <img src="~/Conbe/assets/img/fc4.png" alt="" />
+                            <img src="~/frontend/~/Conbe/assets/img/fc1.png" alt="" />
+                            <img src="~/frontend/~/Conbe/assets/img/fc2.png" alt="" />
+                            <img src="~/frontend/~/Conbe/assets/img/fc3.png" alt="" />
+                            <img src="~/frontend/~/Conbe/assets/img/fc4.png" alt="" />
                         </div>
                     </div>
                     <div class="col-md-6 text-md-right wow fadeInUp" data-wow-delay=".5s">
@@ -696,200 +1009,200 @@
     </footer>
     <!--footer end-->
     <!--js initialized-->
-    <script src="~/Conbe/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Conbe/assets/vendor/popper.min.js"></script>
-    <script src="~/Conbe/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Conbe/assets/vendor/wow.min.js"></script>
-    <script src="~/Conbe/assets/vendor/jquery.easing.min.js"></script>
-    <script src="~/Conbe/assets/vendor/owl/owl.carousel.min.js"></script>
-    <script src="~/Conbe/assets/vendor/jquery.countdown.min.js"></script>
-    <script src="~/Conbe/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="~/Conbe/assets/vendor/particles/particles.js"></script>
-    <script src="~/Conbe/assets/vendor/particles/init-particles.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/popper.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/wow.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/jquery.easing.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/owl/owl.carousel.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/jquery.countdown.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/particles/particles.js"></script>
+    <script src="~/frontend/~/Conbe/assets/vendor/particles/init-particles.js"></script>
     <!--contact form-->
-    <script type="text/javascript" src="~/Conbe/assets/vendor/contact-form/form-validator.min.js"></script>
-    <script type="text/javascript" src="~/Conbe/assets/vendor/contact-form/contact-form-script.js"></script>
+    <script type="text/javascript" src="~/frontend/~/Conbe/assets/vendor/contact-form/form-validator.min.js"></script>
+    <script type="text/javascript" src="~/frontend/~/Conbe/assets/vendor/contact-form/contact-form-script.js"></script>
     <!--init scripts-->
-    <script src="~/Conbe/assets/js/scripts.min.js"></script>
+    <script src="~/frontend/~/Conbe/assets/js/scripts.min.js"></script>
     <script>
 
         function showRegisterModal() {
             //$("#registerModal").modal();
-        } 
+        }
         @RenderSection("scripts", required: false)
     </script>
 </body>
-</html>
+</html>*@
 
 
 @*<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>BANK OF CHINA</title>
-    <!-- web-fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link rel="icon" type="image/png" sizes="16x16" href="~/favicon.ico">
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>BANK OF CHINA</title>
+        <!-- web-fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="icon" type="image/png" sizes="16x16" href="~/favicon.ico">
 
-    <!-- off-canvas -->
-    <link href="~/HTML/css/mobile-menu.css" rel="stylesheet">
-    <!-- font-awesome -->
-    <link href="~/HTML/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <!-- Style CSS -->
-    <link href="~/HTML/css/style.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-    <div id="main-wrapper">
-        <!-- Page Preloader -->
-        <div id="preloader">
-            <div id="status">
-                <div class="status-mes"></div>
-            </div>
-        </div>
-        <div class="uc-mobile-menu-pusher">
-            <div class="content-wrapper">
-                <nav class="navbar m-menu navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar-collapse-1">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/HTML/img/logo.png" alt=""></a>
-                        </div>
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="#navbar-collapse-1">
-
-                            <ul class="nav navbar-nav  main-nav">
-
-                                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                                <li><a href="@Url.Action("About", "Home")">About</a></li>
-                                <li><a href="@Url.Action("Services", "Home")">Services</a></li>
-                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-
-                            </ul>
-                            @Html.Partial("_LoginPartial")
-                        </div>
-                        <!-- .navbar-collapse -->
-                    </div>
-                    <!-- .container -->
-                </nav>
-                <!-- .nav -->
-
-                @RenderBody()
-
-                <!-- /.client-logo -->
-
-                <footer class="footer">
-                    <!-- Footer Widget Section -->
-                    <div class="footer-widget-section">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-sm-4 footer-block">
-                                    <div class="footer-widget widget_text">
-                                        <div class="footer-logo">
-                                            <a href="@Url.Action("Index","Home")"><img src="~/HTML/img/logo.png" alt=""></a>
-                                        </div>
-                                        <p>Serving investors and borrower to the fullest capacity since 2007.</p>
-                                    </div>
-                                </div><!-- /.col-sm-4 -->
-                                <div class="col-sm-4 footer-block">
-                                    <div class="footer-widget widget_text">
-                                        <h3>We work for your profit</h3>
-                                        <p>Whether you are borrowing or investing, we make sure it all works to your profits. With plans and investment options available, you will never get it wrong with us.</p>
-                                    </div>
-                                </div><!-- /.col-sm-4 -->
-                                <div class="col-sm-4 footer-block last">
-                                    <div class="footer-widget widget_text">
-                                        <h3>Contact Us Today</h3>
-                                        <address>
-                                            Send an Email on <a href="mailto:support@bocamerica.com">support@bocamerica.com</a><br>
-                                            Visit Us 111 S Wacker Dr, Chicago, IL 60606, USA<br>
-                                            <br>
-                                            <i class="fa fa-phone"></i> Call   <a href="tel:+12092970110">(+12)092-970-110)</a>
-                                        </address>
-
-                                        <ul class="list-inline social-links">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div><!-- /.col-sm-4 -->
-                            </div>
-                        </div>
-                    </div><!-- /.Footer Widget Section -->
-                    <div class="copyright-section">
-                        <div class="container clearfix">
-                            <span class="copytext">&copy; @DateTime.Now.Year BANK OF CHINA. All rights reserved.</span>
-                            <ul class="list-inline pull-right">
-                                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                                <li><a href="@Url.Action("About", "Home")">About</a></li>
-                                <li><a href="@Url.Action("Services", "Home")">Services</a></li>
-                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                            </ul>
-                        </div><!-- .container -->
-                    </div><!-- .copyright-section -->
-                </footer>
-                <!-- .footer -->
-            </div>
-            <!-- .content-wrapper -->
-        </div>
-        <!-- .offcanvas-pusher -->
-        <div class="uc-mobile-menu uc-mobile-menu-effect">
-            <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas"
-                    id="uc-mobile-menu-close-btn">
-                &times;
-            </button>
-            <div>
-                <div>
-                    <ul id="menu">
-                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                        <li><a href="@Url.Action("About", "Home")">About</a></li>
-                        <li><a href="@Url.Action("Services", "Home")">Services</a></li>
-                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                        @Html.Partial("_LoginPartial")
-                    </ul>
-
+        <!-- off-canvas -->
+        <link href="~/HTML/css/mobile-menu.css" rel="stylesheet">
+        <!-- font-awesome -->
+        <link href="~/HTML/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+              integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Style CSS -->
+        <link href="~/HTML/css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="~/frontend/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="~/frontend/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="main-wrapper">
+            <!-- Page Preloader -->
+            <div id="preloader">
+                <div id="status">
+                    <div class="status-mes"></div>
                 </div>
             </div>
+            <div class="uc-mobile-menu-pusher">
+                <div class="content-wrapper">
+                    <nav class="navbar m-menu navbar-default navbar-fixed-top">
+                        <div class="container">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                        data-target="#navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img src="~/frontend/~/HTML/img/logo.png" alt=""></a>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="#navbar-collapse-1">
+
+                                <ul class="nav navbar-nav  main-nav">
+
+                                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                                    <li><a href="@Url.Action("About", "Home")">About</a></li>
+                                    <li><a href="@Url.Action("Services", "Home")">Services</a></li>
+                                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+
+                                </ul>
+                                @Html.Partial("_LoginPartial")
+                            </div>
+                            <!-- .navbar-collapse -->
+                        </div>
+                        <!-- .container -->
+                    </nav>
+                    <!-- .nav -->
+
+                    @RenderBody()
+
+                    <!-- /.client-logo -->
+
+                    <footer class="footer">
+                        <!-- Footer Widget Section -->
+                        <div class="footer-widget-section">
+                            <div class="container text-center">
+                                <div class="row">
+                                    <div class="col-sm-4 footer-block">
+                                        <div class="footer-widget widget_text">
+                                            <div class="footer-logo">
+                                                <a href="@Url.Action("Index","Home")"><img src="~/frontend/~/HTML/img/logo.png" alt=""></a>
+                                            </div>
+                                            <p>Serving investors and borrower to the fullest capacity since 2007.</p>
+                                        </div>
+                                    </div><!-- /.col-sm-4 -->
+                                    <div class="col-sm-4 footer-block">
+                                        <div class="footer-widget widget_text">
+                                            <h3>We work for your profit</h3>
+                                            <p>Whether you are borrowing or investing, we make sure it all works to your profits. With plans and investment options available, you will never get it wrong with us.</p>
+                                        </div>
+                                    </div><!-- /.col-sm-4 -->
+                                    <div class="col-sm-4 footer-block last">
+                                        <div class="footer-widget widget_text">
+                                            <h3>Contact Us Today</h3>
+                                            <address>
+                                                Send an Email on <a href="mailto:support@bocamerica.com">support@bocamerica.com</a><br>
+                                                Visit Us 111 S Wacker Dr, Chicago, IL 60606, USA<br>
+                                                <br>
+                                                <i class="fa fa-phone"></i> Call   <a href="tel:+12092970110">(+12)092-970-110)</a>
+                                            </address>
+
+                                            <ul class="list-inline social-links">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- /.col-sm-4 -->
+                                </div>
+                            </div>
+                        </div><!-- /.Footer Widget Section -->
+                        <div class="copyright-section">
+                            <div class="container clearfix">
+                                <span class="copytext">&copy; @DateTime.Now.Year BANK OF CHINA. All rights reserved.</span>
+                                <ul class="list-inline pull-right">
+                                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                                    <li><a href="@Url.Action("About", "Home")">About</a></li>
+                                    <li><a href="@Url.Action("Services", "Home")">Services</a></li>
+                                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                </ul>
+                            </div><!-- .container -->
+                        </div><!-- .copyright-section -->
+                    </footer>
+                    <!-- .footer -->
+                </div>
+                <!-- .content-wrapper -->
+            </div>
+            <!-- .offcanvas-pusher -->
+            <div class="uc-mobile-menu uc-mobile-menu-effect">
+                <button type="button" class="close" aria-hidden="true" data-toggle="offcanvas"
+                        id="uc-mobile-menu-close-btn">
+                    &times;
+                </button>
+                <div>
+                    <div>
+                        <ul id="menu">
+                            <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li><a href="@Url.Action("Services", "Home")">Services</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!-- .uc-mobile-menu -->
         </div>
-        <!-- .uc-mobile-menu -->
-    </div>
-    <!-- #main-wrapper -->
-    <!-- Script -->
+        <!-- #main-wrapper -->
+        <!-- Script -->
 
-    <script src="~/HTML/js/jquery-2.1.4.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-            crossorigin="anonymous"></script>
-    <script src="~/HTML/js/smoothscroll.js"></script>
-    <script src="~/HTML/js/mobile-menu.js"></script>
-    <script src="~/HTML/js/flexSlider/jquery.flexslider-min.js"></script>
-    <script src="~/HTML/js/scripts.js"></script>
-    @RenderSection("scripts", required: false)
-    <div />
+        <script src="~/frontend/~/HTML/js/jquery-2.1.4.min.js"></script>
+        <script src="~/frontend/https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                crossorigin="anonymous"></script>
+        <script src="~/frontend/~/HTML/js/smoothscroll.js"></script>
+        <script src="~/frontend/~/HTML/js/mobile-menu.js"></script>
+        <script src="~/frontend/~/HTML/js/flexSlider/jquery.flexslider-min.js"></script>
+        <script src="~/frontend/~/HTML/js/scripts.js"></script>
+        @RenderSection("scripts", required: false)
+        <div />
 
-</body>
-</html>*@
+    </body>
+    </html>*@
 
 
 @*<!DOCTYPE html>

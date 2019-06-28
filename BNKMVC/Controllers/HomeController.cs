@@ -85,11 +85,14 @@ namespace BNKMVC.Controllers
                 var save = new AccountVerifications().Create(m);
                 if (save)
                 {
-                    return Json(new { status = 200, message = "Document Uploaded and Submited Successfull" }, JsonRequestBehavior.AllowGet);
+                    ViewBag.success = "Document submitted successfully, you will be notified via email when your has been approved";
+                    //return Json(new { status = 200, message = "Document Uploaded and Submited Successfull" }, JsonRequestBehavior.AllowGet);
                 }
             }
-            IEnumerable<ModelError> errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
-            return Json(new { status = 400, errors = errors, message = "Check your entries" }, JsonRequestBehavior.AllowGet);
+
+            return View(m);
+            //    IEnumerable<ModelError> errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+            //    return Json(new { status = 400, errors = errors, message = "Check your entries" }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Verifications()

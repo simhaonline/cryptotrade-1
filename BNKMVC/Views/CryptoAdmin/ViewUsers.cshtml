@@ -28,8 +28,10 @@
                     {
                         <tr>
                             <td>@i.AspNetUser.Email</td>
-                            <td>@i.AspNetUser.FirstName, @i.AspNetUser.LastName</td>
-                            <td>@i.CurrentCryptoBalance.Value.ToString("N")</td> 
+                            <td>@i.AspNetUser.FirstName, @i.AspNetUser.LastName</td> @{
+                                                                                         var bal = Convert.ToDecimal(i.CurrentCryptoBalance);
+                                                                                     }
+                            <td>@bal.ToString("N")</td> 
                             <td>@i.Status</td>
                             <td> <a class="btn btn-xs btn-primary" href="@Url.Action("ViewUser", new{id=i.UserId})"> <i class="fa fa-eye"></i> View</a></td>
                             <td> <a class="btn btn-xs btn-danger" href="@Url.Action("DeleteUser", new{id=i.UserId})"> <i class="fa fa-trash"></i> Delete</a></td>

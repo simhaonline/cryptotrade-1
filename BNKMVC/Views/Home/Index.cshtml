@@ -1,224 +1,992 @@
-﻿@{
+﻿@using BNKMVC.Services
+@{
     ViewBag.Title = "Home Page";
 }
+<!-- START SLIDER SECTION -->
+<section class="slider-section">
+    <div class="home-slides owl-carousel owl-theme ">
+        <div class="home-single-slide" data-background="../frontend/assets/img/bg/Homebg.jpg">
+            <div class="home-slide-overlay"></div>
+            <div class="home-single-slide-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10 col-12 mr-auto text-left">
+                            <div class="home-single-slide-dec">
+                                <h2>With DynoInvest your FUNDS grows <br> massively in no time</h2>
+                                <p>Best among the rest, expressively profitable in all its trading platform.</p>
+                                <div class="home-single-slide-button">
+                                    <a href="#" class="btn-style btn-filled">Contact Us</a>
 
-<div id="x-corp-carousel" class="carousel slide hero-slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#x-corp-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#x-corp-carousel" data-slide-to="1"></li>
-        <li data-target="#x-corp-carousel" data-slide-to="2"></li>
-    </ol>
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/HTML/img/hero-slide-1.jpg" alt="Hero Slide">
-            <div class="carousel-caption">
-                <h1>
-                    Loans for the way you live
-                </h1>
-                <p>
-                    Access up to £150,000 —
-                    anytime and anywhere... no collateral
-                </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="~/HTML/img/hero-slide-2.jpg" alt="...">
-            <div class="carousel-caption">
-                <h1>
-                    Unlocking the power of money for all people
+        <!-- end single slider -->
+        <div class="home-single-slide" data-background="../frontend/assets/img/bg/traders.jpg">
+            <div class="home-slide-overlay"></div>
+            <div class="home-single-slide-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10 col-12 mr-auto text-left">
+                            <div class="home-single-slide-dec">
+                                <h2>forex & any Cryptocurrency transfer you can trust </h2>
+                                <p class="text-capitalize">Always be with the right firm and organisation, be equipped with the right tools to progress.</p>
+                                <div class="home-single-slide-button">
 
-                </h1>
-                <p> Instant Investments... and Loans</p>
+                                    <a href="#" class="btn-style btn-filled">Contact us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="~/HTML/img/hero-slide-3.jpg" alt="...">
-            <div class="carousel-caption">
-                <h1>Good solutions for you!</h1>
-                <p>With no account fees, competitive prices, and no minimums to open an account, we can help your money go further..</p>
+        <!-- end single slider -->
+        <div class="home-single-slide" data-background="../frontend/assets/img/bg/slide6.jpg">
+            <div class="home-slide-overlay"></div>
+            <div class="home-single-slide-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-10 col-12 mr-auto text-left">
+                            <div class="home-single-slide-dec">
+                                <h2>Alway seek & invest in the right firm</h2>
+                                <p class="text-capitalize">Join us and be guilded in all your investments and proposal.</p>
+                                <div class="home-single-slide-button">
+                                    <a href="#" class="btn-style btn-filled">Contact Us</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end single slider -->
+    </div>
+</section>
+<!-- END SLIDER SECTION  -->
+<!-- START ABOUT SECTION -->
+@*<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>why buy & sell</h5>
+                    <h3>DynoInvest <span>Features</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row text-center">
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg1.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fab fa-btc"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>DynoInvest Transition</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg4.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fa fa-dollar-sign"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>Coin Buy & Sell</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg5.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fa fa-euro-sign"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>Bitcoin & Ethereum</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg6.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fab fa-gg"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>Account Security</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg3.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fa fa-ruble-sign"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>Cryptocurrency Trading</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+            <div class="single-about-item col-lg-4 col-md-4 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="single-about boxes-info">
+                    <div class="single-about-img">
+                        <div class="single-about-img-inner">
+                            <a href="#"><img src="~/frontend/assets/img/bg/bg1.jpg" class="img-fluid" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="single-about-caption">
+                        <div class="single-about-icon">
+                            <i class="fa fa-shekel-sign"></i>
+                        </div>
+                        <div class="single-about-title">
+                            <h5>Bitcoin Legality</h5>
+                        </div>
+                        <div class="single-about-dec">
+                            <p>Lorem ipsum dolor sit consectetur adipiscing elit sed do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end single about -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>*@
+<!-- END ABOUT SECTION -->
+<!-- START PROMO SECTION -->
+<section id="promo" class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <div class="section-title-2">
+                            <h3>How do I <span>Start</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- end section title -->
+                <!--Accordion Box-->
+                <ul class="accordion-box">
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Sign up for an account
+                        </div>
+                        @*<div class="acc-content">
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. </p>
+                            </div>
+                        </div>*@
+                    </li>
+                    <li class="accordion block">
+                        <div class="acc-btn active">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Do a simple verification
+                        </div>
+                        <div class="acc-content current">
+                            <div class="content">
+                                <p>Yes! we verify our customers to prevent fraud</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Choose a Service plan to invest
+                        </div>
+                        @*<div class="acc-content">
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. </p>
+                            </div>
+                        </div>*@
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Earn Massively
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Withdraw 
+                        </div>
+                        <div class="acc-content">
+                            <div class="content">
+                                <p>Withdraws are process quickly</p>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Block-->
+                    <li class="accordion block">
+                        <div class="acc-btn">
+                            <div class="icon-outer"><span class="icon icofont icofont-ui-press"></span></div>Share the news and earn more
+                        </div>
+                        @*<div class="acc-content">
+                            <div class="content">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. </p>
+                            </div>
+                        </div>*@
+                    </li>
+                </ul>
+                <!--End Accordion Box-->
+            </div>
+            <!-- end col -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <div class="section-title-2">
+                            <h3>About <span>Us</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- end section title -->
+                <div class="image-style-1 mb-4">
+                    <div class="image-style-wrapper">
+                        <div class="image-one"></div>
+                        <div class="image-two">
+                            <img src="~/frontend/assets/img/bg/promobg1.jpg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="promo-content">
+                    <h4>Who we are?</h4>
+                    <p>Since 2010, DynoInvest has consistently taken measures to ensure its platform makes online trading and investing accessible to anyone. By keeping a balance between giving easy access to beginners and improving upon important elements for more experienced traders, DynoInvest has solidified itself as one of the world’s leading social trading platform. DynoInvest offers both short-term options for day traders and long-term options for investors. We also acknowledge that different traders have different risk-appetites, and offer instruments varying from low to high risk. Our tools are easy to use, and we make all of the information on the platform accessible to everyone on the platform. It is no wonder that more than 1 million people worldwide choose DynoInvest as their preferred trading platform.</p>
+                    <a href="#" class="btn-style btn-filled mt-3">Read More <i class="icofont icofont-caret-right"></i></a>
+
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END PROMO SECTION -->
+<!-- START CHOOSE US SECTION -->
+<section id="chhoseus" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>Bitcoin Legality</h5>
+                    <h3>Why Choose <span>DynoInvest</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-12 mb-lg-0 mb-md-0 mb-5">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12 mb-5">
+                        <div class="single-wcus">
+                            <div class="single-wcus-icon">
+                                <i class="icofont icofont-bill"></i>
+                            </div>
+                            <div class="single-wcus-text">
+                                <h5>24/7 Support</h5>
+                                <p>With offices in various countries of the world, a team of experts is on call 24/7 to assist with technical and account questions.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single chooseus -->
+                    <div class="col-lg-6 col-md-6 col-12 mb-5">
+                        <div class="single-wcus">
+                            <div class="single-wcus-icon">
+                                <i class="icofont icofont-coins"></i>
+                            </div>
+                            <div class="single-wcus-text">
+                                <h5>Trading Strategy</h5>
+                                <p>Engages on the BEST trading strategies and ensures to grow at its best and profits too.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single chooseus -->
+                    <div class="col-lg-6 col-md-6 col-12 mb-lg-0 mb-md-0 mb-5">
+                        <div class="single-wcus">
+                            <div class="single-wcus-icon">
+                                <i class="icofont icofont-money"></i>
+                            </div>
+                            <div class="single-wcus-text">
+                                <h5>Money Exchange</h5>
+                                <p>Easy and quick money exchange ranging from the various money market included and otherwise.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single chooseus -->
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <div class="single-wcus">
+                            <div class="single-wcus-icon">
+                                <i class="icofont icofont-ui-travel"></i>
+                            </div>
+                            <div class="single-wcus-text">
+                                <h5>Security of Funds</h5>
+                                <p>DynoInvest save guards your funds in segregate accounts with trusted financial institutions according the regulation of Forex trading world wide.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single chooseus -->
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="single-wcus-promo">
+                    <div class="single-wcus-promo-inner">
+                        <h3>Ready to Make the Move ?.</h3>
+                        <p>Explore an ever-expanding and growing variety of opportunities in Forex, with DynoInvest grant investors access to the market, where the investors trade on price movements on shares of a corporation that is trading in the equity market. DynoInvest has access to direct liquidity pricing, with real-time data straight from different largest stock exchanges in the world.</p>
+                        <a href="#" class="btn-style btn-border btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END CHOOSE US SECTION -->
+<!-- START COUNTER SECTION -->
+<section id="counter" class="section-padding overlay counter-section section-back-image-2" data-background="../frontend/assets/img/bg/counterbg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="row text-center counter-wrapper">
+                    <div class="col-lg-6 col-md-6 col-12 counter-wrapper-inner">
+                        <div class="single-counter">
+                            <h3 class="timer">56</h3>
+                            <p>Bitcoin</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-6 col-md-6 col-12 counter-wrapper-inner">
+                        <div class="single-counter">
+                            <h3 class="timer">95</h3>
+                            <p>Wallet</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-6 col-md-6 col-12 counter-wrapper-inner">
+                        <div class="single-counter">
+                            <h3 class="timer">85</h3>
+                            <p>ATM</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                    <div class="col-lg-6 col-md-6 col-12 counter-wrapper-inner">
+                        <div class="single-counter">
+                            <h3 class="timer">68</h3>
+                            <p>Client</p>
+                        </div>
+                    </div>
+                    <!-- end col -->
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END PROMO SECTION -->
+<!-- START SERVICE SECTION -->
+@*<section id="service" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>what we do</h5>
+                    <h3>DynoInvest <span>Services</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="services-slider owl-carousel owl-theme">
+            <div class="single-service-item mt-5">
+                <div class="single-service">
+                    <div class="single-service-img">
+                        <img class="img-fluid" src="~/frontend/assets/img/service/1.jpg" alt="">
+                    </div>
+                    <div class="single-service-title">
+                        <div class="single-service-icon">
+                            <i class="fab fa-gg"></i>
+                        </div>
+                        <div class="single-service-text">
+                            <h5>Bitcoin Trading</h5>
+                        </div>
+                    </div>
+                    <div class="single-service-dec">
+                        <p>Lorem ipsum dolor sit amet consectetur ullamco adipiscing elit, sed do eiusmod tempor exercitat incididunt ut labore.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end single service -->
+            <div class="single-service-item mt-5">
+                <div class="single-service">
+                    <div class="single-service-img">
+                        <img class="img-fluid" src="~/frontend/assets/img/service/3.jpg" alt="">
+                    </div>
+                    <div class="single-service-title">
+                        <div class="single-service-icon">
+                            <i class="fa fa-shekel-sign"></i>
+                        </div>
+                        <div class="single-service-text">
+                            <h5>Coin Buy & Sell</h5>
+                        </div>
+                    </div>
+                    <div class="single-service-dec">
+                        <p>Lorem ipsum dolor sit amet consectetur ullamco adipiscing elit, sed do eiusmod tempor exercitat incididunt ut labore.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end single service -->
+            <div class="single-service-item mt-5">
+                <div class="single-service">
+                    <div class="single-service-img">
+                        <img class="img-fluid" src="~/frontend/assets/img/service/2.jpg" alt="">
+                    </div>
+                    <div class="single-service-title">
+                        <div class="single-service-icon">
+                            <i class="fab fa-btc"></i>
+                        </div>
+                        <div class="single-service-text">
+                            <h5>Bitcoin & Ethereum</h5>
+                        </div>
+                    </div>
+                    <div class="single-service-dec">
+                        <p>Lorem ipsum dolor sit amet consectetur ullamco adipiscing elit, sed do eiusmod tempor exercitat incididunt ut labore.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end single service -->
+            <div class="single-service-item mt-5">
+                <div class="single-service">
+                    <div class="single-service-img">
+                        <img class="img-fluid" src="~/frontend/assets/img/service/4.jpg" alt="">
+                    </div>
+                    <div class="single-service-title">
+                        <div class="single-service-icon">
+                            <i class="fa fa-dollar-sign"></i>
+                        </div>
+                        <div class="single-service-text">
+                            <h5>Cryptocurrency Trading</h5>
+                        </div>
+                    </div>
+                    <div class="single-service-dec">
+                        <p>Lorem ipsum dolor sit amet consectetur ullamco adipiscing elit, sed do eiusmod tempor exercitat incididunt ut labore.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- end single service -->
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="serviceall-btn wow fadeInDown">
+                    <a href="#">Check All Services <i class="icofont icofont-long-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Controls -->
-    <a class="left carousel-control" href="#x-corp-carousel" role="button" data-slide="prev">
-        <i class="fa fa-angle-left" aria-hidden="true"></i>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#x-corp-carousel" role="button" data-slide="next">
-        <i class="fa fa-angle-right" aria-hidden="true"></i>
-        <span class="sr-only">Next</span>
-    </a>
+    <!--- END CONTAINER -->
+</section>*@
+<!-- END SERVICE SECTION -->
+<!-- START TEAM SECTION -->
+<section id="team" class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>our masters</h5>
+                    <h3>DynoInvest <span>Expert</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row text-center">
+            <div class="team-slider owl-carousel owl-theme">
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/Gregory.jpg" alt="Gregory Delgado">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Gregory Delgado</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/Franklin.jpg" alt="Franklin Edgar">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Franklin Edgar</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/Michelle.jpg" alt="Michelle Flores">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Michelle Flores</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/Ali.jpg" alt="Ali al-saghir">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Ali al-Saghir</h4>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END TEAM SECTION -->
+<!-- START TESTIMONIAL SECTION -->
+<section id="team" class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>our gladiators</h5>
+                    <h3>DynoInvest <span>Testimonials</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row text-center">
+            <div class="team-slider owl-carousel owl-theme">
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/CarolHoward.jpg" alt="Carol Howard">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Carol Howard</h4>
+
+                            <p>Just like the saying goes, its a lady's world, well not knowing whole lot what forex is all about, but with the simplicity of this platform, i made more than enough with just but a few loses.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/GeorgeIgbokodo.jpg" alt="George Igbokodo">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>George Igbokodo</h4>
+
+                            <p>Being a broker wasn't easy for me, but i had to pull through, i made whole lots of loses on other platforms, but i gained whole lot ever since i joined this platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/EvelynWood.jpg" alt="Evelyn Wood">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Evelyn Wood</h4>
+
+                            <p>Forex is really a dream come true for me, maybe you can check it out too.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/RogerStanley.jpg" alt="Roger Stanley">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Roger Stanley</h4>
+                            <p>Forex easy and simple, your moeny working for you in simple clicks.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="single-team-wrapper">
+                    <div class="single-team">
+                        <div class="single-team-img">
+                            <img class="img-fluid" src="~/frontend/assets/img/team/NicholasSullivan.jpg" alt="Nicholas Sullivan">
+
+                        </div>
+                        <div class="single-team-meta">
+                            <h4>Nicholas Sullivan"</h4>
+                            <p>Whole lots has changed after several engagements with DynoInvest.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END TESTIMONIAL SECTION -->
+<!-- START PRICETABLE SECTION -->
+<section id="pricetable" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>DynoInvest conversation</h5>
+                    <h3>Trade Bitcoin <span>With Us</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-12 pr-lg-5 pr-md-5 pr-sm-0 pr-0 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="table-responsive">
+                    <table class="bitland-table table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Cryptocurrency</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">24% Change</th>
+                                <th scope="col">Supppy</th>
+                                <th scope="col">24% Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><i class="icofont icofont-cur-baht"></i> Bitcoin</th>
+                                <td>85.78$</td>
+                                <td>34.29%</td>
+                                <td>427BTC</td>
+                                <td>34,89</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="icofont icofont-cur-dollar"></i> DynoInvest</th>
+                                <td>97.45$</td>
+                                <td>45.20%</td>
+                                <td>492BTC</td>
+                                <td>67.82</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="fas fa-shekel-sign"></i> Degitalcash</th>
+                                <td>45.89$</td>
+                                <td>23.96%</td>
+                                <td>635BTC</td>
+                                <td>23.57</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="icofont icofont-cur-euro-true"></i> Ethereum</th>
+                                <td>78.35$</td>
+                                <td>84.78%</td>
+                                <td>395BTC</td>
+                                <td>67.10</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="icofont icofont-cur-dollar-plus"></i> Stellar</th>
+                                <td>45.89$</td>
+                                <td>98.29%</td>
+                                <td>829BTC</td>
+                                <td>89.34</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><i class="icofont icofont-cur-renminbi-true"></i> Ripple</th>
+                                <td>76.28$</td>
+                                <td>89.45%</td>
+                                <td>623BTC</td>
+                                <td>89.44</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-5 col-md-5 col-12">
+                <div id="chartContainer"></div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END PRICETABLE SECTION -->
+<!-- START HOW WORK SECTION -->
+<section id="hworks" class="section-padding bg-gray section-back-image overlay" data-background="../frontend/assets/img/bg/processbg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5 class="text-white">How it works</h5>
+                    <h3 class="text-white">Work <span>Process</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        <div class="row text-center">
+            <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-5">
+                <div class="single-wprocess">
+                    <div class="single-wprocess-icon">
+                        <i class="fa fa-futbol"></i>
+                    </div>
+                    <div class="single-wprocess-text">
+                        <h5>Trading Strategy</h5>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-5">
+                <div class="single-wprocess">
+                    <div class="single-wprocess-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="single-wprocess-text">
+                        <h5>Group Planing</h5>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="single-wprocess">
+                    <div class="single-wprocess-icon">
+                        <i class="fa fa-handshake"></i>
+                    </div>
+                    <div class="single-wprocess-text">
+                        <h5>Final Success</h5>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END HOW WORK SECTION -->
+<!-- START PROMO 2 SECTION -->
+<section id="promot" class="section-padding">
+    <div class="container">
+        <div class="row">
+
+            <!-- end col -->
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <div class="section-title-2">
+                            <h3>Message <span>US</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- end section title -->
+                <div class="home-p-form-wrapper">
+                    <div class="home-p-form">
+                        <form action="#">
+                            <div class="row">
+                                <div class="form-group col-lg-6 mb-3">
+                                    <input name="aname" class="form-control" id="afirst-name" placeholder="Your Name*" required="required" type="text">
+                                </div>
+                                <div class="form-group col-lg-6 mb-3">
+                                    <input name="aemail" class="form-control" id="aemail" placeholder="Email id*" required="required" type="email">
+                                </div>
+                                <div class="form-group col-lg-6 mb-3">
+                                    <input name="aphone" class="form-control" id="aphone" placeholder="Phone Number*" required="required" type="text">
+                                </div>
+                                <div class="form-group col-lg-6 mb-3">
+                                    <input name="asubject" class="form-control" id="asubject" placeholder="Subject" required="required" type="text">
+                                </div>
+                                <div class="form-group col-lg-12 mb-3">
+                                    <textarea rows="6" name="rmessage" class="form-control" id="adescription" placeholder="Your Message Here..." required="required"></textarea>
+                                </div>
+                                <div class="form-group col-lg-5 mb-lg-0 mb-md-0 mb-2 pr-0">
+                                    <a href="#" title="Click here to submit your message!" class="btn-style btn-filled btn-filled-2">Send Message <i class="fa fa-paper-plane"></i></a>
+                                </div>
+                                <div class="form-group col-lg-7">
+                                    <p><strong>Note:</strong> We promise that we don't do spam & your mail id is confidential. </p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END PROMO 2 SECTION -->
+<!-- START PRICE SECTION -->
+<section id="price" class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="section-title">
+                    <h5>DynoInvest packages</h5>
+                    <h3>Service <span>Plans</span></h3>
+                </div>
+            </div>
+        </div>
+        <!-- end section title -->
+        @{ var plans = new CryptoAccountType().AccountTypes(); }
+        <div class="row">
+            @foreach (var i in plans)
+            {
+                <div class="col-lg-4 col-md-4 col-12 mb-lg-0 mb-md-0 mb-5">
+                    <div class="single-pricing">
+                        <div class="single-pricing-head text-center">
+                            <span class="price"><span class="price-digit">@i.Value</span></span>
+                            <h5>@i.Title</h5>
+                        </div>
+                        <div class="single-pricing-body">
+                            <div class="single-pricing-list text-center">
+                                <h3>@i.Name</h3> 
+                                <p>@i.Description</p>
+                             
+                            </div>
+                        </div>
+                        <div class="single-pricing-button">
+                            <a href="@Url.Action("Invest","Investor")" class="mt-3 d-block text-center rounded-0">Choose</a>
+                        </div>
+                    </div>
+                </div>
+            }
+          
+        
+        </div>
+    </div>
+    <!--- END CONTAINER -->
+</section>
+<!-- END PRICE SECTION -->
+<!-- START CLIENT SECTION -->
+<div id="client" class="client-section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Deposits and Widthdrawal</h2>
+                <div class="client-slider owl-carousel owl-theme">
+                    <div class="single-client">
+                        <a href="#"><img class="img-fluid" src="~/frontend/assets/img/fc1.png" alt=""></a>
+                    </div>
+                    <div class="single-client">
+                        <a href="#"><img class="img-fluid" src="~/frontend/assets/img/fc2.png" alt=""></a>
+                    </div>
+                    <div class="single-client">
+                        <a href="#"><img class="img-fluid" src="~/frontend/assets/img/fc3.png" alt=""></a>
+                    </div>
+                    <div class="single-client">
+                        <a href="#"><img class="img-fluid" src="~/frontend/assets/img/fc4.png" alt=""></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--- END CONTAINER -->
 </div>
-<!-- #x-corp-carousel-->
-<section class="x-services ptb-100 gray-bg">
-    <section class="section-title">
-        <div class="container text-center">
-            <h2>What We Offer</h2>
-            <span class="bordered-icon"><i class="fa fa-circle-thin"></i></span>
-        </div>
-    </section>
-    <div class="container">
+<!-- END CLIENT SECTION -->
+<!-- START CALLTOACTION SECTION -->
+<section id="calltoaction" class="calltoaction-padding section-padding bg-theme">
+    <div class="auto-container">
         <div class="row">
-            <div class="col-md-6">
-                <div class="thumbnail clearfix">
-                    <a href="#"><img class="img-responsive" src="~/HTML/img/img-offer-1.jpg" alt="Image"></a>
-                    <div class="caption">
-                        <h3><a href="#">Investment</a></h3>
-                        <p>Grow your funds with our nice investment platform that is design to give you the best returns for your money</p>
-                    </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-12 mb-lg-0 mb-md-4 mb-sm-4 mb-4">
+                <div class="calltoaction-two-wrap">
+                    <h4>More Info on this <i class="fa fa-arrow-down"></i></h4>
+                    <p>The only way to make sure our clients get the full benefits of our social features and have all the information they need to use them, is by operating in full transparency. On DynoInvest, each client who can be copied has their profile available for all other users to see, including valuable information such as past performance, gain, risk score.</p>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="thumbnail clearfix">
-                    <a href="#"><img class="img-responsive" src="~/HTML/img/img-offer-2.png" alt="Image"></a>
-                    <div class="caption">
-                        <h3><a href="#">Planning</a></h3>
-                        <p>From complex wealth management to your retirement needs, we can help you with financial planning.</p>
-                    </div>
-                </div>
+            <!-- end col -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-12 mt-lg-4 mt-md-4 text-lg-right text-md-right text-sm-left text-left">
+                <a href="@Url.Action("Contact")" class="btn-style btn-border btn-border-3">Contact Us</a>
             </div>
+            <!-- end col -->
         </div>
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="thumbnail clearfix">
-                    <a href="#"><img class="img-responsive" src="~/HTML/img/img-offer-3.jpg" alt="Image"></a>
-                    <div class="caption">
-                        <h3><a href="#">Analysis</a></h3>
-                        <p>Get easy-to-use tools and the latest professional insights from our team of specialists.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="thumbnail clearfix">
-                    <a href="#"><img class="img-responsive" src="~/HTML/img/img-offer-4.jpg" alt="Image"></a>
-                    <div class="caption">
-                        <h3><a href="#">Banking</a></h3>
-                        <p>Saving has never been better as we offer good interest returns than you can get elsewhere</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .row -->
-    </div>
-    <!-- .container -->
-</section>
-<!-- .x-services -->
-<section class="x-features">
-    <section class="section-title">
-        <div class="container text-center">
-            <h2>Our Capabilities</h2>
-            <span class="bordered-icon"><i class="fa fa-circle-thin"></i></span>
-        </div>
-    </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 img-left">
-                <img class="img-responsive" src="~/HTML/img/img-about.png" alt="">
-            </div>
-            <div class="col-md-6">
-                <div class="promo-block-wrapper clearfix">
-                    <div class="promo-icon">
-                        <i class="fa fa-line-chart"></i>
-                    </div>
-                    <div class="promo-content">
-                        <h3>We teach you how to improve your business and money</h3>
-                        <p>Invest where your money works as hard as you do</p>
-                    </div>
-                </div>
-                <!-- /.promo-block-wrapper -->
-                <div class="promo-block-wrapper clearfix">
-                    <div class="promo-icon">
-                        <i class="fa fa-life-ring"></i>
-                    </div>
-                    <div class="promo-content">
-                        <h3>We make the technology and information affordable for you</h3>
-                        <p></p>
-                    </div>
-                </div>
-                <!-- /.promo-block-wrapper -->
-                <div class="promo-block-wrapper clearfix">
-                    <div class="promo-icon">
-                        <i class="fa fa-calculator"></i>
-                    </div>
-                    <div class="promo-content last-type">
-                        <h3>Wealth management, offered through Bank of China Services,  </h3>
-                        <p>
-                            creates a relationship between you
-                            and a dedicated advisor who can
-                            work with you and for you to plan around your full financial picture and provide clear recommendations.*
-                        </p>
-                    </div>
-                </div>
-                <!-- /.promo-block-wrapper -->
-            </div>
-        </div>
+        <!-- end row-->
     </div>
 </section>
-<!-- .x-features -->
-<section class="testimonial">
-    <section class="section-title">
-        <div class="container text-center">
-            <h2>Privacy is paramount</h2>
-            <span class="bordered-icon"><i class="fa fa-circle-thin"></i></span>
-        </div>
-    </section>
-    <div class="container">
-        <div id="testimonialSlider" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <blockquote>
-                        <p>
-                            All the data we use is encrypted and protected – never shared with third parties. We have strict policies in place that ensure our methods are properly communicated and customer data is always protected.
-                        </p>
-                    </blockquote>
-                </div>
-            </div>
-            <!-- Controls -->
-            <a class="left carousel-control" href="#testimonialSlider" role="button" data-slide="prev">
-                <span><i class="fa fa-angle-left"></i></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#testimonialSlider" role="button" data-slide="next">
-                <span><i class="fa fa-angle-right"></i></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <!-- #testimonialSlider -->
-    </div>
-</section>
-<!-- .testimonial -->
-<section class="client-logo ptb-100">
-    <section class="section-title">
-        <div class="container text-center">
-            <h2>Our Clients</h2>
-            <span class="bordered-icon"><i class="fa fa-circle-thin"></i></span>
-        </div>
-    </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-1.png" alt="Image"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-2.png" alt="Image"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-3.png" alt="Image"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-4.png" alt="Image"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-5.png" alt="Image"></a>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 section-margin">
-                <a href="#"><img src="~/HTML/img/logo-client-6.png" alt="Image"></a>
-            </div>
-        </div>
-    </div>
-    <!--end of .container -->
-</section>
+

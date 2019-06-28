@@ -17,7 +17,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-center">
-                    <h1> @Model.CurrentCryptoBalance</h1>
+                    @{ var bal = Convert.ToDecimal(Model.CurrentCryptoBalance);}
+                    <h1> @bal.ToString("N")</h1>
                     <h2>@Model.AspNetUser.FirstName, @Model.AspNetUser.LastName</h2>
                     <h3>@Model.AspNetUser.Email</h3>
                 </div>
@@ -186,7 +187,7 @@
         <div class="card">
             <div class="card-body">
                 Transactions
-                <table class="table table-sm table-light m-b-0">
+                <table class="table table-sm table-responsive table-light m-b-0">
                     <tr>
 
                         <th>
@@ -292,7 +293,7 @@
             var id = $form.find("input[name=Id]").val();
             var amount = $form.find("input[name=Amount]").val();
 
-         
+            $btn = $form.find("button[type=submit]");         
             $.ajax({
                 type: "get",
                 url: $(this).attr("action") + `/?id=${id}&amount=${amount}`,

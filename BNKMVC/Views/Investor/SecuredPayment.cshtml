@@ -126,16 +126,20 @@
                                     <div class="card-header bg-primary text-white">
                                         <h4 class="m-b-0 ">2. <span class="gourl_texts_coin_address"></span></h4>
                                     </div>
-                                    <div class="card-body">
-                                        <div style="float: right; margin-bottom: 10px">
-                                            <a class='gourl_wallet_url' href='#'><img class='gourl_qrcode_image' alt='qrcode' data-size='100' src='#'></a>
-                                        </div>
-                                        <br>
-                                        <div class="gourl_texts_send"></div>
-                                        <br>
+                                    <div class="card-body"> 
                                         <div>
-                                            <a class="gourl_addr gourl_wallet_url" href="#"></a> &#160; <a class="gourl_wallet_url gourl_wallet_open" href="#"><i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                            Wallet Address  : <p>1Hnc6YbVBRgva39WrhLJD5uuQGQkttezu3 </p>
+                                            <div>
+                                                <input type="text" id="text-to-copy" class="form-control" value="1Hnc6YbVBRgva39WrhLJD5uuQGQkttezu3" disabled="disabled"   />  <br/>
+                                                <button class="btn btn-primary" id="copy-text"> <i class="fa fa-copy"></i> Copy</button> <br/>
+                                                <span id="copied-text"  class="text text-success" style="display: none;">Copied!</span>
+                                            </div>
+
+                                         
+                                            <p> </p>
                                         </div>
+                                        <br>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -256,4 +260,34 @@
         </div>
     </div>
 </div>
+@section Scripts
+{
+    
+    <script>
+        document.getElementById('copy-text').addEventListener('click', function(e){
+            e.preventDefault();
 
+            // Select the text
+            document.getElementById('text-to-copy').select();
+
+            var copied;
+
+            try
+            {
+                // Copy the text
+                copied = document.execCommand('copy');
+            } 
+            catch (ex)
+            {
+                copied = false;  
+            }
+
+            if(copied)
+            {
+                // Display the copied text message
+                document.getElementById('copied-text').style.display = 'block';    
+            }
+
+        });
+    </script>
+}

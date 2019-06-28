@@ -346,7 +346,9 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CR_Account_AspNetUsers1">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CR_Account" Type="Self.CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -645,6 +647,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <EntitySet Name="CR_Transactions" EntityType="mbankModel.CR_Transactions" />
           <EntitySet Name="CR_Verification" EntityType="mbankModel.CR_Verification" />
           <EntitySet Name="ForwardTransfers" EntityType="mbankModel.ForwardTransfer" />
+          <EntitySet Name="MaintainanceFees" EntityType="mbankModel.MaintainanceFee" />
           <EntitySet Name="sysdiagrams" EntityType="mbankModel.sysdiagram" />
           <EntitySet Name="tblAccounts" EntityType="mbankModel.tblAccount" />
           <EntitySet Name="tblAdminLogins" EntityType="mbankModel.tblAdminLogin" />
@@ -653,6 +656,7 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <EntitySet Name="tblRegisters" EntityType="mbankModel.tblRegister" />
           <EntitySet Name="tblTransfers" EntityType="mbankModel.tblTransfer" />
           <EntitySet Name="TransactionCodes" EntityType="mbankModel.TransactionCode" />
+          <EntitySet Name="WithdrawRequests" EntityType="mbankModel.WithdrawRequest" />
           <EntitySet Name="crypto_payments" EntityType="mbankModel.crypto_payments" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -694,6 +698,10 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             <End Role="CR_Account" EntitySet="CR_Account" />
             <End Role="CR_Verification" EntitySet="CR_Verification" />
           </AssociationSet>
+          <AssociationSet Name="FK_WithdrawRequest_CR_Account" Association="mbankModel.FK_WithdrawRequest_CR_Account">
+            <End Role="CR_Account" EntitySet="CR_Account" />
+            <End Role="WithdrawRequest" EntitySet="WithdrawRequests" />
+          </AssociationSet>
           <AssociationSet Name="FK_ForwardTransfer_tblAccount" Association="mbankModel.FK_ForwardTransfer_tblAccount">
             <End Role="tblAccount" EntitySet="tblAccounts" />
             <End Role="ForwardTransfer" EntitySet="ForwardTransfers" />
@@ -709,12 +717,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <AssociationSet Name="AspNetUserRoles" Association="mbankModel.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="MaintainanceFees" EntityType="mbankModel.MaintainanceFee" />
-          <EntitySet Name="WithdrawRequests" EntityType="mbankModel.WithdrawRequest" />
-          <AssociationSet Name="FK_WithdrawRequest_CR_Account" Association="mbankModel.FK_WithdrawRequest_CR_Account">
-            <End Role="CR_Account" EntitySet="CR_Account" />
-            <End Role="WithdrawRequest" EntitySet="WithdrawRequests" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
@@ -886,6 +888,15 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_ForwardTransfer_tblAccount" FromRole="ForwardTransfer" ToRole="tblAccount" />
         </EntityType>
+        <EntityType Name="MaintainanceFee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SmallestAmount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="LargestAmount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Fee" Type="Decimal" Precision="18" Scale="8" />
+        </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -982,6 +993,20 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblAccount" Relationship="mbankModel.FK_TransactionCode_tblAccount" FromRole="TransactionCode" ToRole="tblAccount" />
         </EntityType>
+        <EntityType Name="WithdrawRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WalletId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="MaintainceFeeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="MaintainceFee" Type="Decimal" Precision="18" Scale="8" />
+          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_WithdrawRequest_CR_Account" FromRole="WithdrawRequest" ToRole="CR_Account" />
+        </EntityType>
         <EntityType Name="crypto_payments">
           <Key>
             <PropertyRef Name="paymentID" />
@@ -1059,7 +1084,9 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CR_Account_AspNetUsers1">
-          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUser">
@@ -1148,6 +1175,20 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WithdrawRequest_CR_Account">
+          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="mbankModel.WithdrawRequest" Role="WithdrawRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CR_Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WithdrawRequest">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ForwardTransfer_tblAccount">
           <End Type="mbankModel.tblAccount" Role="tblAccount" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1189,43 +1230,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
         <Association Name="AspNetUserRoles">
           <End Type="mbankModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="mbankModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
-        <EntityType Name="MaintainanceFee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SmallestAmount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="LargestAmount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="Fee" Type="Decimal" Precision="18" Scale="8" />
-        </EntityType>
-        <EntityType Name="WithdrawRequest">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="WalletId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="8" />
-          <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <Property Name="MaintainceFeeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AccountId" Type="Int32" />
-          <NavigationProperty Name="CR_Account" Relationship="mbankModel.FK_WithdrawRequest_CR_Account" FromRole="WithdrawRequest" ToRole="CR_Account" />
-          <Property Name="MaintainceFee" Type="Decimal" Precision="18" Scale="8" />
-        </EntityType>
-        <Association Name="FK_WithdrawRequest_CR_Account">
-          <End Type="mbankModel.CR_Account" Role="CR_Account" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="mbankModel.WithdrawRequest" Role="WithdrawRequest" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CR_Account">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WithdrawRequest">
-              <PropertyRef Name="AccountId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1389,6 +1393,16 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MaintainanceFees">
+            <EntityTypeMapping TypeName="mbankModel.MaintainanceFee">
+              <MappingFragment StoreEntitySet="MaintainanceFee">
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="LargestAmount" ColumnName="LargestAmount" />
+                <ScalarProperty Name="SmallestAmount" ColumnName="SmallestAmount" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="mbankModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -1487,6 +1501,20 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WithdrawRequests">
+            <EntityTypeMapping TypeName="mbankModel.WithdrawRequest">
+              <MappingFragment StoreEntitySet="WithdrawRequest">
+                <ScalarProperty Name="MaintainceFee" ColumnName="MaintainceFee" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="MaintainceFeeStatus" ColumnName="MaintainceFeeStatus" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="WalletId" ColumnName="WalletId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="crypto_payments">
             <EntityTypeMapping TypeName="mbankModel.crypto_payments">
               <MappingFragment StoreEntitySet="crypto_payments">
@@ -1519,30 +1547,6 @@ warning 6002: The table/view 'CryptoBank.dbo.crypto_payments' does not have a pr
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="MaintainanceFees">
-            <EntityTypeMapping TypeName="mbankModel.MaintainanceFee">
-              <MappingFragment StoreEntitySet="MaintainanceFee">
-                <ScalarProperty Name="Fee" ColumnName="Fee" />
-                <ScalarProperty Name="LargestAmount" ColumnName="LargestAmount" />
-                <ScalarProperty Name="SmallestAmount" ColumnName="SmallestAmount" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WithdrawRequests">
-            <EntityTypeMapping TypeName="mbankModel.WithdrawRequest">
-              <MappingFragment StoreEntitySet="WithdrawRequest">
-                <ScalarProperty Name="MaintainceFee" ColumnName="MaintainceFee" />
-                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
-                <ScalarProperty Name="MaintainceFeeStatus" ColumnName="MaintainceFeeStatus" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="WalletId" ColumnName="WalletId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -29,7 +29,7 @@ namespace BNKMVC.Services
                         {
                             action = "Verify",
                             controller = "Home",
-                            code = "0"
+                     
                         });
                         filterContext.Result = new RedirectToRouteResult(values);
                         base.OnActionExecuting(filterContext);
@@ -60,7 +60,7 @@ namespace BNKMVC.Services
                         {
                             action = actionName,
                             controller = controllerName,
-                            code = "0"
+                       
                         });
                         filterContext.Result = new RedirectToRouteResult(values);
                         base.OnActionExecuting(filterContext);

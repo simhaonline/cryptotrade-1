@@ -5,51 +5,45 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="876729d73b8548d69dd8b8ff1283f440" Name="Diagram1">
-        <EntityTypeShape EntityType="mbankModel.AspNetRole" Width="1.5" PointX="0.75" PointY="14" />
-        <EntityTypeShape EntityType="mbankModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="9.125" />
-        <EntityTypeShape EntityType="mbankModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="6.625" />
-        <EntityTypeShape EntityType="mbankModel.AspNetUser" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="mbankModel.AspNetRole" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="mbankModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="32.75" />
+        <EntityTypeShape EntityType="mbankModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="35.5" />
+        <EntityTypeShape EntityType="mbankModel.AspNetUser" Width="1.5" PointX="3" PointY="13.75" />
         <EntityTypeShape EntityType="mbankModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="mbankModel.Country" Width="1.5" PointX="0.75" PointY="11" />
-        <EntityTypeShape EntityType="mbankModel.CR_Account" Width="1.5" PointX="5.25" PointY="13" />
-        <EntityTypeShape EntityType="mbankModel.CR_AccountType" Width="1.5" PointX="3" PointY="8.25" />
-        <EntityTypeShape EntityType="mbankModel.CR_Activity" Width="1.5" PointX="7.5" PointY="10.625" />
-        <EntityTypeShape EntityType="mbankModel.CR_Currency" Width="1.5" PointX="3" PointY="19.25" />
-        <EntityTypeShape EntityType="mbankModel.CR_Transactions" Width="1.5" PointX="7.5" PointY="16.25" />
-        <EntityTypeShape EntityType="mbankModel.CR_Verification" Width="1.5" PointX="7.5" PointY="13.375" />
-        <EntityTypeShape EntityType="mbankModel.ForwardTransfer" Width="1.5" PointX="7.5" PointY="28.375" />
-        <EntityTypeShape EntityType="mbankModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="mbankModel.tblAccount" Width="1.5" PointX="5.25" PointY="25.125" />
-        <EntityTypeShape EntityType="mbankModel.tblAdminLogin" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="mbankModel.tblfeedback" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="mbankModel.tblLogin" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="mbankModel.tblRegister" Width="1.5" PointX="7.5" PointY="24.125" />
+        <EntityTypeShape EntityType="mbankModel.Country" Width="1.5" PointX="0.75" PointY="15.875" />
+        <EntityTypeShape EntityType="mbankModel.CR_Account" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="mbankModel.CR_AccountType" Width="1.5" PointX="3" PointY="24" />
+        <EntityTypeShape EntityType="mbankModel.CR_Activity" Width="1.5" PointX="7.5" PointY="20.875" />
+        <EntityTypeShape EntityType="mbankModel.CR_Currency" Width="1.5" PointX="3" PointY="21.25" />
+        <EntityTypeShape EntityType="mbankModel.CR_Transactions" Width="1.5" PointX="7.5" PointY="30" />
+        <EntityTypeShape EntityType="mbankModel.CR_Verification" Width="1.5" PointX="7.5" PointY="23.5" />
+        <EntityTypeShape EntityType="mbankModel.ForwardTransfer" Width="1.5" PointX="7.5" PointY="16.125" />
+        <EntityTypeShape EntityType="mbankModel.MaintainanceFee" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mbankModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="mbankModel.tblAccount" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="mbankModel.tblAdminLogin" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="mbankModel.tblfeedback" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="mbankModel.tblLogin" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="mbankModel.tblRegister" Width="1.5" PointX="7.5" PointY="8.5" />
         <EntityTypeShape EntityType="mbankModel.tblTransfer" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="mbankModel.TransactionCode" Width="1.5" PointX="7.5" PointY="20.75" />
-        <EntityTypeShape EntityType="mbankModel.crypto_payments" Width="1.5" PointX="7.75" PointY="4.75" />
+        <EntityTypeShape EntityType="mbankModel.TransactionCode" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="mbankModel.WithdrawRequest" Width="1.5" PointX="7.5" PointY="26.5" />
+        <EntityTypeShape EntityType="mbankModel.crypto_payments" Width="1.5" PointX="0.75" PointY="6.75" />
         <AssociationConnector Association="mbankModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="mbankModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="mbankModel.FK_AspNetUsers_Countries" />
         <AssociationConnector Association="mbankModel.FK_CR_Account_AspNetUsers1" />
         <AssociationConnector Association="mbankModel.FK_tblAccount_AspNetUsers" />
         <AssociationConnector Association="mbankModel.FK_CR_Account_CR_AccountType1" />
-        <AssociationConnector Association="mbankModel.FK_CR_Account_CR_Currency1" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="20.240143229166669" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="20.240143229166669" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="20.240143229166669" />
-          <ConnectorPoint PointX="5.82812625" PointY="20.240143229166669" />
-          <ConnectorPoint PointX="5.82812625" PointY="16.710999348958335" />
-        </AssociationConnector>
+        <AssociationConnector Association="mbankModel.FK_CR_Account_CR_Currency1" />
         <AssociationConnector Association="mbankModel.FK_CR_Activity_CR_Account" />
         <AssociationConnector Association="mbankModel.FK_CR_Transactions_CR_Account" />
         <AssociationConnector Association="mbankModel.FK_CR_Verification_CR_Account" />
+        <AssociationConnector Association="mbankModel.FK_WithdrawRequest_CR_Account" />
         <AssociationConnector Association="mbankModel.FK_ForwardTransfer_tblAccount" />
         <AssociationConnector Association="mbankModel.FK_tblRegister_tblAccount" />
         <AssociationConnector Association="mbankModel.FK_TransactionCode_tblAccount" />
         <AssociationConnector Association="mbankModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="mbankModel.MaintainanceFee" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="mbankModel.WithdrawRequest" Width="1.5" PointX="7.5" PointY="33.625" />
-        <AssociationConnector Association="mbankModel.FK_WithdrawRequest_CR_Account" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
