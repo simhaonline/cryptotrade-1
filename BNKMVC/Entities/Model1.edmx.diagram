@@ -34,7 +34,15 @@
         <AssociationConnector Association="mbankModel.FK_AspNetUsers_Countries" />
         <AssociationConnector Association="mbankModel.FK_CR_Account_AspNetUsers1" />
         <AssociationConnector Association="mbankModel.FK_tblAccount_AspNetUsers" />
-        <AssociationConnector Association="mbankModel.FK_CR_Account_CR_AccountType1" />
+        <AssociationConnector Association="mbankModel.FK_CR_Account_CR_AccountType1" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="4.791666666666667" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="5.114583333333333" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="6" PointY="25.0862939453125" />
+          <ConnectorPoint PointX="6" PointY="20.585999348958335" />
+        </AssociationConnector>
         <AssociationConnector Association="mbankModel.FK_CR_Account_CR_Currency1" />
         <AssociationConnector Association="mbankModel.FK_CR_Activity_CR_Account" />
         <AssociationConnector Association="mbankModel.FK_CR_Transactions_CR_Account" />
